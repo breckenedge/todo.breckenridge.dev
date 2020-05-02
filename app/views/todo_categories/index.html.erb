@@ -1,0 +1,31 @@
+<div class="row">
+  <div class="col-6">
+  </div>
+
+  <div class="col-6">
+    <div class="text-right">
+      <%= link_to 'New Category', new_todo_category_path, class: 'btn btn-primary' %>
+    </div>
+  </div>
+</div>
+
+<br>
+
+<table class="table table-sm">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th colspan="2"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @todo_categories.each do |todo_category| %>
+      <tr>
+        <td><%= link_to todo_category.name, todos_path(todo_category_id: todo_category.id) %></td>
+        <td><%= link_to 'Edit', edit_todo_category_path(todo_category) %></td>
+        <td><%= link_to 'Destroy', todo_category, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

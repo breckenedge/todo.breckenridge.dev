@@ -1,0 +1,27 @@
+<%= simple_form_for(todo) do |form| %>
+  <% if todo.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(todo.errors.count, "error") %> prohibited this todo from being saved:</h2>
+
+      <ul>
+        <% todo.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%= form.input :name, autofocus: true %>
+
+  <%= form.input :status, as: :boolean, label: 'Complete?', checked_value: 'complete', unchecked_value: 'incomplete' %>
+
+  <%= form.input :due_on, html5: true %>
+
+  <%= form.input :priority %>
+
+  <%= form.input :todo_category_ids, as: :select, collection: TodoCategory.order(:name).pluck(:name, :id), input_html: { multiple: true, size: TodoCategory.count }, label: 'Categories' %>
+
+  <%= form.input :description, rows: 3 %>
+
+  <%= form.submit class: 'btn btn-primary' %>
+<% end %>

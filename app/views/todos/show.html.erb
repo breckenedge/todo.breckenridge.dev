@@ -1,0 +1,27 @@
+<div class="text-right">
+  <%= link_to 'Edit', edit_todo_path(@todo), class: 'btn btn-primary' %>
+</div>
+
+<h1><%= @todo.name %></h1>
+
+<br>
+
+<p>
+<strong>Description:</strong>
+<%= simple_format @todo.description %>
+</p>
+
+<p>
+<strong>Due on:</strong>
+<%= @todo.due_on %>
+</p>
+
+<p>
+<strong>Priority:</strong>
+<%= @todo.priority %>
+</p>
+
+<p>
+<strong>Status:</strong>
+<%= @todo.status %>
+</p>

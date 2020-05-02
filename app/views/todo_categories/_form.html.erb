@@ -1,0 +1,17 @@
+<%= simple_form_for(todo_category) do |form| %>
+  <% if todo_category.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(todo_category.errors.count, "error") %> prohibited this todo_category from being saved:</h2>
+
+      <ul>
+        <% todo_category.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%= form.input :name %>
+
+  <%= form.submit class: 'btn btn-primary' %>
+<% end %>
