@@ -23,5 +23,13 @@
 
   <%= form.input :description, rows: 3 %>
 
-  <%= form.submit class: 'btn btn-primary' %>
+  <div style="display: flex">
+    <div style="flex-grow: 1">
+      <%= form.submit class: 'btn btn-primary' %>
+    </div>
+    <div>
+      <%= link_to('Show', todo_path(form.object), class: 'btn') unless todo.new_record? %>
+      <%= link_to 'Back', todos_path, class: 'btn' %>
+    </div>
+  </div>
 <% end %>

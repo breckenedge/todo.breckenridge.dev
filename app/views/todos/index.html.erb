@@ -1,34 +1,29 @@
-<div class="text-right">
-  <%= link_to '+', new_todo_path(todo_category_id: params[:todo_category_id]), class: 'btn btn-primary' %>
-</div>
-
 <%= form_tag todos_path, class: 'form form-inline', method: :get do %>
-  <%= text_field_tag :q, params[:q], autofocus: true, placeholder: 'Search' %>
+  <div style="display: flex">
+    <div style="flex-grow: 1">
+      <%= text_field_tag :q, params[:q], autofocus: true, placeholder: 'Search' %>
+    </div>
 
-  <%= button_tag '🔍', name: nil %>
+    <div>
+      <%= button_tag '🔍', name: nil %>
+    </div>
+  </div>
 <% end %>
 
 <br>
 
+<%= link_to 'New Todo', new_todo_path(todo_category_id: params[:todo_category_id]), class: 'btn btn-primary btn-block' %>
+
+<br>
+
 <% @todos.each do |todo| %>
-  <div style="border: 1px solid #eee; margin-bottom: 0.5em; padding: 0.5em">
-    <span style="display: flow; flex-flow: row nowrap; justify-content: space-between">
-      <span>
-        <%= todo.complete? ? '✅' : '' %>
-        <%= link_to todo.name, todo_path(todo) %>
-        <%= todo.priority %>
-        <%= todo.due_on %>
-        <% if todo.due_on %>
-          (<%= time_ago_in_words(todo.due_on) %>)
-        <% end %>
-        <% todo.todo_categories.each do |category| %>
-          <%= link_to category.name, todos_path(todo_category_id: category.id), class: 'badge badge-primary' %>
-        <% end %>
-      </span>
-      <span>
-        <%= link_to '✏️', edit_todo_path(todo), class: 'btn btn-default' %>
-        <%= link_to '🗑', todo, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-default' %>
-      </span>
-    </span>
-  </div>
+  <%= link_to todo_path(todo), class: 'todo' do %>
+    <%= todo.complete? ? '✅' : '' %>
+    <%= todo.name %>
+    <%= todo_priority(todo) %>
+    <% todo.todo_categories.each do |category| %>
+      <%= content_tag :span, category.name, class: 'badge badge-primary' %>
+    <% end %>
+    <%= todo_due_on(todo) %>
+  <% end %>
 <% end %>

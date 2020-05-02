@@ -1,27 +1,37 @@
-<div class="text-right">
-  <%= link_to 'Edit', edit_todo_path(@todo), class: 'btn btn-primary' %>
+<div style="display: flex">
+  <div style="flex-grow: 1">
+    <h1><%= @todo.name %></h1>
+  </div>
 </div>
-
-<h1><%= @todo.name %></h1>
 
 <br>
 
-<p>
-<strong>Description:</strong>
-<%= simple_format @todo.description %>
-</p>
+<dl class="dl-horizontal">
+  <dt>Description:</dt>
+  <dd><%= simple_format @todo.description %></dd>
 
-<p>
-<strong>Due on:</strong>
-<%= @todo.due_on %>
-</p>
+  <dt>Due on:</dt>
+  <dd><%= todo_due_on(@todo) %></dd>
 
-<p>
-<strong>Priority:</strong>
-<%= @todo.priority %>
-</p>
+  <dt>Priority:</dt>
+  <dd><%= todo_priority(@todo) %></dd>
 
-<p>
-<strong>Status:</strong>
-<%= @todo.status %>
-</p>
+  <dt>Status:</dt>
+  <dd><%= @todo.status %></dd>
+</dl>
+
+<div style="display: flex">
+  <div style="flex-grow: 1">
+    <%= link_to 'Edit', edit_todo_path(@todo), class: 'btn btn-primary' %>
+ 
+    <% if @todo.incomplete? %>
+      <%= link_to 'Complete', complete_todo_path(@todo), class: 'btn btn-primary', data: { method: :post } %>
+    <% else %>
+      <%= link_to 'Incomplete', incomplete_todo_path(@todo), class: 'btn btn-primary', data: { method: :post } %>
+    <% end %>
+  </div>
+
+  <div>
+    <%= link_to 'Delete', todo_path(@todo), class: 'btn btn-danger', data: { method: :delete, confirm: 'Are you sure?' } %>
+  </div>
+</div>

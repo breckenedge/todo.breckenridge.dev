@@ -1,5 +1,5 @@
 class TodosController < ApplicationController
-  before_action :set_todo, only: [:show, :edit, :update, :destroy]
+  before_action :set_todo, only: [:show, :edit, :update, :destroy, :complete, :incomplete]
 
   # GET /todos
   # GET /todos.json
@@ -37,7 +37,7 @@ class TodosController < ApplicationController
 
     respond_to do |format|
       if @todo.save
-        format.html { redirect_to todos_path, notice: 'Todo was successfully created.' }
+        format.html { redirect_to todo_path(@todo), notice: 'Todo was successfully created.' }
       else
         format.html { render :new }
       end
@@ -49,7 +49,7 @@ class TodosController < ApplicationController
   def update
     respond_to do |format|
       if @todo.update(todo_params)
-        format.html { redirect_to todos_path, notice: 'Todo was successfully updated.' }
+        format.html { redirect_to todo_path(@todo), notice: 'Todo was successfully updated.' }
       else
         format.html { render :edit }
       end
@@ -62,6 +62,20 @@ class TodosController < ApplicationController
     @todo.destroy
     respond_to do |format|
       format.html { redirect_to todos_url, notice: 'Todo was successfully destroyed.' }
+    end
+  end
+
+  def complete
+    @todo.update(status: :complete)
+    respond_to do |format|
+      format.html { redirect_to todo_path(@todo), notice: 'Todo completed.' }
+    end
+  end
+
+  def incomplete
+    @todo.update(status: :incomplete)
+    respond_to do |format|
+      format.html { redirect_to todo_path(@todo), notice: 'Todo uncompleted.' }
     end
   end
 
