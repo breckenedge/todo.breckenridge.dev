@@ -1,10 +1,12 @@
-<%= form_tag todos_path, class: 'form form-inline', method: :get do %>
-  <div style="display: flex">
-    <div style="flex-grow: 1">
-      <%= text_field_tag :q, params[:q], autofocus: true, placeholder: 'Search' %>
-    </div>
+<% if @todo_category %>
+  <p>Showing <strong><%= @todo_category.name %></strong> todos. <%= link_to 'Show All', todos_path %></p>
+<% end %>
 
-    <div>
+<%= form_tag todos_path, class: 'form form-inline', method: :get do %>
+  <div class="actions">
+    <%= text_field_tag :q, params[:q], autofocus: true, placeholder: 'Search', class: 'actions-primary' %>
+
+    <div class="actions-secondary">
       <%= button_tag '🔍', name: nil %>
     </div>
   </div>
@@ -12,20 +14,47 @@
 
 <br>
 
-<%= link_to 'New Todo', new_todo_path(todo_category_id: params[:todo_category_id]), class: 'btn btn-primary btn-block' %>
+<%= link_to new_todo_path(todo_category_id: @todo_category&.id), class: 'btn btn-primary btn-block' do %>
+  <% if @todo_category %>
+    New <strong><%= @todo_category.name %></strong> Todo
+  <% else %>
+    New Todo
+  <% end %>
+<% end %>
 
 <br>
 
-<div class="link-list">
-  <% @todos.each do |todo| %>
-    <%= link_to todo_path(todo), class: 'todo' do %>
-      <%= todo.complete? ? '✅' : '' %>
-      <%= todo.name %>
-      <%= todo_priority(todo) %>
-      <% todo.todo_categories.each do |category| %>
-        <%= content_tag :span, category.name, class: 'badge badge-primary' %>
+<% @dates.each do |date, todos| %>
+  <div style="text-align: center; font-weight: bold; margin-top: 1em">
+    <% if date %>
+      <% if date == Date.current %>
+        Today
+      <% else %>
+        <%= l date, format: '%a, %B %-d, %Y' %>
       <% end %>
-      <%= todo_due_on(todo) %>
+    <% else %>
+      [No Date]
     <% end %>
+  </div>
+
+  <div class="link-list">
+    <% todos.each do |todo| %>
+      <%= link_to todo_path(todo), class: 'todo' do %>
+        <%= todo.complete? ? '✅' : '' %>
+        <%= todo.name %>
+        <%= todo_priority(todo) %>
+        <% todo.todo_categories.each do |category| %>
+          <%= content_tag :span, category.name, class: 'badge badge-primary' %>
+        <% end %>
+      <% end %>
+    <% end %>
+  </div>
+<% end %>
+
+<% if @todo_category %>
+  <br>
+
+  <%= link_to edit_todo_category_path(@todo_category), class: 'btn btn-primary btn-block' do %>
+    Edit <strong><%= @todo_category.name %> Category
   <% end %>
-</div>
+<% end %>

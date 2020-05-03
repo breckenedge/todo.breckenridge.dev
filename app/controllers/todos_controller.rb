@@ -4,15 +4,20 @@ class TodosController < ApplicationController
   # GET /todos
   # GET /todos.json
   def index
-    @todos = Todo.all.order(status: :asc, priority: :asc, due_on: :asc)
+    @todos = Todo.all.order('due_on ASC NULLS LAST', status: :asc)
 
     if params[:q]
       @todos = @todos.where('name like ?', "%#{params[:q]}%")
     end
 
     if params[:todo_category_id]
-      @todos = @todos.joins(:todo_category_todos).where(todo_category_todos: { todo_category_id: params[:todo_category_id] })
+      @todo_category = TodoCategory.find(params[:todo_category_id])
+      @todos = @todos.joins(:todo_category_todos).where(todo_category_todos: { todo_category_id: @todo_category.id })
     end
+
+    @todos = params[:show_complete] ? @todos : @todos.incomplete
+
+    @dates = @todos.group_by(&:due_on)
   end
 
   # GET /todos/1
