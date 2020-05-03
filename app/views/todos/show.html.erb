@@ -1,8 +1,4 @@
-<div style="display: flex">
-  <div style="flex-grow: 1">
-    <h1><%= @todo.name %></h1>
-  </div>
-</div>
+<h1><%= @todo.name %></h1>
 
 <br>
 
@@ -20,8 +16,8 @@
   <dd><%= @todo.status %></dd>
 </dl>
 
-<div style="display: flex">
-  <div style="flex-grow: 1">
+<div class="actions">
+  <div class="actions-primary">
     <%= link_to 'Edit', edit_todo_path(@todo), class: 'btn btn-primary' %>
  
     <% if @todo.incomplete? %>
@@ -31,7 +27,7 @@
     <% end %>
   </div>
 
-  <div>
+  <div class="actions-secondary">
     <%= link_to 'Delete', todo_path(@todo), class: 'btn btn-danger', data: { method: :delete, confirm: 'Are you sure?' } %>
   </div>
 </div>

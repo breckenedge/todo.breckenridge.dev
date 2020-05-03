@@ -4,7 +4,7 @@ class TodoCategoriesController < ApplicationController
   # GET /todo_categories
   # GET /todo_categories.json
   def index
-    @todo_categories = TodoCategory.all
+    @todo_categories = TodoCategory.order(:name)
   end
 
   # GET /todo_categories/1

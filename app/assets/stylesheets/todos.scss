@@ -1,18 +1,3 @@
 // Place all the styles related to the Todos controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
-
-a.todo {
-  display: block;
-  border: 1px solid #eee;
-  border-radius: 3px;
-  margin-bottom: 0.5em;
-  padding: 0.5em;
-  text-decoration: none;
-  color: black;
-}
-
-a.todo:hover {
-  text-decoration: none;
-  background-color: whitesmoke;
-}

@@ -1,0 +1,16 @@
+.link-list {
+  > a {
+    display: block;
+    border: 1px solid #eee;
+    border-radius: 3px;
+    margin-bottom: 0.5em;
+    padding: 0.5em;
+    text-decoration: none;
+    color: black;
+  }
+
+  > a.todo:hover {
+    text-decoration: none;
+    background-color: whitesmoke;
+  }
+}

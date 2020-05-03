@@ -1,0 +1,10 @@
+.actions {
+  display: flex;
+
+  > .actions-primary {
+    flex-grow: 1;
+  }
+
+  > .actions-secondary {
+  }
+}
