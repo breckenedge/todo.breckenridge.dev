@@ -4,7 +4,7 @@ class TodosController < ApplicationController
   # GET /todos
   # GET /todos.json
   def index
-    @todos = Todo.all.order('due_on ASC NULLS LAST', status: :asc)
+    @todos = Todo.all.order("CASE WHEN due_on IS NULL THEN '9999-12-31' ELSE due_on END", status: :asc)
 
     if params[:q]
       @todos = @todos.where('name like ?', "%#{params[:q]}%")
