@@ -7,7 +7,10 @@
   <dd><%= simple_format @todo.description %></dd>
 
   <dt>Due on:</dt>
-  <dd><%= todo_due_on(@todo) %></dd>
+  <dd>
+  <%= l(@todo.due_on) if @todo.due_on %>
+  <%= todo_due_on(@todo) %>
+  </dd>
 
   <dt>Priority:</dt>
   <dd><%= todo_priority(@todo) %></dd>
