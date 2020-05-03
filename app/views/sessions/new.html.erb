@@ -1,0 +1,8 @@
+<h1>Log In</h1>
+
+<%= simple_form_for(:log_in) do |f| %>
+  <%= f.input :email, as: :email %>
+  <%= f.input :password, as: :password %>
+
+  <%= f.submit 'Log In', class: 'btn btn-primary'%>
+<% end %>
