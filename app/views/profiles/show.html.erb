@@ -1,0 +1,6 @@
+<%= simple_form_for current_user, url: profile_path, method: :patch do |f| %>
+  <%= f.input :email, as: :email %>
+  <%= f.input :time_zone, collection: TZInfo::Timezone.all_identifiers %>
+
+  <%= f.submit 'Save Profile' %>
+<% end %>

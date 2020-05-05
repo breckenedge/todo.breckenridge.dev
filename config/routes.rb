@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resource :profile, only: [:show, :update]
   resources :todo_categories
   resources :todos do
     post :complete, on: :member
