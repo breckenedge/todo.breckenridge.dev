@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  namespace :api do
+    get :me, to: 'me#show'
+  end
+
   resources :todo_categories
   resources :todos do
     post :complete, on: :member
@@ -7,7 +11,7 @@ Rails.application.routes.draw do
 
   get :log_in, to: 'sessions#new', as: :log_in
   post :log_in, to: 'sessions#create'
-  delete :log_out, to: 'sessions#destroy', as: :log_out
+  match :log_out, to: 'sessions#destroy', via: [:get, :delete], as: :log_out
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
