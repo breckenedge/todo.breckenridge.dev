@@ -4,7 +4,7 @@
 
 <%= form_tag todos_path, class: 'form form-inline', method: :get do %>
   <div class="actions">
-    <%= text_field_tag :q, params[:q], autofocus: true, placeholder: 'Search', class: 'actions-primary' %>
+    <%= text_field_tag :q, params[:q], placeholder: 'Search', class: 'actions-primary' %>
 
     <div class="actions-secondary">
       <%= button_tag '🔍', name: nil %>
