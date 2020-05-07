@@ -11,6 +11,8 @@
     </div>
   <% end %>
 
+  <%= form.input :project_id, collection: Project.pluck(:name, :id) %>
+
   <%= form.input :name, autofocus: true %>
 
   <%= form.input :status, as: :boolean, label: 'Complete?', checked_value: 'complete', unchecked_value: 'incomplete' %>

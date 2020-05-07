@@ -29,6 +29,7 @@ class TodosController < ApplicationController
   def new
     @todo = Todo.new
     @todo.todo_categories = [TodoCategory.find(params[:todo_category_id])] if params[:todo_category_id]
+    @todo.project = Project.find_by(id: params[:project_id])
   end
 
   # GET /todos/1/edit
@@ -92,6 +93,6 @@ class TodosController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def todo_params
-      params.require(:todo).permit(:name, :description, :due_on, :priority, :status, todo_category_ids: [])
+      params.require(:todo).permit(:project_id, :name, :description, :due_on, :priority, :status, todo_category_ids: [])
     end
 end

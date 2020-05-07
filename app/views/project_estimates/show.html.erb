@@ -1,0 +1,32 @@
+<p id="notice"><%= notice %></p>
+
+<dl>
+  <dt>Project:</dt>
+  <dd>
+  <% if @project_estimate.project %>
+    <%= link_to @project_estimate.project.name, project_path(@project_estimate.project) %>
+  <% end %>
+  </dd>
+  <dt>Vendor:</dt>
+  <dd><%= @project_estimate.vendor %></dd>
+  <dt>Date:</dt>
+  <dd><%= l(@project_estimate.date) if @project_estimate.date %></dd>
+  <dt>Estimate:</dt>
+  <dd><%= @project_estimate.estimate %></dd>
+  <dt>Contact:</dt>
+  <dd><%= @project_estimate.contact %></dd>
+  <dt>Phone:</dt>
+  <dd><%= @project_estimate.phone %></dd>
+  <dt>Details:</dt>
+  <dd><%= simple_format @project_estimate.details %></dd>
+</dl>
+
+<div class="actions">
+  <div class="actions-primary">
+    <%= link_to 'Edit', edit_project_estimate_path(@project_estimate), class: 'btn btn-primary' %>
+  </div>
+
+  <div class="actions-secondary">
+    <%= link_to 'Delete', project_estimate_path(@project_estimate), class: 'btn btn-danger', data: { method: :delete, confirm: 'Are you sure?' } %>
+  </div>
+</div>

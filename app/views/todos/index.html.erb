@@ -37,18 +37,7 @@
     <% end %>
   </div>
 
-  <div class="link-list">
-    <% todos.each do |todo| %>
-      <%= link_to todo_path(todo), class: 'todo' do %>
-        <%= todo.complete? ? '✅' : '' %>
-        <%= todo.name %>
-        <%= todo_priority(todo) %>
-        <% todo.todo_categories.each do |category| %>
-          <%= content_tag :span, category.name, class: 'badge badge-primary' %>
-        <% end %>
-      <% end %>
-    <% end %>
-  </div>
+  <%= render 'todos_list', todos: todos %>
 <% end %>
 
 <% if @todo_category %>

@@ -1,0 +1,57 @@
+<h1><%= @project.name %></h1>
+
+<dl>
+  <dt>Due date:</dt>
+  <dd><%= @project.due_date %> <% if @project.due_date.present? %>(<%= time_ago_in_words(@project.due_date) %>)<% end %></dd>
+
+  <dt>Status:</dt>
+  <dd><%= @project.status %></dd>
+
+  <dt>Details:</dt>
+  <dd><%= simple_format @project.details %></dd>
+</dl>
+
+<div class="actions">
+  <div class="actions-primary">
+    <%= link_to 'Edit Project', edit_project_path(@project), class: 'btn btn-primary' %>
+  </div>
+
+  <div class="actions-secondary">
+    <%= link_to 'Delete', project_path(@project), class: 'btn btn-danger', data: { method: :delete, confirm: 'Are you sure?' } %>
+  </div>
+</div>
+
+<hr>
+
+<h2>Estimates</h2>
+
+<div class="link-list">
+  <% @project.project_estimates.each do |estimate| %>
+    <%= link_to project_estimate_path(estimate) do %>
+      <%= estimate.vendor %>
+      <% if estimate.estimate.present? %>
+        <span class="badge badge-success"><%= estimate.estimate %></span>
+      <% end %>
+    <% end %>
+  <% end %>
+</div>
+
+<div class="actions">
+  <div class="actions-primary">
+    <%= link_to 'New Estimate', new_project_estimate_path(project_id: @project.id), class: 'btn btn-primary btn-sm' %>
+  </div>
+</div>
+
+<br>
+
+<h2>Todos</h2>
+
+<div class="link-list">
+  <%= render 'todos_list', todos: @project.todos %>
+</div>
+
+<div class="actions">
+  <div class="actions-primary">
+    <%= link_to 'New Todo', new_todo_path(project_id: @project.id), class: 'btn btn-primary btn-sm' %>
+  </div>
+</div>

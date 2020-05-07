@@ -2,7 +2,10 @@
 
 <br>
 
-<dl class="dl-horizontal">
+<dl>
+  <dt>Project:</dt>
+  <dd><%= link_to(@todo.project.name, project_path(@todo.project)) if @todo.project %></dd>
+
   <dt>Categories:</dt>
   <dd>
     <% @todo.todo_categories.each do |category| %>

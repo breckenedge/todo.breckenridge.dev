@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :project_estimates
+  resources :projects
   resource :profile, only: [:show, :update]
   resources :todo_categories
   resources :todos do

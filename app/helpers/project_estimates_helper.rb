@@ -1,0 +1,2 @@
+module ProjectEstimatesHelper
+end

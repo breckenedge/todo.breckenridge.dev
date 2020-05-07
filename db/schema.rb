@@ -10,7 +10,29 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_05_014056) do
+ActiveRecord::Schema.define(version: 2020_05_07_031708) do
+
+  create_table "project_estimates", force: :cascade do |t|
+    t.integer "project_id", null: false
+    t.date "date"
+    t.string "vendor"
+    t.string "contact"
+    t.string "phone"
+    t.string "estimate"
+    t.text "details"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["project_id"], name: "index_project_estimates_on_project_id"
+  end
+
+  create_table "projects", force: :cascade do |t|
+    t.string "name", null: false
+    t.date "due_date"
+    t.integer "status", default: 0
+    t.text "details"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "todo_categories", force: :cascade do |t|
     t.string "name"
@@ -35,6 +57,8 @@ ActiveRecord::Schema.define(version: 2020_05_05_014056) do
     t.integer "status"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "project_id"
+    t.index ["project_id"], name: "index_todos_on_project_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -45,6 +69,8 @@ ActiveRecord::Schema.define(version: 2020_05_05_014056) do
     t.string "time_zone", default: "Etc/UTC", null: false
   end
 
+  add_foreign_key "project_estimates", "projects"
   add_foreign_key "todo_category_todos", "todo_categories"
   add_foreign_key "todo_category_todos", "todos"
+  add_foreign_key "todos", "projects"
 end
