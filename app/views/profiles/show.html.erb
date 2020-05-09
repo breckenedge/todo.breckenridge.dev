@@ -2,5 +2,11 @@
   <%= f.input :email, as: :email %>
   <%= f.input :time_zone, collection: TZInfo::Timezone.all_identifiers %>
 
-  <%= f.submit 'Save Profile' %>
+  <%= f.submit 'Save Profile', class: 'button button-wide' %>
+<% end %>
+
+<hr>
+
+<% if current_user %>
+  <small>Logged in as <%= current_user.email %>. <%= link_to 'Log out', log_out_path, method: :delete %></small>
 <% end %>

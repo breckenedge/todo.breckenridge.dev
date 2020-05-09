@@ -1,0 +1,59 @@
+.button.accent0 {
+  border: 1px solid var(--accent0);
+  background-color: var(--accent0);
+}
+
+.button.accent1 {
+  border: 1px solid var(--accent1);
+  background-color: var(--accent1);
+}
+
+.button.accent2 {
+  border: 1px solid var(--accent2);
+  background-color: var(--accent2);
+}
+
+.button.accent3 {
+  border: 1px solid var(--accent3);
+  background-color: var(--accent3);
+}
+
+.button.accent4 {
+  border: 1px solid var(--accent4);
+  background-color: var(--accent4);
+}
+
+.button.accent5 {
+  border: 1px solid var(--accent5);
+  background-color: var(--accent5);
+}
+
+.button.accent6 {
+  border: 1px solid var(--accent6);
+  background-color: var(--accent6);
+}
+
+button,
+input[type="submit"],
+a.button {
+  border: 1px solid var(--accent0);
+  background-color: var(--accent0);
+  border-radius: 5px;
+  text-align: center;
+  color: white;
+  text-decoration: none;
+  padding: 0.5em 1em;
+  font-size: 100%;
+}
+
+.button.button-wide {
+  display: block;
+  width: 100%;
+}
+
+// Reset styling on ios
+button,
+input[type="submit"],
+select {
+  -webkit-appearance: none;
+}

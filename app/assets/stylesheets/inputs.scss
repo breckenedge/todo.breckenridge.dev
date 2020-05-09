@@ -1,0 +1,36 @@
+.input {
+  margin: 0 0 .5em;
+}
+
+input[type="text"],
+input[type="search"],
+input[type="select"],
+input[type="password"],
+input[type="email"],
+input[type="date"],
+input[type="number"],
+select,
+textarea {
+  display: block;
+  padding: .5em;
+  border: 1px solid grey;
+  width: 100%;
+  background: white;
+  border-radius: 5px;
+}
+
+select {
+  line-height: normal;
+  position: relative;
+  background-repeat: no-repeat;
+  background-position: right 10px top 50%;
+  appearance: none;
+}
+
+label {
+  display: block;
+}
+
+label > abbr[title="required"] {
+  display: none
+}

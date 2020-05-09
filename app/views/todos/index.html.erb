@@ -1,20 +1,10 @@
 <% if @todo_category %>
   <p>Showing <strong><%= @todo_category.name %></strong> todos. <%= link_to 'Show All', todos_path %></p>
+
+  <br>
 <% end %>
 
-<%= form_tag todos_path, class: 'form form-inline', method: :get do %>
-  <div class="actions">
-    <%= text_field_tag :q, params[:q], placeholder: 'Search', class: 'actions-primary' %>
-
-    <div class="actions-secondary">
-      <%= button_tag '🔍', name: nil %>
-    </div>
-  </div>
-<% end %>
-
-<br>
-
-<%= link_to new_todo_path(todo_category_id: @todo_category&.id), class: 'btn btn-primary btn-block' do %>
+<%= link_to new_todo_path(todo_category_id: @todo_category&.id), class: 'button button-wide' do %>
   <% if @todo_category %>
     New <strong><%= @todo_category.name %></strong> Todo
   <% else %>
@@ -43,7 +33,7 @@
 <% if @todo_category %>
   <br>
 
-  <%= link_to edit_todo_category_path(@todo_category), class: 'btn btn-primary btn-block' do %>
+  <%= link_to edit_todo_category_path(@todo_category), class: 'button' do %>
     Edit <strong><%= @todo_category.name %></strong> Category
   <% end %>
 <% end %>

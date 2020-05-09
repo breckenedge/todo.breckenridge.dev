@@ -27,11 +27,11 @@
 
   <div style="display: flex">
     <div style="flex-grow: 1">
-      <%= form.submit class: 'btn btn-primary' %>
+      <%= form.submit class: 'button' %>
     </div>
     <div>
-      <%= link_to('Show', todo_path(form.object), class: 'btn') unless todo.new_record? %>
-      <%= link_to 'Back', todos_path, class: 'btn' %>
+      <%= link_to('Show', todo_path(form.object), class: 'button') unless todo.new_record? %>
+      <%= link_to 'Back', todos_path, class: 'button' %>
     </div>
   </div>
 <% end %>

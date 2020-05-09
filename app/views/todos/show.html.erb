@@ -31,16 +31,16 @@
 
 <div class="actions">
   <div class="actions-primary">
-    <%= link_to 'Edit', edit_todo_path(@todo), class: 'btn btn-primary' %>
+    <%= link_to 'Edit', edit_todo_path(@todo), class: 'button' %>
  
     <% if @todo.incomplete? %>
-      <%= link_to 'Complete', complete_todo_path(@todo), class: 'btn btn-primary', data: { method: :post } %>
+      <%= link_to 'Complete', complete_todo_path(@todo), class: 'button', data: { method: :post } %>
     <% else %>
-      <%= link_to 'Incomplete', incomplete_todo_path(@todo), class: 'btn btn-primary', data: { method: :post } %>
+      <%= link_to 'Incomplete', incomplete_todo_path(@todo), class: 'button', data: { method: :post } %>
     <% end %>
   </div>
 
   <div class="actions-secondary">
-    <%= link_to 'Delete', todo_path(@todo), class: 'btn btn-danger', data: { method: :delete, confirm: 'Are you sure?' } %>
+    <%= link_to 'Delete', todo_path(@todo), class: 'button button-red', data: { method: :delete, confirm: 'Are you sure?' } %>
   </div>
 </div>

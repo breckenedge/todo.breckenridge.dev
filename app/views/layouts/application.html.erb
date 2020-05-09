@@ -7,18 +7,18 @@
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0, shrink-to-fit=no">
   </head>
 
   <body>
     <header>
       <nav>
-        <ul>
-          <li><%= link_to 'Projects', projects_path %></li>
-          <li><%= link_to 'Todos', todos_path %></li>
-          <li><%= link_to 'Categories', todo_categories_path %></li>
-          <li><%= link_to 'Profile', profile_path %></li>
-        </ul>
+        <%= link_to 'Projects', projects_path, id: 'projects-link', class: ('active' if current_page?(controller: 'projects')) %>
+        <%= link_to 'Todos', todos_path, id: 'todos-link', class: ('active' if current_page?(controller: 'todos')) %>
+        <%= link_to 'Categories', todo_categories_path, id: 'categories-link', class: ('active' if current_page?(controller: 'todo_categories')) %>
+        <%= link_to '⚙', profile_path, id: 'profile-link', class: ('active' if current_page?(controller: 'profiles', action: 'show')) %>
+          <div style="flex-grow: 1"></div>
+        <%= link_to '🔍', search_path, id: 'search-link', class: ('active' if current_page?(controller: 'search')) %>
       </nav>
     </header>
 
@@ -31,9 +31,6 @@
     </main>
 
     <footer>
-      <% if current_user %>
-        <small>Logged in as <%= current_user.email %>. <%= link_to 'Log out', log_out_path, method: :delete %></small>
-      <% end %>
     </footer>
   </body>
 </html>

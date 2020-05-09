@@ -1,0 +1,26 @@
+<%= form_for search_path, method: :get do |f| %>
+  <div style="display: flex; align-items: flex-grow">
+    <%= text_field_tag :q, params[:q], autofocus: true, style: 'flex-grow: 1' %>
+    <%= button_tag 'Search', value: nil %>
+  </div>
+<% end %>
+
+<% if params[:q] %>
+  <hr>
+
+  <% if @results.any? %>
+    <div class="link-list">
+      <% @results.each do |result| %>
+        <% if result.is_a?(Project) %>
+          <%= link_to result.name, project_path(result) %>
+        <% elsif result.is_a?(Todo) %>
+          <%= link_to result.name, todo_path(result) %>
+        <% else %>
+          <!-- TODO -->
+        <% end %>
+      <% end %>
+    </div>
+  <% else %>
+    <p>No reults.</p>
+  <% end %>
+<% end %>
