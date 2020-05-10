@@ -18,7 +18,9 @@
   <%= render 'todos_list', todos: todis %>
 <% end %>
 
-<div class="link-list-group">
-  <div class="link-list-group-title accent4">Complete</div>
-  <%= render 'todos_list', todos: todos.complete %>
-</div>
+<% if todos.complete.any? %>
+  <div class="link-list-group">
+    <div class="link-list-group-title accent4">Complete</div>
+    <%= render 'todos_list', todos: todos.complete %>
+  </div>
+<% end %>
