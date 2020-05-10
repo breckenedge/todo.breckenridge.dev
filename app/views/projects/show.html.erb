@@ -21,7 +21,7 @@
 
   <% unless @project.details.blank? %>
     <dt>Details</dt>
-    <dd><%= simple_format linkify_text @project.details %></dd>
+    <dd><%= simple_text @project.details %></dd>
   <% end %>
 </dl>
 

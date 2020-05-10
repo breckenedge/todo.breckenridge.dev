@@ -37,6 +37,6 @@
 
   <% unless @project_estimate.details.blank? %>
     <dt>Details</dt>
-    <dd><%= simple_format linkify_text @project_estimate.details %></dd>
+    <dd><%= simple_text @project_estimate.details %></dd>
   <% end %>
 </dl>

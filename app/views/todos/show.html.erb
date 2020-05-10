@@ -20,7 +20,7 @@
 
   <% unless @todo.description.blank? %>
     <dt>Description</dt>
-    <dd><%= simple_format linkify_text @todo.description %></dd>
+    <dd><%= simple_text @todo.description %></dd>
   <% end %>
 
   <% unless @todo.due_on.blank? %>
