@@ -8,9 +8,9 @@
   <%= f.input :details %>
 
   <div class="two-column">
-    <%= f.button :submit, class: 'button' %>
+    <%= f.button :submit, class: 'button accent0' %>
     <% unless @project.new_record? %>
-      <%= link_to 'Delete', project_path(@project), class: 'button button-red', data: { method: :delete, confirm: 'Are you sure?' } %>
+      <%= link_to 'Delete', project_path(@project), class: 'button accent0', data: { method: :delete, confirm: 'Are you sure?' } %>
     <% end %>
   </div>
 <% end %>

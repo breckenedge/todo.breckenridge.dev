@@ -14,7 +14,7 @@ module NavigationHelper
   end
 
   def project_active?
-    controller_name == 'projects'
+    controller_name == 'projects' || controller_name == 'project_estimates'
   end
 
   def todos_active?

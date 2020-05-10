@@ -1,11 +1,11 @@
 <div class="two-column">
   <h1><%= @todo.name %></h1>
   <div class="no-wrap">
-    <%= link_to 'Edit', edit_todo_path(@todo), class: 'button' %>
+    <%= link_to 'Edit', edit_todo_path(@todo), class: 'button accent0' %>
     <% if @todo.incomplete? %>
-      <%= link_to complete_icon, complete_todo_path(@todo), class: 'button', data: { method: :post } %>
+      <%= link_to complete_icon, complete_todo_path(@todo), class: 'button accent0', data: { method: :post } %>
     <% else %>
-      <%= link_to incomplete_icon, incomplete_todo_path(@todo), class: 'button', data: { method: :post } %>
+      <%= link_to incomplete_icon, incomplete_todo_path(@todo), class: 'button accent0', data: { method: :post } %>
     <% end %>
   </div>
 </div>

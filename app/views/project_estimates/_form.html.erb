@@ -2,19 +2,20 @@
   <%= f.error_notification %>
   <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 
-  <div class="form-inputs">
-    <%= f.association :project %>
-    <%= f.input :vendor %>
-    <%= f.input :date, html5: true %>
-    <%= f.input :estimate %>
-    <%= f.input :contact %>
-    <%= f.input :phone %>
-    <%= f.input :details %>
-  </div>
+  <%= f.association :project %>
+  <%= f.input :vendor %>
+  <%= f.input :date, html5: true %>
+  <%= f.input :estimate %>
+  <%= f.input :contact %>
+  <%= f.input :phone %>
+  <%= f.input :details %>
 
-  <div class="actions">
-    <div class="actions-primary">
-      <%= f.button :submit, class: 'button' %>
+  <div class="two-column">
+    <div>
+      <%= f.button :submit, class: 'button accent0' %>
     </div>
+    <% unless @project_estimate.new_record? %>
+      <%= link_to 'Delete', project_estimate_path(@project_estimate), class: 'button accent0', data: { method: :delete, confirm: 'Are you sure?' } %>
+    <% end %>
   </div>
 <% end %>

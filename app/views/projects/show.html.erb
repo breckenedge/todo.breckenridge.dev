@@ -4,11 +4,11 @@
   </div>
 
   <div class="no-wrap">
-    <%= link_to 'Edit', edit_project_path(@project), class: 'button' %>
+    <%= link_to 'Edit', edit_project_path(@project), class: 'button accent0' %>
     <% if @project.complete? %>
-      <%= link_to incomplete_icon, incomplete_project_path(@project), class: 'button', data: { method: :post } %>
+      <%= link_to incomplete_icon, incomplete_project_path(@project), class: 'button accent0', data: { method: :post } %>
     <% else %>
-      <%= link_to complete_icon, complete_project_path(@project), class: 'button accent3', data: { method: :post } %>
+      <%= link_to complete_icon, complete_project_path(@project), class: 'button accent0', data: { method: :post } %>
     <% end %>
   </div>
 </div>
@@ -29,7 +29,7 @@
     <h2>Estimates</h2>
   </div>
   <div>
-    <%= link_to 'New Estimate', new_project_estimate_path(project_id: @project.id), class: 'button' %>
+    <%= link_to 'New Estimate', new_project_estimate_path(project_id: @project.id), class: 'button accent0' %>
   </div>
 </div>
 
@@ -51,7 +51,7 @@
     <h2>Todos</h2>
   </div>
   <div>
-    <%= link_to 'New Todo', new_todo_path(project_id: @project.id), class: 'button' %>
+    <%= link_to 'New Todo', new_todo_path(project_id: @project.id), class: 'button accent0' %>
   </div>
 </div>
 

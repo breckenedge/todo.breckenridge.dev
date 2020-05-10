@@ -1,46 +1,59 @@
+// Error, VCS Deletion
 .button.accent0 {
-  border: 1px solid var(--accent0);
+  color: var(--shade1);
   background-color: var(--accent0);
 }
 
+// Syntax
 .button.accent1 {
-  border: 1px solid var(--accent1);
+  color: var(--shade1);
   background-color: var(--accent1);
 }
 
+// Warning, VCS Modification
 .button.accent2 {
-  border: 1px solid var(--accent2);
+  color: var(--shade1);
   background-color: var(--accent2);
 }
 
+// Success, VCS Addition
 .button.accent3 {
-  border: 1px solid var(--accent3);
+  color: var(--shade1);
   background-color: var(--accent3);
 }
 
+// Syntax
 .button.accent4 {
-  border: 1px solid var(--accent4);
+  color: var(--shade1);
   background-color: var(--accent4);
 }
 
+// Syntax
 .button.accent5 {
-  border: 1px solid var(--accent5);
+  color: var(--shade1);
   background-color: var(--accent5);
 }
 
+// Syntax, Caret/Cursor
 .button.accent6 {
-  border: 1px solid var(--accent6);
+  color: var(--shade1);
   background-color: var(--accent6);
+}
+
+// Syntax, Special
+.button.accent7 {
+  color: var(--shade1);
+  background-color: var(--accent7);
 }
 
 button,
 input[type="submit"],
 a.button {
-  border: 1px solid var(--accent0);
-  background-color: var(--accent0);
+  border-width: 0;
   border-radius: 5px;
   text-align: center;
-  color: white;
+  color: var(--accent0);
+  background-color: var(--shade1);
   text-decoration: none;
   padding: 0.5em 1em;
   font-size: 100%;

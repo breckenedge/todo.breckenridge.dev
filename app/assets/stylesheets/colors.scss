@@ -7,4 +7,15 @@
   --accent5: #6484B5;
   --accent6: #995785;
   --accent7: #AC7155;
+  --shade0: black;
+  --shade1: white;
+  --shade2: whitesmoke;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --shade0: white;
+    --shade1: black;
+    --shade2: darkslategray;
+  }
 }

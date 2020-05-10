@@ -9,15 +9,17 @@ input[type="password"],
 input[type="email"],
 input[type="date"],
 input[type="number"],
+input[type="tel"],
 select,
 textarea {
   display: block;
   padding: .5em;
-  border: 1px solid grey;
+  border-width: 0px;
   width: 100%;
-  background: white;
+  background: var(--shade2);
   border-radius: 5px;
   font-size: 100%;
+  color: var(--shade0);
 }
 
 select {

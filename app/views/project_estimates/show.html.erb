@@ -1,4 +1,11 @@
-<p id="notice"><%= notice %></p>
+<div class="two-column">
+  <div>
+    <h1><%= @project_estimate.vendor %></h1>
+  </div>
+  <div class="no-wrap">
+    <%= link_to 'Edit', edit_project_estimate_path(@project_estimate), class: 'button accent0' %>
+  </div>
+</div>
 
 <dl>
   <dt>Project:</dt>
@@ -7,8 +14,6 @@
     <%= link_to @project_estimate.project.name, project_path(@project_estimate.project) %>
   <% end %>
   </dd>
-  <dt>Vendor:</dt>
-  <dd><%= @project_estimate.vendor %></dd>
   <dt>Date:</dt>
   <dd><%= l(@project_estimate.date) if @project_estimate.date %></dd>
   <dt>Estimate:</dt>
@@ -20,13 +25,3 @@
   <dt>Details:</dt>
   <dd><%= simple_format @project_estimate.details %></dd>
 </dl>
-
-<div class="actions">
-  <div class="actions-primary">
-    <%= link_to 'Edit', edit_project_estimate_path(@project_estimate), class: 'button' %>
-  </div>
-
-  <div class="actions-secondary">
-    <%= link_to 'Delete', project_estimate_path(@project_estimate), class: 'button button-red', data: { method: :delete, confirm: 'Are you sure?' } %>
-  </div>
-</div>
