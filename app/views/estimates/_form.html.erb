@@ -1,4 +1,4 @@
-<%= simple_form_for(@project_estimate) do |f| %>
+<%= simple_form_for(@estimate) do |f| %>
   <%= f.error_notification %>
   <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 
@@ -14,8 +14,8 @@
     <div>
       <%= f.button :submit, class: 'button accent5' %>
     </div>
-    <% unless @project_estimate.new_record? %>
-      <%= link_to 'Delete Estimate', project_estimate_path(@project_estimate), class: 'button accent0', data: { method: :delete, confirm: 'Are you sure?' } %>
+    <% unless @estimate.new_record? %>
+      <%= link_to 'Delete Estimate', estimate_path(@estimate), class: 'button accent0', data: { method: :delete, confirm: 'Are you sure?' } %>
     <% end %>
   </div>
 <% end %>

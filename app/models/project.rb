@@ -1,5 +1,5 @@
 class Project < ApplicationRecord
-  has_many :project_estimates
+  has_many :estimates
   has_many :todos
 
   validates :name, presence: true

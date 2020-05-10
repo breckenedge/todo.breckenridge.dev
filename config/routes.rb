@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :project_estimates
+  resources :estimates
   resources :projects do
     post :complete, on: :member
     post :incomplete, on: :member

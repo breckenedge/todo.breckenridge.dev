@@ -27,12 +27,12 @@
 
 <p>
   <strong>Estimates</strong>
-  <%= link_to '+', new_project_estimate_path(project_id: @project.id), class: 'button accent4' %>
+  <%= link_to '+', new_estimate_path(project_id: @project.id), class: 'button accent4' %>
 </p>
 
 <div class="link-list">
-  <% @project.project_estimates.each do |estimate| %>
-    <%= link_to project_estimate_path(estimate) do %>
+  <% @project.estimates.each do |estimate| %>
+    <%= link_to estimate_path(estimate) do %>
       <%= estimate.vendor %>
       <% if estimate.estimate.present? %>
         <span class="badge"><%= estimate.estimate %></span>
