@@ -1,6 +1,6 @@
 <div class="two-column">
   <div>
-    <h1><%= @project.name %></h1>
+    <h1><%= complete_icon_for(@project) %> <%= @project.name %></h1>
   </div>
 
   <div class="no-wrap">
@@ -14,9 +14,6 @@
 </div>
 
 <dl>
-  <dt>Status</dt>
-  <dd><%= @project.status %></dd>
-
   <% unless @project.due_date.blank? %>
     <dt>Due date</dt>
     <dd><%= @project.due_date %> <% if @project.due_date.present? %>(<%= time_ago_in_words(@project.due_date) %>)<% end %></dd>
@@ -24,7 +21,7 @@
 
   <% unless @project.details.blank? %>
     <dt>Details</dt>
-    <dd><%= simple_format @project.details %></dd>
+    <dd><%= simple_format linkify_text @project.details %></dd>
   <% end %>
 </dl>
 

@@ -1,5 +1,5 @@
 <div class="two-column">
-  <h1><%= @todo.name %></h1>
+  <h1><%= complete_icon_for(@todo) %> <%= @todo.name %></h1>
   <div class="no-wrap">
     <%= link_to 'Edit', edit_todo_path(@todo), class: 'button accent5' %>
     <% if @todo.incomplete? %>
@@ -13,9 +13,6 @@
 <br>
 
 <dl>
-  <dt>Status</dt>
-  <dd><%= @todo.status %></dd>
-
   <% unless @todo.project.blank? %>
     <dt>Project</dt>
     <dd><%= link_to(@todo.project.name, project_path(@todo.project)) if @todo.project %></dd>
@@ -23,7 +20,7 @@
 
   <% unless @todo.description.blank? %>
     <dt>Description</dt>
-    <dd><%= simple_format @todo.description %></dd>
+    <dd><%= simple_format linkify_text @todo.description %></dd>
   <% end %>
 
   <% unless @todo.due_on.blank? %>

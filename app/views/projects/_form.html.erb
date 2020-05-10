@@ -3,7 +3,6 @@
   <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 
   <%= f.input :name, autofocus: true %>
-  <%= f.input :status, as: :boolean, label: 'Complete?', checked_value: 'complete', unchecked_value: 'incomplete' %>
   <%= f.input :due_date, as: :date, html5: true %>
   <%= f.input :details %>
 

@@ -7,7 +7,7 @@
 <div class="link-list">
   <% @projects.each do |project| %>
     <%= link_to project_path(project) do %>
-      <%= complete_icon if project.complete? %>
+      <%= complete_icon_for(project) %>
       <%= project.name %>
 
       <% if project.due_date %>
