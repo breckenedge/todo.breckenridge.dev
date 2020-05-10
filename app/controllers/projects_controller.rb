@@ -54,13 +54,13 @@ class ProjectsController < ApplicationController
   # POST /projects/1/complete
   def complete
     @project.update!(status: :complete)
-    redirect_to project_path(@project), notice: 'Project completed'
+    redirect_to project_path(@project), notice: 'Project marked complete'
   end
 
   # POST /projects/1/incomplete
   def incomplete
     @project.update!(status: :incomplete)
-    redirect_to project_path(@project), notice: 'Project incompleted'
+    redirect_to project_path(@project), notice: 'Project marked incomplete'
   end
 
   private

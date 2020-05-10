@@ -4,11 +4,11 @@
   </div>
 
   <div>
-    <%= link_to 'Edit Project', edit_project_path(@project), class: 'button' %>
+    <%= link_to 'Edit', edit_project_path(@project), class: 'button' %>
     <% if @project.complete? %>
-      <%= link_to 'Mark Incomplete', incomplete_project_path(@project), class: 'button', data: { method: :post } %>
+      <%= link_to incomplete_icon, incomplete_project_path(@project), class: 'button', data: { method: :post } %>
     <% else %>
-      <%= link_to 'Mark Complete', complete_project_path(@project), class: 'button', data: { method: :post } %>
+      <%= link_to complete_icon, complete_project_path(@project), class: 'button', data: { method: :post } %>
     <% end %>
   </div>
 </div>

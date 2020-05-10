@@ -3,9 +3,9 @@
   <div>
     <%= link_to 'Edit Todo', edit_todo_path(@todo), class: 'button' %>
     <% if @todo.incomplete? %>
-      <%= link_to 'Complete', complete_todo_path(@todo), class: 'button', data: { method: :post } %>
+      <%= link_to complete_icon, complete_todo_path(@todo), class: 'button', data: { method: :post } %>
     <% else %>
-      <%= link_to 'Incomplete', incomplete_todo_path(@todo), class: 'button', data: { method: :post } %>
+      <%= link_to incomplete_icon, incomplete_todo_path(@todo), class: 'button', data: { method: :post } %>
     <% end %>
   </div>
 </div>
@@ -19,7 +19,7 @@
   <dt>Categories:</dt>
   <dd>
     <% @todo.todo_categories.each do |category| %>
-      <div><%= link_to category.name, todos_path(todo_category_id: category.id) %></div>
+      <div><%= link_to category.name, todo_category_path(category.id) %></div>
     <% end %>
   </dd>
 
