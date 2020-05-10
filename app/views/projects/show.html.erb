@@ -38,7 +38,7 @@
     <%= link_to project_estimate_path(estimate) do %>
       <%= estimate.vendor %>
       <% if estimate.estimate.present? %>
-        <span class="badge badge-success"><%= estimate.estimate %></span>
+        <span class="badge"><%= estimate.estimate %></span>
       <% end %>
     <% end %>
   <% end %>

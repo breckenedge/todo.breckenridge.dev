@@ -5,7 +5,7 @@
       <%= todo.name %>
       <%= todo_priority(todo) %>
       <% todo.todo_categories.each do |category| %>
-        <%= content_tag :span, category.name, class: 'badge badge-primary' %>
+        <%= content_tag :span, category.name, class: 'badge' %>
       <% end %>
     <% end %>
   <% end %>

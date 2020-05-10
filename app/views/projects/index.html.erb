@@ -11,7 +11,7 @@
       <%= project.name %>
 
       <% if project.due_date %>
-        <span class="badge badge-warning"><%= time_ago_in_words project.due_date %></span>
+        <span class="badge"><%= time_ago_in_words project.due_date %></span>
       <% end %>
     <% end %>
   <% end %>

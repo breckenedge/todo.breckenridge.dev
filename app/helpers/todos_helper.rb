@@ -7,7 +7,7 @@ module TodosHelper
 
   def todo_priority(todo)
     if todo.priority
-      content_tag :span, todo.priority, class: "badge badge-warning"
+      content_tag :span, todo.priority, class: "badge"
     end
   end
 end
