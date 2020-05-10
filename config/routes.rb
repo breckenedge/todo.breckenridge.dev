@@ -5,7 +5,6 @@ Rails.application.routes.draw do
     post :incomplete, on: :member
   end
   resource :profile, only: [:show, :update]
-  resources :todo_categories
   resources :todos do
     post :complete, on: :member
     post :incomplete, on: :member

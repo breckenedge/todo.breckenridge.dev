@@ -31,9 +31,6 @@
 
 en:
   hello: "Hello world"
-  activerecord:
-    models:
-      todo_category: Category
   date:
     formats:
       default: '%a, %B %-d, %Y'

@@ -1,22 +1,5 @@
-<%= link_to new_todo_path(todo_category_id: @todo_category&.id), class: 'button button-wide' do %>
-  <% if @todo_category %>
-    New <strong><%= @todo_category.name %></strong> Todo
-  <% else %>
-    New Todo
-  <% end %>
-<% end %>
-
-<% if @todo_category %>
-  <br>
-
-  <div style="display: flex;">
-    <div style="flex-grow: 1">
-      Showing <strong><%= @todo_category.name %></strong> todos.
-    </div>
-    <div>
-      <%= link_to 'Show All', todos_path %>
-    </div>
-  </div>
+<%= link_to new_todo_path, class: 'button button-wide' do %>
+  New Todo
 <% end %>
 
 <br>

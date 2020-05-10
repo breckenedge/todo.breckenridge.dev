@@ -10,11 +10,6 @@ class TodosController < ApplicationController
       @todos = @todos.where('name like ?', "%#{params[:q]}%")
     end
 
-    if params[:todo_category_id]
-      @todo_category = TodoCategory.find(params[:todo_category_id])
-      @todos = @todos.joins(:todo_category_todos).where(todo_category_todos: { todo_category_id: @todo_category.id })
-    end
-
     @dates = @todos.group_by(&:due_on)
   end
 
@@ -26,7 +21,6 @@ class TodosController < ApplicationController
   # GET /todos/new
   def new
     @todo = Todo.new
-    @todo.todo_categories = [TodoCategory.find(params[:todo_category_id])] if params[:todo_category_id]
     @todo.project = Project.find_by(id: params[:project_id])
   end
 
@@ -91,6 +85,6 @@ class TodosController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def todo_params
-      params.require(:todo).permit(:project_id, :name, :description, :due_on, :priority, :status, todo_category_ids: [])
+      params.require(:todo).permit(:project_id, :name, :description, :due_on, :priority, :status)
     end
 end

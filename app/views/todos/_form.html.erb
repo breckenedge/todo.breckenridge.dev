@@ -16,7 +16,6 @@
   <%= form.input :status, as: :boolean, label: 'Complete?', checked_value: 'complete', unchecked_value: 'incomplete' %>
   <%= form.input :due_on, html5: true %>
   <%= form.input :priority %>
-  <%= form.input :todo_category_ids, as: :select, collection: TodoCategory.order(:name).pluck(:name, :id), input_html: { multiple: true, size: TodoCategory.count }, label: 'Categories' %>
   <%= form.input :description, rows: 3 %>
 
   <div class="two-column">

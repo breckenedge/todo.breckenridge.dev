@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_07_031708) do
+ActiveRecord::Schema.define(version: 2020_05_10_132938) do
 
   create_table "project_estimates", force: :cascade do |t|
     t.integer "project_id", null: false
@@ -34,21 +34,6 @@ ActiveRecord::Schema.define(version: 2020_05_07_031708) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "todo_categories", force: :cascade do |t|
-    t.string "name"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "todo_category_todos", force: :cascade do |t|
-    t.integer "todo_id", null: false
-    t.integer "todo_category_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["todo_category_id"], name: "index_todo_category_todos_on_todo_category_id"
-    t.index ["todo_id"], name: "index_todo_category_todos_on_todo_id"
-  end
-
   create_table "todos", force: :cascade do |t|
     t.string "name"
     t.text "description"
@@ -70,7 +55,5 @@ ActiveRecord::Schema.define(version: 2020_05_07_031708) do
   end
 
   add_foreign_key "project_estimates", "projects"
-  add_foreign_key "todo_category_todos", "todo_categories"
-  add_foreign_key "todo_category_todos", "todos"
   add_foreign_key "todos", "projects"
 end
