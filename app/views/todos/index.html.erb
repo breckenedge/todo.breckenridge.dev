@@ -5,16 +5,18 @@
 <br>
 
 <% @dates.each do |date, todos| %>
-  <div style="text-align: center; font-weight: bold; margin-top: 1em">
-    <% if date %>
-      <% if date == Date.current %>
-        Today
+  <div class="link-list-group">
+    <div class="link-list-group-title">
+      <% if date %>
+        <% if date == Date.current %>
+          Today
+        <% else %>
+          <%= l date %>
+        <% end %>
       <% else %>
-        <%= l date %>
+        No Due Date
       <% end %>
-    <% else %>
-      [No Date]
-    <% end %>
+    </div>
   </div>
 
   <%= render 'todos_list', todos: todos %>
