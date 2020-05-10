@@ -14,14 +14,18 @@
 </div>
 
 <dl>
-  <dt>Due date:</dt>
-  <dd><%= @project.due_date %> <% if @project.due_date.present? %>(<%= time_ago_in_words(@project.due_date) %>)<% end %></dd>
-
-  <dt>Status:</dt>
+  <dt>Status</dt>
   <dd><%= @project.status %></dd>
 
-  <dt>Details:</dt>
-  <dd><%= simple_format @project.details %></dd>
+  <% unless @project.due_date.blank? %>
+    <dt>Due date</dt>
+    <dd><%= @project.due_date %> <% if @project.due_date.present? %>(<%= time_ago_in_words(@project.due_date) %>)<% end %></dd>
+  <% end %>
+
+  <% unless @project.details.blank? %>
+    <dt>Details</dt>
+    <dd><%= simple_format @project.details %></dd>
+  <% end %>
 </dl>
 
 <p>

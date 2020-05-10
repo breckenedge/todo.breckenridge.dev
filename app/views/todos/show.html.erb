@@ -13,21 +13,24 @@
 <br>
 
 <dl>
-  <dt>Project:</dt>
-  <dd><%= link_to(@todo.project.name, project_path(@todo.project)) if @todo.project %></dd>
-
-  <dt>Description:</dt>
-  <dd><%= simple_format @todo.description %></dd>
-
-  <dt>Due on:</dt>
-  <dd>
-  <%= l(@todo.due_on) if @todo.due_on %>
-  <%= todo_due_on(@todo) %>
-  </dd>
-
-  <dt>Priority:</dt>
-  <dd><%= todo_priority(@todo) %></dd>
-
-  <dt>Status:</dt>
+  <dt>Status</dt>
   <dd><%= @todo.status %></dd>
+
+  <% unless @todo.project.blank? %>
+    <dt>Project</dt>
+    <dd><%= link_to(@todo.project.name, project_path(@todo.project)) if @todo.project %></dd>
+  <% end %>
+
+  <% unless @todo.description.blank? %>
+    <dt>Description</dt>
+    <dd><%= simple_format @todo.description %></dd>
+  <% end %>
+
+  <% unless @todo.due_on.blank? %>
+    <dt>Due on</dt>
+    <dd>
+    <%= l(@todo.due_on) if @todo.due_on %>
+    <%= todo_due_on(@todo) %>
+    </dd>
+  <% end %>
 </dl>
