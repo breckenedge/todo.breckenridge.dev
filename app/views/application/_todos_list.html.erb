@@ -1,7 +1,7 @@
 <div class="link-list">
   <% todos.each do |todo| %>
     <%= link_to todo_path(todo), class: 'todo' do %>
-      <%= complete_icon if todo.complete? %>
+      <%= content_tag(:span, complete_icon, class: 'accent4') if todo.complete? %>
       <%= todo.name %>
       <%= todo_priority(todo) %>
     <% end %>
