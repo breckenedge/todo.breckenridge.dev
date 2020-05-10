@@ -12,7 +12,7 @@
   <% end %>
 
   <%= form.input :name, autofocus: true %>
-  <%= form.input :project_id, collection: Project.pluck(:name, :id) %>
+  <%= form.input :project_id, collection: Project.order(:name, :status).pluck(:name, :id) %>
   <%= form.input :due_on, html5: true %>
   <%= form.input :priority %>
   <%= form.input :description, rows: 3 %>
