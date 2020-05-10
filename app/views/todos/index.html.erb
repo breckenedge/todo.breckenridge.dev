@@ -1,15 +1,22 @@
-<% if @todo_category %>
-  <p>Showing <strong><%= @todo_category.name %></strong> todos. <%= link_to 'Show All', todos_path %></p>
-
-  <br>
-<% end %>
-
 <%= link_to new_todo_path(todo_category_id: @todo_category&.id), class: 'button button-wide' do %>
   <% if @todo_category %>
     New <strong><%= @todo_category.name %></strong> Todo
   <% else %>
     New Todo
   <% end %>
+<% end %>
+
+<% if @todo_category %>
+  <br>
+
+  <div style="display: flex;">
+    <div style="flex-grow: 1">
+      Showing <strong><%= @todo_category.name %></strong> todos.
+    </div>
+    <div>
+      <%= link_to 'Show All', todos_path %>
+    </div>
+  </div>
 <% end %>
 
 <br>
@@ -28,12 +35,4 @@
   </div>
 
   <%= render 'todos_list', todos: todos %>
-<% end %>
-
-<% if @todo_category %>
-  <br>
-
-  <%= link_to edit_todo_category_path(@todo_category), class: 'button' do %>
-    Edit <strong><%= @todo_category.name %></strong> Category
-  <% end %>
 <% end %>

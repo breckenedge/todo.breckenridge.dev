@@ -1,18 +1,13 @@
-<h1><%= @todo_category.name %></h1>
-
-<br>
-
-<dl class="dl-horizontal">
-  <dt>Todos:</dt>
-  <dd><%= todo_category_todos_count(@todo_category) %></dd>
-</dl>
-
-
 <div class="actions">
   <div class="actions-primary">
-    <%= link_to 'Edit', edit_todo_category_path(@todo_category), class: 'button' %>
+    <%= link_to 'Edit Category', edit_todo_category_path(@todo_category), class: 'button' %>
   </div>
   <div class="actions-secondary">
     <%= link_to 'Delete', todo_category_path(@todo_category), class: 'button button-red', data: { method: :delete, confirm: 'Are you sure?' } %>
   </div>
 </div>
+
+<h1><%= @todo_category.name %></h1>
+
+<h2>Todos</h2>
+<%= render 'todos_list', todos: @todo_category.todos %>
