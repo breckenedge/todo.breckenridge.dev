@@ -13,12 +13,7 @@
   <body>
     <header>
       <nav>
-        <%= link_to 'Projects', projects_path, id: 'projects-link', class: ('active' if current_page?(controller: 'projects')) %>
-        <%= link_to 'Todos', todos_path, id: 'todos-link', class: ('active' if current_page?(controller: 'todos')) %>
-        <%= link_to 'Categories', todo_categories_path, id: 'categories-link', class: ('active' if current_page?(controller: 'todo_categories')) %>
-        <%= link_to '⚙', profile_path, id: 'profile-link', class: ('active' if current_page?(controller: 'profiles', action: 'show')) %>
-          <div style="flex-grow: 1"></div>
-        <%= link_to '🔍', search_path, id: 'search-link', class: ('active' if current_page?(controller: 'search')) %>
+        <%= navigation %>
       </nav>
     </header>
 
