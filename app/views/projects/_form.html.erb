@@ -7,5 +7,10 @@
   <%= f.input :due_date, as: :date, html5: true %>
   <%= f.input :details %>
 
-  <%= f.button :submit, class: 'button button-wide' %>
+  <div class="two-column">
+    <%= f.button :submit, class: 'button' %>
+    <% unless @project.new_record? %>
+      <%= link_to 'Delete', project_path(@project), class: 'button button-red', data: { method: :delete, confirm: 'Are you sure?' } %>
+    <% end %>
+  </div>
 <% end %>

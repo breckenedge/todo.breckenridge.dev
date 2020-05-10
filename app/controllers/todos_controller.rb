@@ -15,8 +15,6 @@ class TodosController < ApplicationController
       @todos = @todos.joins(:todo_category_todos).where(todo_category_todos: { todo_category_id: @todo_category.id })
     end
 
-    @todos = params[:show_complete] ? @todos : @todos.incomplete
-
     @dates = @todos.group_by(&:due_on)
   end
 

@@ -1,19 +1,17 @@
-<div class="actions">
-  <div class="actions-primary">
+<div class="two-column">
+  <div>
+    <h1><%= @project.name %></h1>
+  </div>
+
+  <div>
     <%= link_to 'Edit Project', edit_project_path(@project), class: 'button' %>
     <% if @project.complete? %>
-      <%= link_to 'Complete', complete_project_path(@project), class: 'button', data: { method: :post } %>
+      <%= link_to 'Mark Incomplete', incomplete_project_path(@project), class: 'button', data: { method: :post } %>
     <% else %>
-      <%= link_to 'Incomplete', incomplete_project_path(@project), class: 'button', data: { method: :post } %>
+      <%= link_to 'Mark Complete', complete_project_path(@project), class: 'button', data: { method: :post } %>
     <% end %>
   </div>
-
-  <div class="actions-secondary">
-    <%= link_to 'Delete', project_path(@project), class: 'button button-red', data: { method: :delete, confirm: 'Are you sure?' } %>
-  </div>
 </div>
-
-<h1><%= @project.name %></h1>
 
 <dl>
   <dt>Due date:</dt>
@@ -26,7 +24,14 @@
   <dd><%= simple_format @project.details %></dd>
 </dl>
 
-<h2>Estimates</h2>
+<div style="display: flex; justify-content: space-between; align-items: center">
+  <div>
+    <h2>Estimates</h2>
+  </div>
+  <div>
+    <%= link_to 'New Estimate', new_project_estimate_path(project_id: @project.id), class: 'button' %>
+  </div>
+</div>
 
 <div class="link-list">
   <% @project.project_estimates.each do |estimate| %>
@@ -39,22 +44,17 @@
   <% end %>
 </div>
 
-<div class="actions">
-  <div class="actions-primary">
-    <%= link_to 'New Estimate', new_project_estimate_path(project_id: @project.id), class: 'button' %>
-  </div>
-</div>
-
 <br>
 
-<h2>Todos</h2>
-
-<div class="link-list">
-  <%= render 'todos_list', todos: @project.todos %>
-</div>
-
-<div class="actions">
-  <div class="actions-primary">
+<div class="two-column">
+  <div>
+    <h2>Todos</h2>
+  </div>
+  <div>
     <%= link_to 'New Todo', new_todo_path(project_id: @project.id), class: 'button' %>
   </div>
+</div>
+
+<div class="link-list">
+  <%= render 'todos_list', todos: @project.todos.order(:status, :due_date, :name) %>
 </div>

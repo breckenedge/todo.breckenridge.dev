@@ -3,7 +3,7 @@ class ProjectsController < ApplicationController
 
   # GET /projects
   def index
-    @projects = Project.order(:name)
+    @projects = Project.order(:status, :name)
   end
 
   # GET /projects/1
@@ -53,13 +53,13 @@ class ProjectsController < ApplicationController
 
   # POST /projects/1/complete
   def complete
-    @project.update(status: :complete)
+    @project.update!(status: :complete)
     redirect_to project_path(@project), notice: 'Project completed'
   end
 
   # POST /projects/1/incomplete
   def incomplete
-    @project.update(status: :incomplete)
+    @project.update!(status: :incomplete)
     redirect_to project_path(@project), notice: 'Project incompleted'
   end
 

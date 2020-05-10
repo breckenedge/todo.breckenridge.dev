@@ -1,12 +1,17 @@
 .link-list {
+  border-collapse: collapse;
+
   > a {
     display: block;
-    border: 1px solid #eee;
-    border-radius: 3px;
-    margin-bottom: 0.5em;
-    padding: 0.5em;
+    border-top: 1px solid #eee;
+    margin: 0 -1em;
+    padding: 0.5em 1em;
     text-decoration: none;
     color: black;
+  }
+
+  > a:last-child {
+    border-bottom: 1px solid #eee;
   }
 
   > a.todo:hover {

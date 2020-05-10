@@ -1,4 +1,14 @@
-<h1><%= @todo.name %></h1>
+<div class="two-column">
+  <h1><%= @todo.name %></h1>
+  <div>
+    <%= link_to 'Edit Todo', edit_todo_path(@todo), class: 'button' %>
+    <% if @todo.incomplete? %>
+      <%= link_to 'Complete', complete_todo_path(@todo), class: 'button', data: { method: :post } %>
+    <% else %>
+      <%= link_to 'Incomplete', incomplete_todo_path(@todo), class: 'button', data: { method: :post } %>
+    <% end %>
+  </div>
+</div>
 
 <br>
 
@@ -28,19 +38,3 @@
   <dt>Status:</dt>
   <dd><%= @todo.status %></dd>
 </dl>
-
-<div class="actions">
-  <div class="actions-primary">
-    <%= link_to 'Edit', edit_todo_path(@todo), class: 'button' %>
- 
-    <% if @todo.incomplete? %>
-      <%= link_to 'Complete', complete_todo_path(@todo), class: 'button', data: { method: :post } %>
-    <% else %>
-      <%= link_to 'Incomplete', incomplete_todo_path(@todo), class: 'button', data: { method: :post } %>
-    <% end %>
-  </div>
-
-  <div class="actions-secondary">
-    <%= link_to 'Delete', todo_path(@todo), class: 'button button-red', data: { method: :delete, confirm: 'Are you sure?' } %>
-  </div>
-</div>
