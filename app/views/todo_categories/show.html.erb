@@ -10,4 +10,9 @@
 <h1><%= @todo_category.name %></h1>
 
 <h2>Todos</h2>
+
 <%= render 'todos_list', todos: @todo_category.todos %>
+
+<br>
+
+<%= link_to 'New Todo', new_todo_path(todo_category_id: @todo_category.id), class: 'button' %>
