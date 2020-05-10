@@ -1,6 +1,6 @@
 <div class="two-column">
   <h1><%= @todo.name %></h1>
-  <div>
+  <div class="no-wrap">
     <%= link_to 'Edit', edit_todo_path(@todo), class: 'button' %>
     <% if @todo.incomplete? %>
       <%= link_to complete_icon, complete_todo_path(@todo), class: 'button', data: { method: :post } %>
