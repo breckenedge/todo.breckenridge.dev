@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_10_155517) do
+ActiveRecord::Schema.define(version: 2020_05_10_180726) do
 
   create_table "estimates", force: :cascade do |t|
     t.integer "project_id", null: false
@@ -28,7 +28,7 @@ ActiveRecord::Schema.define(version: 2020_05_10_155517) do
   create_table "projects", force: :cascade do |t|
     t.string "name", null: false
     t.date "due_date"
-    t.integer "status", default: 0
+    t.integer "status", default: 0, null: false
     t.text "details"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -39,7 +39,7 @@ ActiveRecord::Schema.define(version: 2020_05_10_155517) do
     t.text "description"
     t.date "due_on"
     t.integer "priority"
-    t.integer "status"
+    t.integer "status", default: 0, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "project_id"
