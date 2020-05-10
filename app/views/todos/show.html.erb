@@ -1,5 +1,9 @@
 <% if @todo.project.present? %>
-  <div class="project-breadcrumb"><%= link_to(@todo.project.name, project_path(@todo.project)) %></div>
+  <div class="project-breadcrumb">
+    <%= link_to project_path(@todo.project) do %>
+      ← <%= @todo.project.name %>
+    <% end %>
+  </div>
 <% end %>
 
 <div class="two-column">
