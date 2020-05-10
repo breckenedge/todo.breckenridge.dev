@@ -2,7 +2,7 @@ nav {
   display: flex;
   align-items: stretch;
   margin: 0 -1em;
-  background-color: var(--accent0);
+  background-color: var(--accent1);
 
   *:last-child {
     margin-left: 0;
@@ -10,7 +10,7 @@ nav {
 
   *.active {
     background-color: var(--shade1);
-    color: var(--accent0);
+    color: var(--accent1);
   }
 
   > a {

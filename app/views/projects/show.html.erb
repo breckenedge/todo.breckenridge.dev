@@ -4,11 +4,11 @@
   </div>
 
   <div class="no-wrap">
-    <%= link_to 'Edit', edit_project_path(@project), class: 'button accent0' %>
+    <%= link_to 'Edit', edit_project_path(@project), class: 'button accent5' %>
     <% if @project.complete? %>
-      <%= link_to incomplete_icon, incomplete_project_path(@project), class: 'button accent0', data: { method: :post } %>
+      <%= link_to incomplete_icon, incomplete_project_path(@project), class: 'button accent5', data: { method: :post } %>
     <% else %>
-      <%= link_to complete_icon, complete_project_path(@project), class: 'button accent0', data: { method: :post } %>
+      <%= link_to complete_icon, complete_project_path(@project), class: 'button accent5', data: { method: :post } %>
     <% end %>
   </div>
 </div>
@@ -24,14 +24,10 @@
   <dd><%= simple_format @project.details %></dd>
 </dl>
 
-<div style="display: flex; justify-content: space-between; align-items: center">
-  <div>
-    <h2>Estimates</h2>
-  </div>
-  <div>
-    <%= link_to 'New Estimate', new_project_estimate_path(project_id: @project.id), class: 'button accent0' %>
-  </div>
-</div>
+<p>
+  <strong>Estimates</strong>
+  <%= link_to '+', new_project_estimate_path(project_id: @project.id), class: 'button accent4' %>
+</p>
 
 <div class="link-list">
   <% @project.project_estimates.each do |estimate| %>
@@ -44,16 +40,10 @@
   <% end %>
 </div>
 
-<br>
-
-<div class="two-column">
-  <div>
-    <h2>Todos</h2>
-  </div>
-  <div>
-    <%= link_to 'New Todo', new_todo_path(project_id: @project.id), class: 'button accent0' %>
-  </div>
-</div>
+<p>
+  <strong>Todos</strong>
+  <%= link_to '+', new_todo_path(project_id: @project.id), class: 'button accent4' %>
+</p>
 
 <div class="link-list">
   <%= render 'todos_list', todos: @project.todos.order(:status, :due_date, :name) %>
