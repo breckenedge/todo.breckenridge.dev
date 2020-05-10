@@ -1,3 +1,7 @@
+<% if @todo.project.present? %>
+  <div class="project-breadcrumb"><%= link_to(@todo.project.name, project_path(@todo.project)) %></div>
+<% end %>
+
 <div class="two-column">
   <h1><%= complete_icon_for(@todo) %> <%= @todo.name %></h1>
   <div class="no-wrap">
@@ -13,11 +17,6 @@
 <br>
 
 <dl>
-  <% unless @todo.project.blank? %>
-    <dt>Project</dt>
-    <dd><%= link_to(@todo.project.name, project_path(@todo.project)) if @todo.project %></dd>
-  <% end %>
-
   <% unless @todo.description.blank? %>
     <dt>Description</dt>
     <dd><%= simple_text @todo.description %></dd>

@@ -1,3 +1,7 @@
+<% if @estimate.project.present? %>
+  <div class="project-breadcrumb"><%= link_to(@estimate.project.name, project_path(@estimate.project)) %></div>
+<% end %>
+
 <div class="two-column">
   <div>
     <h1><%= @estimate.vendor %></h1>
@@ -8,16 +12,9 @@
 </div>
 
 <dl>
-  <dt>Project</dt>
-  <dd>
-  <% if @estimate.project %>
-    <%= link_to @estimate.project.name, project_path(@estimate.project) %>
-  <% end %>
-  </dd>
-
   <% unless @estimate.date.blank? %>
     <dt>Date</dt>
-    <dd><%= l(@estimate.date) if @estimate.date %></dd>
+    <dd><%= l(@estimate.date) %></dd>
   <% end %>
 
   <% unless @estimate.estimate.blank? %>

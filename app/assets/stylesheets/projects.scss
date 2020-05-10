@@ -1,3 +1,13 @@
-// Place all the styles related to the Projects controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: https://sass-lang.com/
+.project-breadcrumb {
+  margin: -1em -1em 1em;
+  padding: 1em;
+  border-bottom: 0.125em solid var(--shade2);
+
+  > a,
+  > a:active,
+  > a:hover,
+  > a:visited {
+    color: var(--shade0);
+    text-decoration: none;
+  }
+}
