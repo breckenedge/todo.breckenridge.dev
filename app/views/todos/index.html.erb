@@ -4,20 +4,4 @@
 
 <br>
 
-<% @dates.each do |date, todos| %>
-  <div class="link-list-group">
-    <div class="link-list-group-title">
-      <% if date %>
-        <% if date == Date.current %>
-          Today
-        <% else %>
-          <%= l date %>
-        <% end %>
-      <% else %>
-        No Due Date
-      <% end %>
-    </div>
-  </div>
-
-  <%= render 'todos_list', todos: todos %>
-<% end %>
+<%= render 'grouped_todos_list', todos: @todos %>

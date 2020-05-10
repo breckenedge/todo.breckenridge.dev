@@ -1,6 +1,6 @@
 <div class="link-list">
   <% todos.each do |todo| %>
-    <%= link_to todo_path(todo), class: 'todo' do %>
+    <%= link_to todo_path(todo), class: "item-#{todo.status} #{"item-late" if todo.incomplete? && todo.due_on && todo.due_on < Date.today}" do %>
       <%= complete_icon_for(todo) %>
       <%= todo.name %>
       <%= todo_priority(todo) %>

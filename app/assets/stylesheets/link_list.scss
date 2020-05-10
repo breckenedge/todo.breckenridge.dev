@@ -18,6 +18,16 @@
     text-decoration: none;
     background-color: var(--shade1);
   }
+
+  .item-complete {
+    color: var(--accent4);
+  }
+
+  .item-late,
+  .item-late:last-child {
+    color: var(--accent0);
+    border-color: var(--accent0);
+  }
 }
 
 .link-list-group-title {

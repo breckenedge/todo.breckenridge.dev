@@ -47,5 +47,5 @@
 </p>
 
 <div class="link-list">
-  <%= render 'todos_list', todos: @project.todos.order(:status, :due_date, :name) %>
+  <%= render 'grouped_todos_list', todos: @project.todos %>
 </div>

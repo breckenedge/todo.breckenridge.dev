@@ -6,7 +6,7 @@
 
 <div class="link-list">
   <% @projects.each do |project| %>
-    <%= link_to project_path(project) do %>
+    <%= link_to project_path(project), class: "item-#{project.status}" do %>
       <%= complete_icon_for(project) %>
       <%= project.name %>
 
