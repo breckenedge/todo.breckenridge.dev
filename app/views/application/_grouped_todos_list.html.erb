@@ -1,4 +1,4 @@
-<% todos.incomplete.order("CASE WHEN due_on IS NULL THEN '9999-12-31' ELSE due_on END").group_by(&:due_on).each do |date, todis| %>
+<% todos.incomplete.order("CASE WHEN due_on IS NULL THEN '9999-12-31' ELSE due_on END", :name).group_by(&:due_on).each do |date, todis| %>
   <div class="link-list-group">
     <div class="link-list-group-title">
       <% if date %>
