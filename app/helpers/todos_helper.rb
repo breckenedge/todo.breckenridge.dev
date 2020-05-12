@@ -10,4 +10,10 @@ module TodosHelper
       content_tag :span, todo.priority, class: "badge"
     end
   end
+
+  def complete_toggle(todo)
+    url = todo.complete? ? incomplete_todo_path(todo, return_to: request.path) : complete_todo_path(todo, return_to: request.path)
+    icon = todo.complete? ? complete_icon : '◦'
+    link_to icon, url, class: 'complete-toggle', method: :post
+  end
 end

@@ -1,6 +1,6 @@
 <% todos.incomplete.order("CASE WHEN due_on IS NULL THEN '9999-12-31' ELSE due_on END", :name).group_by(&:due_on).each do |date, todis| %>
-  <div class="link-list-group">
-    <div class="link-list-group-title">
+  <div class="todo-list-group">
+    <div class="todo-list-group-title">
       <% if date %>
         <% if date < Date.current %>
           <span class="accent0"><%= l date %></span>
@@ -19,8 +19,8 @@
 <% end %>
 
 <% if todos.complete.any? %>
-  <div class="link-list-group">
-    <div class="link-list-group-title accent4">Complete</div>
+  <div class="todo-list-group">
+    <div class="todo-list-group-title accent4">Complete</div>
     <%= render 'todos_list', todos: todos.complete %>
   </div>
 <% end %>
