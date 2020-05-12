@@ -25,6 +25,9 @@ jobs:
         with:
           ruby-version: 2.7.1
 
+      - name: Install dev dependencies
+        run: apt-get install libsqlite3-dev tzdata
+
       - name: Install dependencies
         run: bundle install
 
