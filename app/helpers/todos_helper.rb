@@ -16,4 +16,14 @@ module TodosHelper
     icon = todo.complete? ? complete_icon : '◦'
     link_to icon, url, class: 'complete-toggle', method: :post
   end
+
+  def todo_breadcrumb(todo)
+    return unless todo.project.present?
+
+    content_tag(:div, class: 'project-breadcrumb') do
+      link_to project_path(todo.project) do
+        safe_join(['←', todo.project.name], ' ')
+      end
+    end
+  end
 end

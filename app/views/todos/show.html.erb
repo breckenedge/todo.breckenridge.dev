@@ -1,10 +1,4 @@
-<% if @todo.project.present? %>
-  <div class="project-breadcrumb">
-    <%= link_to project_path(@todo.project) do %>
-      ← <%= @todo.project.name %>
-    <% end %>
-  </div>
-<% end %>
+<%= todo_breadcrumb(@todo) %>
 
 <div class="two-column">
   <h1><%= complete_icon_for(@todo) %> <%= @todo.name %></h1>

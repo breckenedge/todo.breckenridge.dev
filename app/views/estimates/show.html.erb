@@ -1,6 +1,4 @@
-<% if @estimate.project.present? %>
-  <div class="project-breadcrumb"><%= link_to(@estimate.project.name, project_path(@estimate.project)) %></div>
-<% end %>
+<%= estimate_breadcrumb(@estimate) %>
 
 <div class="two-column">
   <div>
