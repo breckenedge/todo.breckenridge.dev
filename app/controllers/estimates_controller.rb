@@ -9,8 +9,7 @@ class EstimatesController < ApplicationController
 
   # GET /estimates/1
   # GET /estimates/1.json
-  def show
-  end
+  def show; end
 
   # GET /estimates/new
   def new
@@ -18,8 +17,7 @@ class EstimatesController < ApplicationController
   end
 
   # GET /estimates/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /estimates
   # POST /estimates.json

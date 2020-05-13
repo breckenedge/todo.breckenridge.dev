@@ -1,6 +1,5 @@
 class ProfilesController < ApplicationController
-  def edit
-  end
+  def edit; end
 
   def update
     if current_user.update(params.require(:user).permit(:email, :time_zone))

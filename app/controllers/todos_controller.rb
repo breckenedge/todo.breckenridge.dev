@@ -13,8 +13,7 @@ class TodosController < ApplicationController
 
   # GET /todos/1
   # GET /todos/1.json
-  def show
-  end
+  def show; end
 
   # GET /todos/new
   def new
@@ -23,8 +22,7 @@ class TodosController < ApplicationController
   end
 
   # GET /todos/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /todos
   # POST /todos.json

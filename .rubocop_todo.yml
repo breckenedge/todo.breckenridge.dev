@@ -36,17 +36,6 @@ Metrics/PerceivedComplexity:
 Style/Documentation:
   Enabled: false
 
-# Offense count: 7
-# Cop supports --auto-correct.
-# Configuration parameters: EnforcedStyle.
-# SupportedStyles: compact, expanded
-Style/EmptyMethod:
-  Exclude:
-    - 'app/controllers/estimates_controller.rb'
-    - 'app/controllers/profiles_controller.rb'
-    - 'app/controllers/projects_controller.rb'
-    - 'app/controllers/todos_controller.rb'
-
 # Offense count: 3
 # Cop supports --auto-correct.
 Style/ExpandPathArguments:

@@ -7,8 +7,7 @@ class ProjectsController < ApplicationController
   end
 
   # GET /projects/1
-  def show
-  end
+  def show; end
 
   # GET /projects/new
   def new
@@ -16,8 +15,7 @@ class ProjectsController < ApplicationController
   end
 
   # GET /projects/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /projects
   def create
