@@ -61,12 +61,12 @@ class EstimatesController < ApplicationController
 
   private
 
-    # Use callbacks to share common setup or constraints between actions.
+  # Use callbacks to share common setup or constraints between actions.
   def set_estimate
     @estimate = Estimate.find(params[:id])
   end
 
-    # Only allow a list of trusted parameters through.
+  # Only allow a list of trusted parameters through.
   def estimate_params
     params.require(:estimate).permit(:project_id, :vendor, :estimate, :contact, :phone, :details, :date)
   end
