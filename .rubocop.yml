@@ -14,3 +14,7 @@ Style/SymbolArray:
 
 Style/StringLiterals:
   EnforcedStyle: double_quotes
+
+Style/NumericLiterals:
+  Exclude:
+    - 'db/schema.rb'
