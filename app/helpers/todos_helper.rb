@@ -12,7 +12,11 @@ module TodosHelper
   end
 
   def complete_toggle(todo)
-    url = todo.complete? ? incomplete_todo_path(todo, return_to: request.path) : complete_todo_path(todo, return_to: request.path)
+    url = if todo.complete?
+            incomplete_todo_path(todo, return_to: request.path)
+          else
+            complete_todo_path(todo, return_to: request.path)
+          end
     icon = todo.complete? ? incomplete_icon : complete_icon
     link_to content_tag(:div, icon, class: "icon"), url, class: "complete-toggle", method: :post
   end

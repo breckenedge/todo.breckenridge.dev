@@ -1,5 +1,10 @@
 inherit_from: .rubocop_todo.yml
 
+Layout/LineLength:
+  Max: 120
+  Exclude:
+    - 'bin/bundle'
+
 Metrics/AbcSize:
   Exclude:
     - 'bin/bundle'
