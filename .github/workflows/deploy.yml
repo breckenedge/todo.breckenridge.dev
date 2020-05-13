@@ -12,8 +12,6 @@ on:
 
 jobs:
   deploy:
-    needs: push
-
     runs-on: ubuntu-latest
     if: github.event_name == 'push'
 
