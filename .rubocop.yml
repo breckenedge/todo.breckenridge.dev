@@ -12,6 +12,10 @@ Metrics/CyclomaticComplexity:
   Exclude:
     - 'bin/bundle'
 
+Metrics/MethodLength:
+  Exclude:
+    - 'bin/bundle'
+
 Style/Documentation:
   Enabled: false
 
