@@ -1,5 +1,9 @@
 inherit_from: .rubocop_todo.yml
 
+Metrics/AbcSize:
+  Exclude:
+    - 'bin/bundle'
+
 Style/Documentation:
   Enabled: false
 
