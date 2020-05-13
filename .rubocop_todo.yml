@@ -32,10 +32,6 @@ Metrics/MethodLength:
 Metrics/PerceivedComplexity:
   Max: 8
 
-# Offense count: 32
-Style/Documentation:
-  Enabled: false
-
 # Offense count: 3
 # Cop supports --auto-correct.
 Style/ExpandPathArguments:
