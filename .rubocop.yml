@@ -4,6 +4,10 @@ Metrics/AbcSize:
   Exclude:
     - 'bin/bundle'
 
+Metrics/BlockLength:
+  Exclude:
+    - 'db/schema.rb'
+
 Style/Documentation:
   Enabled: false
 
