@@ -6,5 +6,4 @@ class ProfilesControllerTest < ActionDispatch::IntegrationTest
     get profile_url
     assert_response :success
   end
-
 end
