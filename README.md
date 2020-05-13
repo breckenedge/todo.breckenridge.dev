@@ -1,24 +1,9 @@
-# README
-
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
+# https://todo.breckenridge.dev
 
 * How to run the test suite
 
-* Services (job queues, cache servers, search engines, etc.)
+Run `bin/rake` to run the test suite.
 
 * Deployment instructions
 
-* ...
+Automatic tests and deployments occur via Github Actions. Just push the `master` branch to kick off a build and deploy it if it passes tests.
