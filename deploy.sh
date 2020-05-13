@@ -17,5 +17,9 @@ docker run --rm -e RAILS_MASTER_KEY=$RAILS_MASTER_KEY -v "/var/lib/docker/volume
 echo 'Stopping the container'
 docker container stop todo || true
 
+until [ "`docker ps --filter 'name=todo' --format '{{.ID}}'`" == "" ]; do
+	sleep 0.1;
+done;
+
 echo 'Starting the container'
 docker run --rm --name todo -d -p 3000:3000 -e RAILS_MASTER_KEY=$RAILS_MASTER_KEY -v "/var/lib/docker/volumes/todo_db/_data/production.sqlite3:/code/db/production.sqlite3" docker.pkg.github.com/breckenedge/todo.breckenridge.dev/todo:latest rails s

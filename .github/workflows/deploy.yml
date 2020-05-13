@@ -11,16 +11,3 @@ on:
       - v*
 
 jobs:
-  deploy:
-    runs-on: ubuntu-latest
-    if: github.event_name == 'push'
-
-    steps:
-      - uses: actions/checkout@v2
-
-      - name: Deploy
-        run: |
-          echo "${{secrets.HOST_SSH_KEY}}" > secret.key
-          chmod 700 secret.key
-          ssh -o StrictHostKeyChecking=no -i secret.key ${{ secrets.HOST_USERNAME }}@${{ secrets.HOST_HOSTNAME }} "RAILS_MASTER_KEY=${{ secrets.RAILS_MASTER_KEY }} sh -s" < deploy.sh
-          rm secret.key
