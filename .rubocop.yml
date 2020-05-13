@@ -11,3 +11,6 @@ Style/IfUnlessModifier:
 
 Style/SymbolArray:
   EnforcedStyle: brackets
+
+Style/StringLiterals:
+  EnforcedStyle: double_quotes

@@ -1,4 +1,4 @@
-require 'test_helper'
+require "test_helper"
 
 class ProjectsControllerTest < ActionDispatch::IntegrationTest
   setup do
@@ -17,7 +17,7 @@ class ProjectsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should create project" do
-    assert_difference('Project.count') do
+    assert_difference("Project.count") do
       post projects_url, params: { project: { due_date: @project.due_date, name: @project.name } }
     end
 
@@ -40,7 +40,7 @@ class ProjectsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should destroy project" do
-    assert_difference('Project.count', -1) do
+    assert_difference("Project.count", -1) do
       delete project_url(@project)
     end
 

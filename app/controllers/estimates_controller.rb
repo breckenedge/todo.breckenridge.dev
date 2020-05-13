@@ -26,7 +26,7 @@ class EstimatesController < ApplicationController
 
     respond_to do |format|
       if @estimate.save
-        format.html { redirect_to @estimate, notice: 'Estimate was successfully created.' }
+        format.html { redirect_to @estimate, notice: "Estimate was successfully created." }
         format.json { render :show, status: :created, location: @estimate }
       else
         format.html { render :new }
@@ -40,7 +40,7 @@ class EstimatesController < ApplicationController
   def update
     respond_to do |format|
       if @estimate.update(estimate_params)
-        format.html { redirect_to @estimate, notice: 'Estimate was successfully updated.' }
+        format.html { redirect_to @estimate, notice: "Estimate was successfully updated." }
         format.json { render :show, status: :ok, location: @estimate }
       else
         format.html { render :edit }
@@ -54,7 +54,7 @@ class EstimatesController < ApplicationController
   def destroy
     @estimate.destroy
     respond_to do |format|
-      format.html { redirect_to project_url(@estimate.project), notice: 'Estimate was successfully destroyed.' }
+      format.html { redirect_to project_url(@estimate.project), notice: "Estimate was successfully destroyed." }
       format.json { head :no_content }
     end
   end

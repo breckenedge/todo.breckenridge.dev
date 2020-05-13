@@ -10,13 +10,13 @@ Rails.application.routes.draw do
     post :incomplete, on: :member
   end
 
-  get :log_in, to: 'sessions#new', as: :log_in
-  post :log_in, to: 'sessions#create'
-  delete :log_out, to: 'sessions#destroy', as: :log_out
+  get :log_in, to: "sessions#new", as: :log_in
+  post :log_in, to: "sessions#create"
+  delete :log_out, to: "sessions#destroy", as: :log_out
 
-  get :search, to: 'search#index', as: :search
+  get :search, to: "search#index", as: :search
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
-  root to: 'projects#index'
+  root to: "projects#index"
 end

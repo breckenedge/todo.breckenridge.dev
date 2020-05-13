@@ -1,6 +1,6 @@
-ENV['RAILS_ENV'] ||= 'test'
-require_relative '../config/environment'
-require 'rails/test_help'
+ENV["RAILS_ENV"] ||= "test"
+require_relative "../config/environment"
+require "rails/test_help"
 
 module ActiveSupport
   class TestCase
@@ -17,7 +17,7 @@ end
 module ActionDispatch
   class IntegrationTest
     def log_in_as(user)
-      post log_in_url, params: { log_in: { email: user.email, password: 'foobar' } }
+      post log_in_url, params: { log_in: { email: user.email, password: "foobar" } }
     end
   end
 end

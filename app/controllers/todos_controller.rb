@@ -7,7 +7,7 @@ class TodosController < ApplicationController
     @todos = Todo.all
 
     if params[:q]
-      @todos = @todos.where('name like ?', "%#{params[:q]}%")
+      @todos = @todos.where("name like ?", "%#{params[:q]}%")
     end
 
     @todos
@@ -33,7 +33,7 @@ class TodosController < ApplicationController
 
     respond_to do |format|
       if @todo.save
-        format.html { redirect_to todo_path(@todo), notice: 'Todo was successfully created.' }
+        format.html { redirect_to todo_path(@todo), notice: "Todo was successfully created." }
       else
         format.html { render :new }
       end
@@ -45,7 +45,7 @@ class TodosController < ApplicationController
   def update
     respond_to do |format|
       if @todo.update(todo_params)
-        format.html { redirect_to todo_path(@todo), notice: 'Todo was successfully updated.' }
+        format.html { redirect_to todo_path(@todo), notice: "Todo was successfully updated." }
       else
         format.html { render :edit }
       end
@@ -57,21 +57,21 @@ class TodosController < ApplicationController
   def destroy
     @todo.destroy
     respond_to do |format|
-      format.html { redirect_to todos_url, notice: 'Todo was successfully destroyed.' }
+      format.html { redirect_to todos_url, notice: "Todo was successfully destroyed." }
     end
   end
 
   def complete
     @todo.update(status: :complete)
     respond_to do |format|
-      format.html { redirect_to params.fetch(:return_to, todo_path(@todo)), notice: 'Todo completed.' }
+      format.html { redirect_to params.fetch(:return_to, todo_path(@todo)), notice: "Todo completed." }
     end
   end
 
   def incomplete
     @todo.update(status: :incomplete)
     respond_to do |format|
-      format.html { redirect_to params.fetch(:return_to, todo_path(@todo)), notice: 'Todo uncompleted.' }
+      format.html { redirect_to params.fetch(:return_to, todo_path(@todo)), notice: "Todo uncompleted." }
     end
   end
 

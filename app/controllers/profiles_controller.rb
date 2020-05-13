@@ -3,7 +3,7 @@ class ProfilesController < ApplicationController
 
   def update
     if current_user.update(params.require(:user).permit(:email, :time_zone))
-      redirect_to profile_path, notice: 'Profile updated'
+      redirect_to profile_path, notice: "Profile updated"
     else
       render :show
     end

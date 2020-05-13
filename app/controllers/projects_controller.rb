@@ -23,7 +23,7 @@ class ProjectsController < ApplicationController
 
     respond_to do |format|
       if @project.save
-        format.html { redirect_to @project, notice: 'Project was successfully created.' }
+        format.html { redirect_to @project, notice: "Project was successfully created." }
       else
         format.html { render :new }
       end
@@ -34,7 +34,7 @@ class ProjectsController < ApplicationController
   def update
     respond_to do |format|
       if @project.update(project_params)
-        format.html { redirect_to @project, notice: 'Project was successfully updated.' }
+        format.html { redirect_to @project, notice: "Project was successfully updated." }
       else
         format.html { render :edit }
       end
@@ -45,20 +45,20 @@ class ProjectsController < ApplicationController
   def destroy
     @project.destroy
     respond_to do |format|
-      format.html { redirect_to projects_url, notice: 'Project was successfully destroyed.' }
+      format.html { redirect_to projects_url, notice: "Project was successfully destroyed." }
     end
   end
 
   # POST /projects/1/complete
   def complete
     @project.update!(status: :complete)
-    redirect_to project_path(@project), notice: 'Project completed'
+    redirect_to project_path(@project), notice: "Project completed"
   end
 
   # POST /projects/1/incomplete
   def incomplete
     @project.update!(status: :incomplete)
-    redirect_to project_path(@project), notice: 'Project incompleted'
+    redirect_to project_path(@project), notice: "Project incompleted"
   end
 
   private
