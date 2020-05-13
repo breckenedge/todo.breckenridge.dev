@@ -11,7 +11,6 @@
 # It's strongly recommended that you check this file into your version control system.
 
 ActiveRecord::Schema.define(version: 2020_05_10_180726) do
-
   create_table "estimates", force: :cascade do |t|
     t.integer "project_id", null: false
     t.date "date"
