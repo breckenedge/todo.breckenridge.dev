@@ -9,6 +9,8 @@ class TodosController < ApplicationController
     if params[:q]
       @todos = @todos.where('name like ?', "%#{params[:q]}%")
     end
+
+    @todos
   end
 
   # GET /todos/1

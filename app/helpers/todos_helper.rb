@@ -1,14 +1,14 @@
 module TodosHelper
   def todo_due_on(todo)
-    if todo.due_on
-      content_tag :span, time_ago_in_words(todo.due_on), class: 'badge badge-info'
-    end
+    return unless todo.due_on.present?
+
+    content_tag :span, time_ago_in_words(todo.due_on), class: 'badge badge-info'
   end
 
   def todo_priority(todo)
-    if todo.priority
-      content_tag :span, todo.priority, class: "badge"
-    end
+    return unless todo.priority.present?
+
+    content_tag :span, todo.priority, class: "badge"
   end
 
   def complete_toggle(todo)
