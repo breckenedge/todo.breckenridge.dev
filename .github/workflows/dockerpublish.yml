@@ -51,17 +51,3 @@ jobs:
 
       - name: Push image
         run: docker push docker.pkg.github.com/breckenedge/todo.breckenridge.dev/todo:latest
-
-  deploy:
-    needs: push
-
-    runs-on: ubuntu-latest
-    if: github.event_name == 'push'
-
-    steps:
-      - uses: actions/checkout@v2
-
-      - name: Deploy
-        run: |
-          KEY="${{secrets.HOST_SSH_KEY}}"
-          echo ${KEY} | ssh -o StrictHostKeyChecking=no -i /dev/stdin ${{ secrets.HOST_USERNAME }}@${{ secrets.HOST_HOSTNAME }} "RAILS_MASTER_KEY=${{ secrets.RAILS_MASTER_KEY }} sh -s" < deploy.sh
