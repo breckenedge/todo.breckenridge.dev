@@ -63,6 +63,5 @@ jobs:
 
       - name: Deploy
         run: |
-          eval "$(ssh-agent -s)"
-          ssh-add - <<< "${DEPLOY_KEY}"
-          ssh ${{ secrets.HOST_USERNAME }}@${{ secrets.HOST_HOSTNAME }} "RAILS_MASTER_KEY=${{ secrets.RAILS_MASTER_KEY }} sh -s" < deploy.sh
+          KEY="${{HOST_SSH_KEY}}"
+          echo ${KEY} | ssh -i /dev/stdin ${{ secrets.HOST_USERNAME }}@${{ secrets.HOST_HOSTNAME }} "RAILS_MASTER_KEY=${{ secrets.RAILS_MASTER_KEY }} sh -s" < deploy.sh
