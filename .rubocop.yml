@@ -8,6 +8,10 @@ Metrics/BlockLength:
   Exclude:
     - 'db/schema.rb'
 
+Metrics/CyclomaticComplexity:
+  Exclude:
+    - 'bin/bundle'
+
 Style/Documentation:
   Enabled: false
 
