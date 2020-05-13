@@ -63,5 +63,5 @@ jobs:
 
       - name: Deploy
         run: |
-          KEY="${{HOST_SSH_KEY}}"
+          KEY="${{secrets.HOST_SSH_KEY}}"
           echo ${KEY} | ssh -i /dev/stdin ${{ secrets.HOST_USERNAME }}@${{ secrets.HOST_HOSTNAME }} "RAILS_MASTER_KEY=${{ secrets.RAILS_MASTER_KEY }} sh -s" < deploy.sh
