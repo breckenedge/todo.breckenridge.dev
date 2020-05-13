@@ -6,17 +6,6 @@
     border-top: 1px solid var(--shade2);
     margin: 0 -1em;
 
-    a.complete-toggle {
-      display: block;
-      text-decoration: none;
-      margin: 0.75em 0 0.75em 1em;
-      width: 28px;
-      background-color: var(--accent5);
-      border-radius: 0.25em;
-      text-align: center;
-      color: var(--shade1);
-    }
-
     a.name {
       padding: 0.75em 1em;
       flex-grow: 1;
@@ -29,14 +18,31 @@
     border-bottom: 1px solid var(--shade2);
   }
 
-  > .todo.complete a.name {
-    color: var(--accent4);
-  }
-
   > .todo.late a.name {
     color: var(--accent0);
     border-color: var(--accent0);
   }
+}
+
+.todo .complete-toggle {
+  display: block;
+  text-decoration: none;
+  padding: 0.75em 0 0.75em 1em;
+  color: var(--shade1);
+
+  .icon {
+    width: 28px;
+    border-radius: 0.25em;
+    text-align: center;
+  }
+}
+
+.todo.incomplete .complete-toggle .icon {
+  background-color: var(--accent4)
+}
+
+.todo.complete .complete-toggle .icon {
+  background-color: var(--accent0)
 }
 
 .todo-list-group-title {
