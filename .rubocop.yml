@@ -16,6 +16,10 @@ Metrics/MethodLength:
   Exclude:
     - 'bin/bundle'
 
+Metrics/PerceivedComplexity:
+  Exclude:
+    - 'bin/bundle'
+
 Style/Documentation:
   Enabled: false
 
