@@ -6,6 +6,6 @@ class Todo < ApplicationRecord
   enum status: { incomplete: 0, complete: 1 }
 
   def late?
-    incomplete? && due_on && due_on < Date.today
+    incomplete? && due_on && due_on < Date.current
   end
 end

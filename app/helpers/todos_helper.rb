@@ -1,12 +1,12 @@
 module TodosHelper
   def todo_due_on(todo)
-    return unless todo.due_on.present?
+    return if todo.due_on.blank?
 
     content_tag :span, time_ago_in_words(todo.due_on), class: "badge badge-info"
   end
 
   def todo_priority(todo)
-    return unless todo.priority.present?
+    return if todo.priority.blank?
 
     content_tag :span, todo.priority, class: "badge"
   end
@@ -22,7 +22,7 @@ module TodosHelper
   end
 
   def todo_breadcrumb(todo)
-    return unless todo.project.present?
+    return if todo.project.blank?
 
     content_tag(:div, class: "project-breadcrumb") do
       link_to project_path(todo.project) do

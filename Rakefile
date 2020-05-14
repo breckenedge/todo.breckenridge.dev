@@ -3,4 +3,8 @@
 
 require_relative "config/application"
 
+require "rubocop/rake_task"
+RuboCop::RakeTask.new
+task(:default).enhance ["rubocop"]
+
 Rails.application.load_tasks
