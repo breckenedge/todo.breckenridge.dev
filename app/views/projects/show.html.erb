@@ -25,10 +25,8 @@
   <% end %>
 </dl>
 
-<p>
-  <strong>Estimates</strong>
-  <%= link_to '+', new_estimate_path(project_id: @project.id), class: 'button accent4' %>
-</p>
+<h2>Estimates</h2>
+<%= link_to 'New Estimate', new_estimate_path(project_id: @project.id), class: 'button button-wide accent4' %>
 
 <div class="link-list">
   <% @project.estimates.each do |estimate| %>
@@ -41,10 +39,10 @@
   <% end %>
 </div>
 
-<p>
-  <strong>Todos</strong>
-  <%= link_to '+', new_todo_path(project_id: @project.id), class: 'button accent4' %>
-</p>
+<hr>
+
+<h2>Todos</h2>
+<%= link_to 'New Todo', new_todo_path(project_id: @project.id), class: 'button button-wide accent4' %>
 
 <div class="link-list">
   <%= render 'grouped_todos_list', todos: @project.todos %>
