@@ -3,8 +3,11 @@
 
 require_relative "config/application"
 
-require "rubocop/rake_task"
-RuboCop::RakeTask.new
-task(:default).enhance ["rubocop"]
+begin
+  require "rubocop/rake_task"
+  RuboCop::RakeTask.new
+  task(:default).enhance ["rubocop"]
+rescue LoadError # rubocop:disable Lint/SuppressedException
+end
 
 Rails.application.load_tasks
