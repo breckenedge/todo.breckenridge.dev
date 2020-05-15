@@ -7,7 +7,7 @@
         <% elsif date == Date.current %>
           Today
         <% else %>
-          <%= l date %> <span class="badge"><%= time_ago_in_words(date) %></span>
+          <%= l date %> <span class="badge"><%= pluralize (date - Date.current).to_i, 'day' %></span>
         <% end %>
       <% else %>
         No Due Date

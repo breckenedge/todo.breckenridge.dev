@@ -24,7 +24,7 @@
     <dt>Due on</dt>
     <dd>
     <%= l(@todo.due_on) if @todo.due_on %>
-    <%= todo_due_on(@todo) %>
+    <%= due_date_badge(@todo.due_on) %>
     </dd>
   <% end %>
 </dl>

@@ -9,10 +9,7 @@
     <%= link_to project_path(project), class: "item-#{project.status}" do %>
       <%= complete_icon_for(project) %>
       <%= project.name %>
-
-      <% if project.due_date %>
-        <span class="badge"><%= time_ago_in_words project.due_date %></span>
-      <% end %>
+      <%= due_date_badge(project.due_date) %>
     <% end %>
   <% end %>
 </div>

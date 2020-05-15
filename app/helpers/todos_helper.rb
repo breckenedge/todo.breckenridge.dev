@@ -1,10 +1,4 @@
 module TodosHelper
-  def todo_due_on(todo)
-    return if todo.due_on.blank?
-
-    content_tag :span, time_ago_in_words(todo.due_on), class: "badge badge-info"
-  end
-
   def todo_priority(todo)
     return if todo.priority.blank?
 

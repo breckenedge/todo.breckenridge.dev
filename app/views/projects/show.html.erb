@@ -20,7 +20,10 @@
 <dl>
   <% unless @project.due_date.blank? %>
     <dt>Due date</dt>
-    <dd><%= @project.due_date %> <% if @project.due_date.present? %>(<%= time_ago_in_words(@project.due_date) %>)<% end %></dd>
+    <dd>
+      <%= @project.due_date %>
+      <%= due_date_badge(@project.due_date) %>
+    </dd>
   <% end %>
 
   <% unless @project.details.blank? %>

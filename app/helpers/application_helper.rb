@@ -14,4 +14,12 @@ module ApplicationHelper
       end.join(" ")
     end.join("\n")
   end
+
+  def due_date_badge(due_date)
+    if due_date.present?
+      content_tag(:span, class: "badge") do
+        pluralize (due_date - Date.current).to_i, 'day'
+      end
+    end
+  end
 end
