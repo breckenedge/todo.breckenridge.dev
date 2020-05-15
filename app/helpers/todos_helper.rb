@@ -16,7 +16,7 @@ module TodosHelper
   end
 
   def todo_breadcrumb(todo)
-    link_text = todo.project.present? ? todo.project.name : 'Back to list'
+    link_text = todo.project.present? ? todo.project.name : "Back to list"
     link_url = todo.project.present? ? project_path(todo.project) : todos_path
 
     content_tag(:div, class: "navigate-back") do
