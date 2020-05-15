@@ -21,6 +21,6 @@
 <% if todos.complete.any? %>
   <div class="todo-list-group">
     <div class="todo-list-group-title accent4">Complete</div>
-    <%= render 'todos_list', todos: todos.complete %>
+    <%= render 'todos_list', todos: todos.complete.order(:name) %>
   </div>
 <% end %>

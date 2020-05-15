@@ -20,7 +20,13 @@
 
     <main>
       <% if notice %>
-        <div class="alert alert-success"><%= notice %></div>
+        <div class="alert alert-success">
+          <%= notice %>
+
+          <% if flash[:undo].present? %>
+            <%= link_to 'Undo', flash[:undo], method: :post %>
+          <% end %>
+        </div>
       <% end %>
 
       <%= yield %>

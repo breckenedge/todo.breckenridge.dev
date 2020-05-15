@@ -4,6 +4,13 @@
   color: var(--shade1);
   padding: 0.5em 1em;
   margin-bottom: 1em;
+
+  a,
+  a:hover,
+  a:active,
+  a:visited {
+    color: var(--shade1);
+  }
 }
 
 main > .alert {

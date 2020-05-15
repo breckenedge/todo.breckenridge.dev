@@ -64,14 +64,14 @@ class TodosController < ApplicationController
   def complete
     @todo.update(status: :complete)
     respond_to do |format|
-      format.html { redirect_to params.fetch(:return_to, todo_path(@todo)), notice: "Todo completed." }
+      format.html { redirect_to params.fetch(:return_to, todo_path(@todo)), flash: { notice: "Todo completed.", undo: incomplete_todo_path(@todo, return_to: params[:return_to]) } }
     end
   end
 
   def incomplete
     @todo.update(status: :incomplete)
     respond_to do |format|
-      format.html { redirect_to params.fetch(:return_to, todo_path(@todo)), notice: "Todo uncompleted." }
+      format.html { redirect_to params.fetch(:return_to, todo_path(@todo)), flash: { notice: "Todo uncompleted.", undo: complete_todo_path(@todo, return_to: params[:return_to]) } }
     end
   end
 
