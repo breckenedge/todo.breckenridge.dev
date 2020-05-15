@@ -22,11 +22,12 @@ module TodosHelper
   end
 
   def todo_breadcrumb(todo)
-    return if todo.project.blank?
+    link_text = todo.project.present? ? todo.project.name : 'Back to list'
+    link_url = todo.project.present? ? project_path(todo.project) : todos_path
 
-    content_tag(:div, class: "project-breadcrumb") do
-      link_to project_path(todo.project) do
-        safe_join(["←", todo.project.name], " ")
+    content_tag(:div, class: "navigate-back") do
+      link_to link_url do
+        safe_join(["←", link_text], " ")
       end
     end
   end

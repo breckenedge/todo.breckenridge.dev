@@ -33,3 +33,17 @@ nav {
     flex-grow: 1;
   }
 }
+
+.navigate-back {
+  margin: -1em -1em 1em;
+  padding: 1em;
+  border-bottom: 0.125em solid var(--shade2);
+
+  > a,
+  > a:active,
+  > a:hover,
+  > a:visited {
+    color: var(--shade0);
+    text-decoration: none;
+  }
+}
