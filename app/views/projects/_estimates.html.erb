@@ -1,5 +1,7 @@
-<h2>Estimates</h2>
-<%= link_to 'New Estimate', new_estimate_path(project_id: @project.id), class: 'button button-wide accent4' %>
+<div class="navigation-header">
+  <h2>Estimates</h2>
+  <%= link_to '+', new_estimate_path(project_id: @project.id), class: 'button accent4' %>
+</div>
 
 <div class="link-list">
   <% @project.estimates.each do |estimate| %>

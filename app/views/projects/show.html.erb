@@ -27,8 +27,10 @@
 
 <%= render('estimates', project: @project) if @project.estimates_enabled? %>
 
-<h2>Todos</h2>
-<%= link_to 'New Todo', new_todo_path(project_id: @project.id), class: 'button button-wide accent4' %>
+<div class="navigation-header">
+  <h2>Todos</h2>
+  <%= link_to '+', new_todo_path(project_id: @project.id), class: 'button accent4' %>
+</div>
 
 <div class="link-list">
   <%= render 'grouped_todos_list', todos: @project.todos %>
