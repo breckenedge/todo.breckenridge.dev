@@ -10,7 +10,8 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_10_180726) do
+ActiveRecord::Schema.define(version: 2020_05_15_191025) do
+
   create_table "estimates", force: :cascade do |t|
     t.integer "project_id", null: false
     t.date "date"
@@ -31,6 +32,7 @@ ActiveRecord::Schema.define(version: 2020_05_10_180726) do
     t.text "details"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.boolean "estimates_enabled", default: false, null: false
   end
 
   create_table "todos", force: :cascade do |t|

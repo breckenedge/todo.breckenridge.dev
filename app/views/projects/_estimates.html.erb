@@ -1,0 +1,15 @@
+<h2>Estimates</h2>
+<%= link_to 'New Estimate', new_estimate_path(project_id: @project.id), class: 'button button-wide accent4' %>
+
+<div class="link-list">
+  <% @project.estimates.each do |estimate| %>
+    <%= link_to estimate_path(estimate) do %>
+      <%= estimate.vendor %>
+      <% if estimate.estimate.present? %>
+        <span class="badge"><%= estimate.estimate %></span>
+      <% end %>
+    <% end %>
+  <% end %>
+</div>
+
+<hr>
