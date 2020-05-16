@@ -12,7 +12,7 @@ module TodosHelper
             complete_todo_path(todo, return_to: request.path)
           end
     icon = todo.complete? ? incomplete_icon : complete_icon
-    link_to content_tag(:div, icon, class: "icon"), url, class: "complete-toggle", method: :post
+    link_to content_tag(:div, icon, class: "icon"), url, class: "complete-toggle #{todo.complete? ? "complete" : "incomplete"}", method: :post
   end
 
   def todo_breadcrumb(todo)

@@ -1,0 +1,28 @@
+.complete-toggle {
+  display: block;
+  text-decoration: none;
+  padding: 0.75em 1em;
+  color: var(--shade1);
+
+  .icon {
+    width: 28px;
+    border-radius: 0.25em;
+    text-align: center;
+  }
+}
+
+.complete-toggle,
+.complete-toggle:hover,
+.complete-toggle:visited,
+.complete-toggle:active {
+  text-decoration: none;
+  color: var(--shade1);
+}
+
+.complete-toggle.incomplete .icon {
+  background-color: var(--accent4)
+}
+
+.complete-toggle.complete .icon {
+  background-color: var(--accent0)
+}

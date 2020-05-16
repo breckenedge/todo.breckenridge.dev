@@ -4,12 +4,20 @@
 
 <br>
 
-<div class="link-list">
-  <% @projects.each do |project| %>
-    <%= link_to project_path(project), class: "item-#{project.status}" do %>
-      <%= complete_icon_for(project) %>
-      <%= project.name %>
-      <%= due_date_badge(project.due_date) %>
-    <% end %>
+<h2>Incomplete</h2>
+
+<div class="project-list">
+  <% @projects.incomplete.each do |project| %>
+    <%= render 'project', project: project %>
+  <% end %>
+</div>
+
+<hr>
+
+<h2>Complete</h2>
+
+<div class="project-list">
+  <% @projects.complete.each do |project| %>
+    <%= render 'project', project: project %>
   <% end %>
 </div>

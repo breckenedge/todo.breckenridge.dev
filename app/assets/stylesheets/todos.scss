@@ -24,27 +24,6 @@
   }
 }
 
-.todo .complete-toggle {
-  display: block;
-  text-decoration: none;
-  padding: 0.75em 1em;
-  color: var(--shade1);
-
-  .icon {
-    width: 28px;
-    border-radius: 0.25em;
-    text-align: center;
-  }
-}
-
-.todo.incomplete .complete-toggle .icon {
-  background-color: var(--accent4)
-}
-
-.todo.complete .complete-toggle .icon {
-  background-color: var(--accent0)
-}
-
 .todo-list-group-title {
   text-align: center;
   font-weight: bold;

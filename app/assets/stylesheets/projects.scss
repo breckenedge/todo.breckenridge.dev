@@ -1,0 +1,28 @@
+.project-list {
+  margin: 0 -1em;
+
+  .project {
+    display: flex;
+
+    .name {
+      flex-grow: 1;
+
+      a {
+        display: block;
+        padding: 0.75em 0;
+      }
+
+      a,
+      a:hover,
+      a:visited,
+      a:active {
+        text-decoration: none;
+        color: var(--shade0);
+      }
+    }
+
+    .progress {
+      padding: 0.75em 1em;
+    }
+  }
+}
