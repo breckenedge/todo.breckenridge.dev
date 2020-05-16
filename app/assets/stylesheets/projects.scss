@@ -5,25 +5,17 @@
     display: flex;
     border-top: 1px solid var(--shade2);
 
-    .name {
+    .name-and-progress {
       flex-grow: 1;
+      display: block;
+      padding: 0.75em 1em 0.75em 0;
+      text-decoration: none;
+      color: var(--shade0);
+      display: flex;
 
-      a {
-        display: block;
-        padding: 0.75em 0;
+      .name {
+        flex-grow: 1;
       }
-
-      a,
-      a:hover,
-      a:visited,
-      a:active {
-        text-decoration: none;
-        color: var(--shade0);
-      }
-    }
-
-    .progress {
-      padding: 0.75em 1em;
     }
   }
 
