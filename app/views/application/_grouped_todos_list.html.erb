@@ -1,26 +1,28 @@
 <% todos.incomplete.order("CASE WHEN due_on IS NULL THEN '9999-12-31' ELSE due_on END", :name).group_by(&:due_on).each do |date, todis| %>
-  <div class="todo-list-group">
-    <div class="todo-list-group-title">
+  <div class="todo-list-heading">
+    <h3>
       <% if date %>
         <% if date < Date.current %>
           <span class="accent0"><%= l date %></span>
         <% elsif date == Date.current %>
           Today
         <% else %>
-          <%= l date %> <span class="badge"><%= pluralize (date - Date.current).to_i, 'day' %></span>
+          <%= l date %>
         <% end %>
       <% else %>
         No Due Date
       <% end %>
-    </div>
+    </h3>
+
+    <% if date && date != Date.current %>
+      <span class="badge"><%= pluralize (date - Date.current).to_i, 'day' %></span>
+    <% end %>
   </div>
 
   <%= render 'todos_list', todos: todis %>
 <% end %>
 
 <% if todos.complete.any? %>
-  <div class="todo-list-group">
-    <div class="todo-list-group-title accent4">Complete</div>
-    <%= render 'todos_list', todos: todos.complete.order(:name) %>
-  </div>
+  <h3 class="accent4 todo-list-heading">Complete</h3>
+  <%= render 'todos_list', todos: todos.complete.order(:name) %>
 <% end %>

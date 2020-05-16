@@ -1,4 +1,4 @@
-<div class="project">
+<div class="project list-item">
   <%= link_to(project.complete? ? incomplete_project_path(project, return_to: projects_path) : complete_project_path(project, return_to: projects_path), data: { method: :post }, class: "complete-toggle #{project.complete? ? "complete" : "incomplete"}") do %>
     <div class="icon"><%= project.complete? ? incomplete_icon : complete_icon %></div>
   <% end %>
@@ -9,10 +9,10 @@
     <% end %>
   </div>
   <div class="progress">
-    <span class="badge">
-      <% if project.todos.any? %>
-        <%= project.todos.complete.count.to_f / project.todos.count * 100 %>% Complete
-      <% end %>
-    </span>
+    <% if project.todos.any? %>
+      <span class="badge">
+        <%= (project.todos.complete.count.to_f / project.todos.count * 100).round(1) %>% Complete
+      </span>
+    <% end %>
   </div>
 </div>
