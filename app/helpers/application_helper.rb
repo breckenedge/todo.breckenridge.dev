@@ -17,9 +17,15 @@ module ApplicationHelper
 
   def due_date_badge(due_date)
     return if due_date.blank?
+    days = (due_date - Date.current).to_i
 
     content_tag(:span, class: "badge") do
-      pluralize (due_date - Date.current).to_i, "day"
+      safe_join([
+        pluralize(days.abs, "day"),
+        if days.negative?
+          'ago'
+        end
+      ], ' ')
     end
   end
 end
