@@ -14,5 +14,5 @@
 <hr>
 
 <% unless @project.new_record? %>
-  <%= button_to 'Delete Project', project_path(@project), class: 'button button-wide accent0', data: { method: :delete, confirm: 'Are you sure?' } %>
+  <%= button_to 'Delete Project', project_path(@project), class: 'button button-wide accent0', method: :delete, data: { confirm: 'Are you sure?' } %>
 <% end %>

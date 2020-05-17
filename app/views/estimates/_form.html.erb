@@ -16,5 +16,5 @@
 <hr>
 
 <% unless @estimate.new_record? %>
-  <%= button_to 'Delete Estimate', estimate_path(@estimate), class: 'button button-wide accent0', data: { method: :delete, confirm: 'Are you sure?' } %>
+  <%= button_to 'Delete Estimate', estimate_path(@estimate), class: 'button button-wide accent0', method: :delete, data: { confirm: 'Are you sure?' } %>
 <% end %>

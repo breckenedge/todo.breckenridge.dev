@@ -23,5 +23,5 @@
 <hr>
 
 <% unless @todo.new_record? %>
-  <%= button_to 'Delete Todo', todo_path(@todo), class: 'button button-wide accent0', data: { method: :delete, confirm: 'Are you sure?' } %>
+  <%= button_to 'Delete Todo', todo_path(@todo), class: 'button button-wide accent0', method: :delete, data: { confirm: 'Are you sure?' } %>
 <% end %>
