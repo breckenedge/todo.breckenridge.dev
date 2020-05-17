@@ -69,6 +69,12 @@ a.button {
 // Reset styling on ios
 button,
 input[type="submit"],
+input[type="date"],
 select {
   -webkit-appearance: none;
+}
+
+// Fix date input height on iOS
+input[type="date"] {
+  height: 2.25em;
 }
