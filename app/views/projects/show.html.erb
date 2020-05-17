@@ -16,7 +16,7 @@
   <% unless @project.due_date.blank? %>
     <dt>Due date</dt>
     <dd>
-      <%= @project.due_date %>
+      <%= l @project.due_date %>
       <%= due_date_badge(@project.due_date) %>
     </dd>
   <% end %>
