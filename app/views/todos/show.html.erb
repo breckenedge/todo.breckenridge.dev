@@ -4,11 +4,6 @@
   <h1><%= complete_icon_for(@todo) %> <%= @todo.name %></h1>
   <div class="no-wrap">
     <%= link_to 'Edit', edit_todo_path(@todo), class: 'button accent5' %>
-    <% if @todo.incomplete? %>
-      <%= link_to complete_icon, complete_todo_path(@todo), class: 'button accent5', data: { method: :post } %>
-    <% else %>
-      <%= link_to incomplete_icon, incomplete_todo_path(@todo), class: 'button accent5', data: { method: :post } %>
-    <% end %>
   </div>
 </div>
 

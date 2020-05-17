@@ -9,11 +9,6 @@
 
   <div class="no-wrap">
     <%= link_to 'Edit', edit_project_path(@project), class: 'button accent5' %>
-    <% if @project.complete? %>
-      <%= link_to incomplete_icon, incomplete_project_path(@project), class: 'button accent5', data: { method: :post } %>
-    <% else %>
-      <%= link_to complete_icon, complete_project_path(@project), class: 'button accent5', data: { method: :post } %>
-    <% end %>
   </div>
 </div>
 

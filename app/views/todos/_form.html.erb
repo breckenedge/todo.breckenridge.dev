@@ -14,8 +14,8 @@
   <%= form.input :name, autofocus: true %>
   <%= form.input :project_id, collection: Project.order(:name, :status).pluck(:name, :id) %>
   <%= form.input :due_on, html5: true %>
-  <%= form.input :priority %>
   <%= form.input :description, rows: 3 %>
+  <%= form.input :status, as: :boolean, label: "Complete?", checked_value: "complete", unchecked_value: "incomplete" %>
 
   <div class="two-column">
     <%= form.submit class: 'button accent5' %>
