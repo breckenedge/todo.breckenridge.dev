@@ -17,10 +17,11 @@
   <%= form.input :description, rows: 3 %>
   <%= form.input :status, as: :boolean, label: "Complete?", checked_value: "complete", unchecked_value: "incomplete" %>
 
-  <div class="two-column">
-    <%= form.submit class: 'button accent5' %>
-    <% unless @todo.new_record? %>
-      <%= link_to 'Delete Todo', todo_path(@todo), class: 'button accent0', data: { method: :delete, confirm: 'Are you sure?' } %>
-    <% end %>
-  </div>
+  <%= form.submit 'Save', class: 'button button-wide accent5' %>
+<% end %>
+
+<hr>
+
+<% unless @todo.new_record? %>
+  <%= button_to 'Delete Todo', todo_path(@todo), class: 'button button-wide accent0', data: { method: :delete, confirm: 'Are you sure?' } %>
 <% end %>
