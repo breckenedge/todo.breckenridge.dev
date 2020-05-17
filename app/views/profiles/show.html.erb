@@ -1,8 +1,11 @@
 <%= simple_form_for current_user, url: profile_path, method: :patch do |f| %>
+  <%= f.error_notification %>
+  <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+
   <%= f.input :email, as: :email %>
   <%= f.input :time_zone, collection: TZInfo::Timezone.all_identifiers %>
 
-  <%= f.submit 'Update Profile', class: 'button accent5' %>
+  <%= f.submit 'Update Profile', class: 'button button-wide accent5' %>
 <% end %>
 
 <hr>
