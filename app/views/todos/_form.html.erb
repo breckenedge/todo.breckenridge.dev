@@ -11,7 +11,7 @@
     </div>
   <% end %>
 
-  <%= form.input :name, autofocus: true %>
+  <%= form.input :name %>
   <%= form.input :project_id, collection: Project.order(:name, :status).pluck(:name, :id) %>
   <%= form.input :due_on, html5: true %>
   <%= form.input :description, rows: 3 %>

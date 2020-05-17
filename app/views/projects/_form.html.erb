@@ -2,7 +2,7 @@
   <%= f.error_notification %>
   <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 
-  <%= f.input :name, autofocus: true %>
+  <%= f.input :name %>
   <%= f.input :due_date, as: :date, html5: true %>
   <%= f.input :details %>
   <%= f.input :estimates_enabled, label: 'Enable estimates?' %>
