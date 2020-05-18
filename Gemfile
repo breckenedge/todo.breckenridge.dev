@@ -6,7 +6,7 @@ ruby "2.7.1"
 gem "bcrypt", "~> 3.1.7"
 gem "bootsnap", ">= 1.4.2", require: false
 gem "puma", "~> 4.1"
-gem "rails", "~> 6.0.2", ">= 6.0.2.2"
+gem "rails"
 gem "sass-rails", ">= 6"
 gem "simple_form"
 gem "sqlite3", "~> 1.4"
