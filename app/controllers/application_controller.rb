@@ -7,7 +7,7 @@ class ApplicationController < ActionController::Base
   end
 
   def require_user
-    redirect_to(log_in_path, notice: 'You must log in to continue.') unless current_user
+    redirect_to(log_in_path, notice: "You must log in to continue.") unless current_user
   end
 
   def set_time_zone
