@@ -10,22 +10,22 @@ body {
   padding: 0;
   display: flex;
   flex-direction: column;
+}
 
-  > header {
-    padding: 0 1em;
-    background-color: var(--shade1);
-  }
+header {
+  padding: 0 1em;
+  background-color: var(--shade1);
+}
 
-  > main {
-    padding: 1em;
-    background-color: var(--shade1);
-  }
+main {
+  padding: 1em;
+  background-color: var(--shade1);
+}
 
-  > footer {
-    padding: 1em;
-    flex-grow: 1;
-    background-color: var(--shade1);
-  }
+footer {
+  padding: 1em;
+  flex-grow: 1;
+  background-color: var(--shade1);
 }
 
 a {

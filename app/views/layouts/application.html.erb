@@ -6,34 +6,16 @@
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_pack_tag 'app' %>
+    <%= javascript_pack_tag 'application' %>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0, shrink-to-fit=no">
     <link rel="apple-touch-icon" href="/apple-touch-icon.png">
   </head>
 
   <body>
-    <header>
-      <nav>
-        <%= navigation %>
-      </nav>
-    </header>
+    <div id="root"></div>
 
-    <main>
-      <% if notice %>
-        <div class="alert alert-success">
-          <%= notice %>
-
-          <% if flash[:undo].present? %>
-            <%= link_to 'Undo', flash[:undo], method: :post %>
-          <% end %>
-        </div>
-      <% end %>
-
-      <%= yield %>
-    </main>
-
-    <footer>
-    </footer>
+    <script>
+      const currentUser = <%= current_user.as_json.except("password_digest").to_json.html_safe %>
+    </script>
   </body>
 </html>

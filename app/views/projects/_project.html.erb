@@ -8,9 +8,7 @@
       <%= due_date_badge(project.due_date) %>
     </div>
     <div class="progress">
-      <% if project.todos.any? %>
-        <%= (project.todos.complete.count.to_f / project.todos.count * 100).round(1) %>%
-      <% end %>
+      <%= project.percent_complete %>
     </div>
   <% end %>
 </div>

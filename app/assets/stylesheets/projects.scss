@@ -1,7 +1,7 @@
 .project-list {
   margin: 0 -1em;
 
-  > .project {
+  .project {
     display: flex;
     border-top: 1px solid var(--shade2);
 
@@ -19,7 +19,7 @@
     }
   }
 
-  > .project:last-child {
+  .project:last-child {
     border-bottom: 1px solid var(--shade2);
   }
 }
