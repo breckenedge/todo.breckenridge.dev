@@ -1,3 +1,4 @@
+# rubocop:disable Metrics/BlockLength
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
@@ -121,3 +122,4 @@ Rails.application.configure do
     enable_starttls_auto: true
   }
 end
+# rubocop:enable Metrics/BlockLength
