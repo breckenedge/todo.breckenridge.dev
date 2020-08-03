@@ -62,5 +62,5 @@ jobs:
         run: |
           echo "${{secrets.HOST_SSH_KEY}}" > ssh_key
           chmod 700 ssh_key
-          ssh -o StrictHostKeyChecking=no -i ssh_key ${{ secrets.HOST_USERNAME }}@${{ secrets.HOST_HOSTNAME }} "RAILS_MASTER_KEY=${{ secrets.RAILS_MASTER_KEY }} sh -s" < deploy.sh
+          ssh -o StrictHostKeyChecking=no -i ssh_key ${{ secrets.HOST_USERNAME }}@${{ secrets.HOST_HOSTNAME }} "sh -s" < deploy.sh
           rm ssh_key
