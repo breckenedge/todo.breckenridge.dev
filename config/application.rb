@@ -15,5 +15,8 @@ module TodoApp
     # Application configuration can go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded after loading
     # the framework and any gems in your application.
+
+    app_url = ENV.fetch("APP_URL", "localhost:3000")
+    config.action_mailer.default_url_options = { host: app_url }
   end
 end

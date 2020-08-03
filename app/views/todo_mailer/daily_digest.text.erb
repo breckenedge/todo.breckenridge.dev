@@ -1,0 +1,19 @@
+<% if @todos.any? %>
+Tasks due today:
+
+<% @todos.each do |todo| %>
+* <%= todo.name %> [<%= todo_url(todo) %>]
+<% end %>
+<% else %>
+You have nothing due today.
+<% end %>
+
+<% if @late_todos.any? %>
+Overdue tasks:
+
+<% @late_todos.each do |todo| %>
+* <%= todo.name %> [<%= todo_url(todo) %>]
+<% end %>
+<% end %>
+
+Have a productive day!
