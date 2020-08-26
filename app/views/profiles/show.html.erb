@@ -10,6 +10,30 @@
 
 <hr>
 
+<div class="list">
+  <div style="display: flex; align-items: center">
+    <h2 style="flex-grow: 1">API Keys</h2>
+    <div style="margin-left: 1em">
+      <%= button_to api_keys_path, class: 'button button-wide accent4' do %>
+        Create new API Key
+      <% end %>
+    </div>
+  </div>
+
+  <% current_user.api_keys.each do |api_key| %>
+    <div class="list-item">
+      <div style="display: flex; align-items: stretch">
+        <input class="string" type="text" style="flex-grow: 1; display: block; font-family: monospace" readonly="true" value="<%= api_key.api_key %>"/>
+        <div style="margin-left: 1em">
+          <%= button_to 'X', api_key_path(api_key), method: :delete, data: { confirm: 'Are you sure?' }, class: 'button button-sm accent0' %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
+
+<hr>
+
 <% if current_user %>
   <small>Logged in as <%= current_user.email %>. <%= link_to 'Log out', log_out_path, method: :delete, class: 'button accent0' %></small>
 <% end %>

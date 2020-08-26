@@ -4,6 +4,11 @@ class ProjectsController < ApplicationController
   # GET /projects
   def index
     @projects = Project.order(:status, :name)
+
+    respond_to do |format|
+      format.html { render(:index) }
+      format.json { render json: @projects.as_json }
+    end
   end
 
   # GET /projects/1

@@ -10,7 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_15_191025) do
+ActiveRecord::Schema.define(version: 2020_08_26_154458) do
+
+  create_table "api_keys", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.string "api_key", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_api_keys_on_user_id"
+  end
 
   create_table "estimates", force: :cascade do |t|
     t.integer "project_id", null: false
@@ -53,8 +61,10 @@ ActiveRecord::Schema.define(version: 2020_05_15_191025) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "time_zone", default: "Etc/UTC", null: false
+    t.index ["email"], name: "index_users_on_email", unique: true
   end
 
+  add_foreign_key "api_keys", "users", on_delete: :cascade
   add_foreign_key "estimates", "projects"
   add_foreign_key "todos", "projects"
 end
