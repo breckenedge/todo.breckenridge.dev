@@ -46,14 +46,12 @@
   background-color: var(--accent7);
 }
 
-button,
-input[type="submit"],
+button.button,
+input.button[type="submit"],
 a.button {
   border-width: 0;
   border-radius: 5px;
   text-align: center;
-  color: var(--accent0);
-  background-color: var(--shade1);
   text-decoration: none;
   padding: 0.5em 1em;
   font-size: 100%;
@@ -72,9 +70,4 @@ input[type="submit"],
 input[type="date"],
 select {
   -webkit-appearance: none;
-}
-
-// Fix date input height on iOS
-input[type="date"] {
-  height: 2.25em;
 }

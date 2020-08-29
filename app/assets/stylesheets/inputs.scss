@@ -2,16 +2,10 @@
   margin: 0 0 .5em;
 }
 
-input[type="text"],
-input[type="search"],
-input[type="select"],
-input[type="password"],
-input[type="email"],
-input[type="date"],
-input[type="number"],
-input[type="tel"],
-select,
-textarea {
+input.string,
+input.password,
+select.select,
+textarea.text {
   display: block;
   padding: .5em;
   border-width: 0;
@@ -22,7 +16,7 @@ textarea {
   color: var(--shade0);
 }
 
-select {
+select.select {
   line-height: normal;
   position: relative;
   background-repeat: no-repeat;
@@ -30,10 +24,16 @@ select {
   appearance: none;
 }
 
-label {
+label.string,
+label.text {
   display: block;
 }
 
-label > abbr[title="required"] {
-  display: none
+label.string,
+label.text,
+label.email,
+label.select {
+  abbr[title="required"] {
+    display: none
+  }
 }

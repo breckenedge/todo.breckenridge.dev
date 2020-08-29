@@ -14,3 +14,12 @@ require("channels")
 //
 // const images = require.context('../images', true)
 // const imagePath = (name) => images(name, true)
+
+import Pikaday from 'pikaday'
+import Moment from 'moment'
+
+document.addEventListener('DOMContentLoaded', function () {
+  document.querySelectorAll('.datepicker').forEach(function (elem) {
+    let picker = new Pikaday({ field: elem })
+  })
+})
