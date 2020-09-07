@@ -5,6 +5,7 @@ ruby "2.7.1"
 
 gem "bcrypt", "~> 3.1.7"
 gem "bootsnap", ">= 1.4.2", require: false
+gem "graphql"
 gem "puma", "~> 4.1"
 gem "rails"
 gem "sass-rails", ">= 6"
@@ -30,3 +31,5 @@ group :test do
   gem "selenium-webdriver"
   gem "webdrivers"
 end
+
+gem 'graphiql-rails', group: :development
