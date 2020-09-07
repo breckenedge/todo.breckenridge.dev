@@ -3,7 +3,7 @@
   <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 
   <%= f.input :name %>
-  <%= f.input :due_date, as: :string, input_html: { class: 'datepicker' } %>
+  <%= datepicker_input f, :due_date %>
   <%= f.input :details %>
   <%= f.input :estimates_enabled, label: 'Enable estimates?' %>
   <%= f.input :status, as: :boolean, label: "Complete?", checked_value: "complete", unchecked_value: "incomplete" %>

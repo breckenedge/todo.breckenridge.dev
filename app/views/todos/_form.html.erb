@@ -3,7 +3,7 @@
   <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 
   <%= f.input :name %>
-  <%= f.input :due_on, as: :string, input_html: { class: 'datepicker' } %>
+  <%= datepicker_input f, :due_on %>
   <%= f.input :project_id, collection: Project.order(:name, :status).pluck(:name, :id) %>
   <%= f.input :description, rows: 3 %>
   <%= f.input :status, as: :boolean, label: "Complete?", checked_value: "complete", unchecked_value: "incomplete" %>

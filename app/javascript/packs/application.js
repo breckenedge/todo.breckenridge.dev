@@ -15,11 +15,28 @@ require("channels")
 // const images = require.context('../images', true)
 // const imagePath = (name) => images(name, true)
 
-import Pikaday from 'pikaday'
-import Moment from 'moment'
+import React from 'react'
+import ReactDOM from 'react-dom'
+
+import Calendar from 'components/Calendar'
+import formatDate from 'helpers/formatDate'
+import parseDate from 'helpers/parseDate'
 
 document.addEventListener('DOMContentLoaded', function () {
   document.querySelectorAll('.datepicker').forEach(function (elem) {
-    let picker = new Pikaday({ field: elem })
+    const input = elem.querySelectorAll('input')[0]
+    const outlet = elem.querySelectorAll('.outlet')[0]
+    let value = input.getAttribute('value')
+
+    const onChange = (date) => {
+      let value = ''
+      if (date) { value = formatDate(date) }
+      input.setAttribute('value', value)
+    }
+
+    let date = undefined
+    if (value) { date = parseDate(value) }
+
+    ReactDOM.render(<Calendar value={date} onChange={onChange} />, outlet)
   })
 })
