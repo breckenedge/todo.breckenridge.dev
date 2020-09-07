@@ -1,10 +1,19 @@
-.react-date-picker {
-  background-color: var(--shade2);
-  border-radius: 0.5em;
-  width: 100%;
+.outlet {
+  .react-datepicker-wrapper {
+    display: block;
+    width: 100%;
 
-  .react-date-picker__wrapper {
-    padding: 0.125em 0.5em;
-    border: none;
+    input[type=text] {
+      background-color: var(--shade2);
+      border-radius: 0.5em;
+      border: none;
+      font-size: 100%;
+      display: block;
+      padding: 0.5em;
+      width: 100%;
+    }
   }
+}
+
+.react-datepicker__input-container {
 }
