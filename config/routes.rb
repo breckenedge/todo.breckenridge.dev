@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   end
   resource :profile, only: [:show, :update]
   resources :todos do
-    post :complete, on: :member
+    match :complete, on: :member, via: [:get, :post]
     post :incomplete, on: :member
   end
 
