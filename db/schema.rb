@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_26_154458) do
+ActiveRecord::Schema.define(version: 2020_09_13_175025) do
 
   create_table "api_keys", force: :cascade do |t|
     t.integer "user_id", null: false
@@ -43,6 +43,14 @@ ActiveRecord::Schema.define(version: 2020_08_26_154458) do
     t.boolean "estimates_enabled", default: false, null: false
   end
 
+  create_table "todo_status_changes", force: :cascade do |t|
+    t.integer "todo_id", null: false
+    t.integer "status", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["todo_id"], name: "index_todo_status_changes_on_todo_id"
+  end
+
   create_table "todos", force: :cascade do |t|
     t.string "name"
     t.text "description"
@@ -66,5 +74,6 @@ ActiveRecord::Schema.define(version: 2020_08_26_154458) do
 
   add_foreign_key "api_keys", "users", on_delete: :cascade
   add_foreign_key "estimates", "projects"
+  add_foreign_key "todo_status_changes", "todos", on_delete: :cascade
   add_foreign_key "todos", "projects"
 end

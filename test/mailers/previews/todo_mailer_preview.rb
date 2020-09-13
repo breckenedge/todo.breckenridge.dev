@@ -4,4 +4,8 @@ class TodoMailerPreview < ActionMailer::Preview
   def daily_digest
     TodoMailer.daily_digest
   end
+
+  def weekly_summary
+    TodoMailer.weekly_summary
+  end
 end

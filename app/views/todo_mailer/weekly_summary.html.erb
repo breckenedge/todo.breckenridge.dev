@@ -1,0 +1,7 @@
+<%= pluralize(@todos.count, "task") %> completed in the last week.
+
+<ul>
+  <% @todos.each do |todo| %>
+    <li><%= link_to(todo.name, todo_url(todo)) %></li>
+  <% end %>
+</ul>

@@ -62,7 +62,8 @@ class TodosController < ApplicationController
   end
 
   def complete
-    @todo.update(status: :complete)
+    @todo.update(status: :complete) && @todo.todo_status_changes.create(status: :complete)
+
     respond_to do |format|
       format.html do
         redirect_to params.fetch(:return_to, todo_path(@todo)), flash: {
@@ -74,7 +75,8 @@ class TodosController < ApplicationController
   end
 
   def incomplete
-    @todo.update(status: :incomplete)
+    @todo.update(status: :incomplete) && @todo.todo_status_changes.create(status: :incomplete)
+
     respond_to do |format|
       format.html do
         redirect_to params.fetch(:return_to, todo_path(@todo)), flash: {
