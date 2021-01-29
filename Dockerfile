@@ -17,6 +17,7 @@ WORKDIR /code
 COPY . /code/
 
 RUN bin/bundle install --quiet
+RUN yarn install
 RUN SECRET_KEY_BASE=`bin/rails secret` bin/rails assets:precompile
 
 EXPOSE 3000
