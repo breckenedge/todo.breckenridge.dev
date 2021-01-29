@@ -5,7 +5,7 @@ module ApplicationHelper
 
   def linkify_text(text)
     text.split("\n").map do |line|
-      line.split(" ").map do |word|
+      line.split.map do |word|
         if word.start_with?(%r{https?://})
           link_to(word, word)
         else
@@ -20,7 +20,7 @@ module ApplicationHelper
 
     days = (due_date - Date.current).to_i
 
-    content_tag(:span, class: "badge") do
+    tag.span(class: "badge") do
       "#{pluralize(days.abs, "day")} #{"ago" if days.negative?}"
     end
   end
