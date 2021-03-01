@@ -1,15 +1,12 @@
-<%= simple_form_for(todo) do |f| %>
-  <%= f.error_notification %>
-  <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
-
-  <%= f.input :name %>
-  <%= datepicker_input f, :due_on %>
-  <%= f.input :project_id, collection: Project.order(:name, :status).pluck(:name, :id) %>
-  <%= f.input :description, rows: 3 %>
-  <%= f.input :status, as: :boolean, label: "Complete?", checked_value: "complete", unchecked_value: "incomplete" %>
-
-  <%= f.submit 'Save', class: 'button button-wide accent5' %>
+<% content_for :js do %>
+  <script type="text/javascript">
+    window.todo = <%= todo.to_json.html_safe %>
+    window.projectOptions = <%= Project.select(:name, :id).to_json.html_safe %>
+  </script>
+  <%= javascript_pack_tag 'todo-form', 'data-turbolinks-track': 'reload' %>
 <% end %>
+
+<div id="form-outlet"></div>
 
 <hr>
 

@@ -17,26 +17,19 @@ require("channels")
 
 import React from 'react'
 import ReactDOM from 'react-dom'
-
-import Calendar from 'components/Calendar'
-import formatDate from 'helpers/formatDate'
-import parseDate from 'helpers/parseDate'
+import TodoForm from 'components/TodoForm'
 
 document.addEventListener('DOMContentLoaded', function () {
-  document.querySelectorAll('.datepicker').forEach(function (elem) {
-    const input = elem.querySelectorAll('input')[0]
-    const outlet = elem.querySelectorAll('.outlet')[0]
-    let value = input.getAttribute('value')
+  document.querySelectorAll('#form-outlet').forEach(function (elem) {
+    const authToken = document.querySelector('meta[name=csrf-token]').getAttribute('content')
 
-    const onChange = (date) => {
-      let value = ''
-      if (date) { value = formatDate(date) }
-      input.setAttribute('value', value)
-    }
-
-    let date = undefined
-    if (value) { date = parseDate(value) }
-
-    ReactDOM.render(<Calendar value={date} onChange={onChange} />, outlet)
+    ReactDOM.render(
+      <TodoForm
+        authenticityToken={authToken}
+        todo={window.todo}
+        projectOptions={window.projectOptions}
+      />,
+      elem
+    )
   })
 })
