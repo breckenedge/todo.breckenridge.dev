@@ -11,17 +11,21 @@ const DateInput = ({
 }) => {
   return (
     <InputWithLabel label={label} id={id}>
-      <input
-        type='date'
-        className='string'
-        name={name}
-        required={required}
-        id={id}
-        onChange={onChange}
-        value={value || ''} />
-      <button
-        type='button'
-        onClick={() => { onChange({ target: { value: '' } }) }}>Clear</button>
+      <div style={{ display: "flex" }}>
+        <input
+          type='date'
+          className='string'
+          name={name}
+          required={required}
+          id={id}
+          onChange={onChange}
+          value={value || ''}
+          style={{flexGrow: 1, marginRight: '0.5em'}} />
+        <button
+          type='button'
+          className='button accent1'
+          onClick={() => { onChange({ target: { value: '' } }) }}>Clear</button>
+      </div>
     </InputWithLabel>
   )
 }
