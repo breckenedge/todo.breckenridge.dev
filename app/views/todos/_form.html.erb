@@ -3,7 +3,6 @@
     window.todo = <%= todo.to_json.html_safe %>
     window.projectOptions = <%= Project.select(:name, :id).to_json.html_safe %>
   </script>
-  <%= javascript_pack_tag 'todo-form', 'data-turbolinks-track': 'reload' %>
 <% end %>
 
 <div id="form-outlet"></div>
