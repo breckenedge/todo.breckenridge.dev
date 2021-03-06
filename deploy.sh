@@ -8,6 +8,9 @@
 
 set -e
 
+echo 'Deleting dangling images'
+yes | docker image prune
+
 echo 'Pulling latest'
 docker pull docker.pkg.github.com/breckenedge/todo.breckenridge.dev/todo:latest
 
