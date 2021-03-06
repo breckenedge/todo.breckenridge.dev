@@ -17,19 +17,33 @@ require("channels")
 
 import React from 'react'
 import ReactDOM from 'react-dom'
+import { BrowserRouter, Switch, Route } from 'react-router-dom'
 import TodoForm from 'components/TodoForm'
 
 document.addEventListener('DOMContentLoaded', function () {
-  document.querySelectorAll('#form-outlet').forEach(function (elem) {
-    const authToken = document.querySelector('meta[name=csrf-token]').getAttribute('content')
+  const authToken = document.querySelector('meta[name=csrf-token]').getAttribute('content')
+  const outlet = document.querySelector('#outlet')
 
+  if (outlet) {
     ReactDOM.render(
-      <TodoForm
-        authenticityToken={authToken}
-        todo={window.todo}
-        projectOptions={window.projectOptions}
-      />,
-      elem
-    )
-  })
+      <BrowserRouter>
+        <Switch>
+          <Route path="/todos/:id/edit">
+            <TodoForm
+              authenticityToken={authToken}
+              todo={window.todo}
+              projectOptions={window.projectOptions}
+            />
+          </Route>
+          <Route path="/todos/new">
+            <TodoForm
+              authenticityToken={authToken}
+              todo={window.todo}
+              projectOptions={window.projectOptions}
+            />
+          </Route>
+        </Switch>
+      </BrowserRouter>
+    , outlet)
+  }
 })
