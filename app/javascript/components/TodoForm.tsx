@@ -4,8 +4,16 @@ import DateInput from './DateInput'
 import SelectInput from './SelectInput'
 import TextInput from './TextInput'
 import TextAreaInput from './TextAreaInput'
+import { ProjectOptionI } from '../interfaces/ProjectOptionI'
+import { TodoI } from '../interfaces/TodoI'
 
-const TodoForm = ({ authenticityToken, todo, projectOptions }) => {
+interface PropsI {
+  authenticityToken: string,
+  todo: TodoI,
+  projectOptions: Array<ProjectOptionI>,
+}
+
+const TodoForm = ({ authenticityToken, todo, projectOptions }: PropsI) => {
   const [model, setModel] = useState(todo)
   const url = `/todos/${model.id || ''}`
 
