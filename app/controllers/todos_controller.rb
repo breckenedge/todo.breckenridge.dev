@@ -33,7 +33,9 @@ class TodosController < ApplicationController
 
     respond_to do |format|
       if @todo.save
-        format.html { redirect_to params.fetch("return_to", todo_path(@todo)), notice: "Todo was successfully created." }
+        format.html do
+          redirect_to params.fetch("return_to", todo_path(@todo)), notice: "Todo was successfully created."
+        end
       else
         format.html { render :new }
       end
