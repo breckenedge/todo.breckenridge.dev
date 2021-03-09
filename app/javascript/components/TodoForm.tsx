@@ -11,9 +11,10 @@ interface PropsI {
   authenticityToken: string,
   todo: TodoI,
   projectOptions: Array<ProjectOptionI>,
+  returnTo?: string,
 }
 
-const TodoForm = ({ authenticityToken, todo, projectOptions }: PropsI) => {
+const TodoForm = ({ authenticityToken, todo, projectOptions, returnTo }: PropsI) => {
   const [model, setModel] = useState(todo)
   const url = `/todos/${model.id || ''}`
 
@@ -35,6 +36,7 @@ const TodoForm = ({ authenticityToken, todo, projectOptions }: PropsI) => {
     <form
       action={url}
       method='post'>
+      { returnTo && <input type='hidden' name='return_to' value={returnTo} />}
       <input
         type='hidden'
         name='_method'

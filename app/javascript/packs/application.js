@@ -20,6 +20,11 @@ import ReactDOM from 'react-dom'
 import { BrowserRouter, Switch, Route } from 'react-router-dom'
 import TodoForm from 'components/TodoForm'
 
+const urlParam = (name) => {
+  const urlParams = new URLSearchParams(window.location.search)
+  return urlParams.get(name)
+}
+
 document.addEventListener('DOMContentLoaded', function () {
   const authToken = document.querySelector('meta[name=csrf-token]').getAttribute('content')
   const outlet = document.querySelector('#outlet')
@@ -40,6 +45,7 @@ document.addEventListener('DOMContentLoaded', function () {
               authenticityToken={authToken}
               todo={window.todo}
               projectOptions={window.projectOptions}
+              returnTo={urlParam('project_id') ? `/projects/${urlParam('project_id')}` : "/todos"}
             />
           </Route>
         </Switch>
