@@ -4,17 +4,17 @@ import DateInput from './DateInput'
 import SelectInput from './SelectInput'
 import TextInput from './TextInput'
 import TextAreaInput from './TextAreaInput'
-import { ProjectOptionI } from '../interfaces/ProjectOptionI'
+import AuthenticityTokenContext from './AuthenticityTokenContext'
+import ProjectOptionsContext from './ProjectOptionsContext'
 import { TodoI } from '../interfaces/TodoI'
 
 interface PropsI {
-  authenticityToken: string,
   todo: TodoI,
-  projectOptions: Array<ProjectOptionI>,
   returnTo?: string,
+  onSubmit: () => void,
 }
 
-const TodoForm = ({ authenticityToken, todo, projectOptions, returnTo }: PropsI) => {
+const TodoForm = ({ todo, returnTo, onSubmit }: PropsI) => {
   const [model, setModel] = useState(todo)
   const url = `/todos/${model.id || ''}`
 
@@ -35,16 +35,21 @@ const TodoForm = ({ authenticityToken, todo, projectOptions, returnTo }: PropsI)
   return (
     <form
       action={url}
-      method='post'>
+      method='post'
+      onSubmit={onSubmit}>
       { returnTo && <input type='hidden' name='return_to' value={returnTo} />}
       <input
         type='hidden'
         name='_method'
         value={model.id ? 'patch' : 'post'} />
-      <input
-        type='hidden'
-        name='authenticity_token'
-        value={authenticityToken} />
+      <AuthenticityTokenContext.Consumer>
+        {authToken => (
+          <input
+            type='hidden'
+            name='authenticity_token'
+            value={authToken} />
+        )}
+      </AuthenticityTokenContext.Consumer>
       <TextInput
         required={true}
         name='todo[name]'
@@ -59,14 +64,18 @@ const TodoForm = ({ authenticityToken, todo, projectOptions, returnTo }: PropsI)
         label='Due on'
         value={model.due_on}
         onChange={(e) => handleChange('due_on', e)} />
-      <SelectInput
-        required={false}
-        name='todo[project_id]'
-        id='todo_project_id'
-        label='Project'
-        value={model.project_id}
-        onChange={(e) => handleChange('project_id', e)}
-        options={projectOptions.map((p) => ({ value: p.id, label: p.name }))} />
+      <ProjectOptionsContext.Consumer>
+        {projectOptions => (
+          <SelectInput
+            required={false}
+            name='todo[project_id]'
+            id='todo_project_id'
+            label='Project'
+            value={model.project_id}
+            onChange={(e) => handleChange('project_id', e)}
+            options={projectOptions.map((p) => ({ value: p.id, label: p.name }))} />
+        )}
+      </ProjectOptionsContext.Consumer>
       <TextAreaInput
         required={false}
         name='todo[description]'
@@ -92,7 +101,7 @@ const TodoForm = ({ authenticityToken, todo, projectOptions, returnTo }: PropsI)
 }
 
 TodoForm.defaultProps = {
-  model: {},
+  todo: {},
 }
 
 export default TodoForm

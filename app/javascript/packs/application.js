@@ -18,7 +18,9 @@ require("channels")
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { BrowserRouter, Switch, Route } from 'react-router-dom'
-import TodoForm from 'components/TodoForm'
+import TodoEditor from 'components/TodoEditor'
+import AuthenticityTokenContext from 'components/AuthenticityTokenContext'
+import ProjectOptionsContext from 'components/ProjectOptionsContext'
 
 const urlParam = (name) => {
   const urlParams = new URLSearchParams(window.location.search)
@@ -31,25 +33,25 @@ document.addEventListener('DOMContentLoaded', function () {
 
   if (outlet) {
     ReactDOM.render(
-      <BrowserRouter>
-        <Switch>
-          <Route path="/todos/:id/edit">
-            <TodoForm
-              authenticityToken={authToken}
-              todo={window.todo}
-              projectOptions={window.projectOptions}
-            />
-          </Route>
-          <Route path="/todos/new">
-            <TodoForm
-              authenticityToken={authToken}
-              todo={window.todo}
-              projectOptions={window.projectOptions}
-              returnTo={urlParam('project_id') ? `/projects/${urlParam('project_id')}` : "/todos"}
-            />
-          </Route>
-        </Switch>
-      </BrowserRouter>
+      <AuthenticityTokenContext.Provider value={authToken}>
+        <ProjectOptionsContext.Provider value={window.projectOptions}>
+          <BrowserRouter>
+            <Switch>
+              <Route path="/todos/:id/edit">
+                <TodoEditor
+                  todo={window.todo}
+                />
+              </Route>
+              <Route path="/todos/new">
+                <TodoEditor
+                  todo={window.todo}
+                  returnTo={urlParam('project_id') ? `/projects/${urlParam('project_id')}` : "/todos"}
+                />
+              </Route>
+            </Switch>
+          </BrowserRouter>
+        </ProjectOptionsContext.Provider>
+      </AuthenticityTokenContext.Provider>
     , outlet)
   }
 })
