@@ -1,7 +1,7 @@
 .alert {
-  background-color: var(--accent4);
-  border: 1px solid var(--accent4);
-  color: var(--shade1);
+  background-color: var(--teal);
+  border: 1px solid var(--teal);
+  color: var(--background);
   padding: 0.5em 1em;
   margin-bottom: 1em;
 
@@ -9,7 +9,7 @@
   a:hover,
   a:active,
   a:visited {
-    color: var(--shade1);
+    color: var(--background);
   }
 }
 

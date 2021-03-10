@@ -1,21 +1,21 @@
 :root {
-  --accent0: #C65967;
-  --accent1: #D3873B;
-  --accent2: #E5BE31;
-  --accent3: #97B55A;
-  --accent4: #76A377;  
-  --accent5: #6484B5;
-  --accent6: #995785;
-  --accent7: #AC7155;
-  --shade0: black;
-  --shade1: white;
-  --shade2: whitesmoke;
+  --red: #C65967;
+  --orange: #D3873B;
+  --yellow: #E5BE31;
+  --green: #97B55A;
+  --teal: #76A377;
+  --blue: #6484B5;
+  --purple: #995785;
+  --brown: #AC7155;
+  --foreground: black;
+  --background: white;
+  --inputBackground: whitesmoke;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --shade0: white;
-    --shade1: black;
-    --shade2: darkslategray;
+    --foreground: lightgray;
+    --background: black;
+    --inputBackground: darkslategray;
   }
 }

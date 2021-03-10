@@ -1,11 +1,11 @@
 .error-notification {
   margin: -1em -1em 1em;
   padding: 0.75em 1em;
-  background-color: var(--accent0);
-  color: var(--shade1);
+  background-color: var(--red);
+  color: var(--background);
 }
 
 .field_with_errors label,
 .field_with_errors .error {
-  color: var(--accent0);
+  color: var(--red);
 }

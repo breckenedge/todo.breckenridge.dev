@@ -3,14 +3,14 @@
 
   > .project {
     display: flex;
-    border-top: 1px solid var(--shade2);
+    border-top: 1px solid var(--inputBackground);
 
     .name-and-progress {
       flex-grow: 1;
       display: block;
       padding: 0.75em 1em 0.75em 0;
       text-decoration: none;
-      color: var(--shade0);
+      color: var(--foreground);
       display: flex;
 
       .name {
@@ -20,6 +20,6 @@
   }
 
   > .project:last-child {
-    border-bottom: 1px solid var(--shade2);
+    border-bottom: 1px solid var(--inputBackground);
   }
 }

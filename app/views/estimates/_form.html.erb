@@ -10,11 +10,11 @@
   <%= f.input :phone %>
   <%= f.input :details %>
 
-  <%= f.button :submit, 'Save', class: 'button button-wide accent5' %>
+  <%= f.button :submit, 'Save', class: 'button button-wide blue' %>
 <% end %>
 
 <hr>
 
 <% unless @estimate.new_record? %>
-  <%= button_to 'Delete Estimate', estimate_path(@estimate), class: 'button button-wide accent0', method: :delete, data: { confirm: 'Are you sure?' } %>
+  <%= button_to 'Delete Estimate', estimate_path(@estimate), class: 'button button-wide red', method: :delete, data: { confirm: 'Are you sure?' } %>
 <% end %>

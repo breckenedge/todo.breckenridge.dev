@@ -23,7 +23,7 @@ const DateInput = ({
           style={{flexGrow: 1, marginRight: '0.5em'}} />
         <button
           type='button'
-          className='button accent1'
+          className='button orange'
           onClick={() => { onChange({ target: { value: '' } }) }}>Clear</button>
       </div>
     </InputWithLabel>

@@ -11,10 +11,10 @@ textarea.text {
   padding: .5em;
   border-width: 0;
   width: 100%;
-  background: var(--shade2);
+  background: var(--inputBackground);
   border-radius: 5px;
   font-size: 100%;
-  color: var(--shade0);
+  color: var(--foreground);
 }
 
 select.select {

@@ -3,7 +3,7 @@
     <h3>
       <% if date %>
         <% if date < Date.current %>
-          <span class="accent0"><%= l date %></span>
+          <span class="red"><%= l date %></span>
         <% elsif date == Date.current %>
           Today
         <% else %>
@@ -23,6 +23,6 @@
 <% end %>
 
 <% if todos.complete.any? %>
-  <h3 class="accent4 todo-list-heading">Complete</h3>
+  <h3 class="teal todo-list-heading">Complete</h3>
   <%= render 'todos_list', todos: todos.complete.order(:name) %>
 <% end %>

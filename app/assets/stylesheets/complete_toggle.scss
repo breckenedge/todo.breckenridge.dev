@@ -2,7 +2,7 @@
   display: block;
   text-decoration: none;
   padding: 0.75em 1em;
-  color: var(--shade1);
+  color: var(--background);
 
   .icon {
     width: 28px;
@@ -16,13 +16,13 @@
 .complete-toggle:visited,
 .complete-toggle:active {
   text-decoration: none;
-  color: var(--shade1);
+  color: var(--background);
 }
 
 .complete-toggle.incomplete .icon {
-  background-color: var(--accent4)
+  background-color: var(--teal)
 }
 
 .complete-toggle.complete .icon {
-  background-color: var(--accent0)
+  background-color: var(--red)
 }

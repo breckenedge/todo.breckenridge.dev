@@ -1,49 +1,49 @@
 // Error, VCS Deletion
-.button.accent0 {
-  color: var(--shade1);
-  background-color: var(--accent0);
+.button.red {
+  color: var(--background);
+  background-color: var(--red);
 }
 
 // Syntax
-.button.accent1 {
-  color: var(--shade1);
-  background-color: var(--accent1);
+.button.orange {
+  color: var(--background);
+  background-color: var(--orange);
 }
 
 // Warning, VCS Modification
-.button.accent2 {
-  color: var(--shade1);
-  background-color: var(--accent2);
+.button.yellow {
+  color: var(--background);
+  background-color: var(--yellow);
 }
 
 // Success, VCS Addition
-.button.accent3 {
-  color: var(--shade1);
-  background-color: var(--accent3);
+.button.green {
+  color: var(--background);
+  background-color: var(--green);
 }
 
 // Syntax
-.button.accent4 {
-  color: var(--shade1);
-  background-color: var(--accent4);
+.button.teal {
+  color: var(--background);
+  background-color: var(--teal);
 }
 
 // Syntax
-.button.accent5 {
-  color: var(--shade1);
-  background-color: var(--accent5);
+.button.blue {
+  color: var(--background);
+  background-color: var(--blue);
 }
 
 // Syntax, Caret/Cursor
-.button.accent6 {
-  color: var(--shade1);
-  background-color: var(--accent6);
+.button.purple {
+  color: var(--background);
+  background-color: var(--purple);
 }
 
 // Syntax, Special
-.button.accent7 {
-  color: var(--shade1);
-  background-color: var(--accent7);
+.button.brown {
+  color: var(--background);
+  background-color: var(--brown);
 }
 
 button.button,

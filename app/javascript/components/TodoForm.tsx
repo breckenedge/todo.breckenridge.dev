@@ -95,7 +95,7 @@ const TodoForm = ({ todo, returnTo, onSubmit }: PropsI) => {
       <input
         type="submit"
         value="Save"
-        className="button button-wide accent5" />
+        className="button button-wide blue" />
     </form>
   )
 }

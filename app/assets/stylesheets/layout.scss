@@ -1,7 +1,7 @@
 html, body {
   height: 100%;
-  background-color: var(--shade0);
-  color: var(--shade0);
+  background-color: var(--foreground);
+  color: var(--foreground);
   font-family: 'Helvetica', sans-serif;
 }
 
@@ -13,23 +13,23 @@ body {
 
   > header {
     padding: 0 1em;
-    background-color: var(--shade1);
+    background-color: var(--background);
   }
 
   > main {
     padding: 1em;
-    background-color: var(--shade1);
+    background-color: var(--background);
   }
 
   > footer {
     padding: 1em;
     flex-grow: 1;
-    background-color: var(--shade1);
+    background-color: var(--background);
   }
 }
 
 a {
-  color: var(--accent5);
+  color: var(--blue);
 }
 
 * {
@@ -45,34 +45,34 @@ hr {
   border-width: 0;
 }
 
-.accent0 {
-  color: var(--accent0);
+.red {
+  color: var(--red);
 }
 
-.accent1 {
-  color: var(--accent1);
+.orange {
+  color: var(--orange);
 }
 
-.accent2 {
-  color: var(--accent2);
+.yellow {
+  color: var(--yellow);
 }
 
-.accent3 {
-  color: var(--accent3);
+.green {
+  color: var(--green);
 }
 
-.accent4 {
-  color: var(--accent4);
+.teal {
+  color: var(--teal);
 }
 
-.accent5 {
-  color: var(--accent5);
+.blue {
+  color: var(--blue);
 }
 
-.accent6 {
-  color: var(--accent6);
+.purple {
+  color: var(--purple);
 }
 
-.accent7 {
-  color: var(--accent7);
+.brown {
+  color: var(--brown);
 }

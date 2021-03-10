@@ -2,22 +2,22 @@ nav {
   display: flex;
   align-items: stretch;
   margin: 0 -1em;
-  background-color: var(--shade0);
+  background-color: var(--foreground);
 
   *:last-child {
     margin-left: 0;
   }
 
   *.active {
-    background-color: var(--shade1);
-    color: var(--shade0);
+    background-color: var(--background);
+    color: var(--foreground);
   }
 
   > a {
     text-decoration: none;
     display: block;
     padding: 0.75em 1em;
-    color: var(--shade1);
+    color: var(--background);
     line-height: 100%;
   }
 
@@ -35,7 +35,7 @@ nav {
 }
 
 .navigate-back {
-  border-bottom: 0.125em solid var(--shade2);
+  border-bottom: 0.125em solid var(--inputBackground);
   margin: -1em -1em 1em;
 
   > a {
@@ -47,7 +47,7 @@ nav {
   > a:active,
   > a:hover,
   > a:visited {
-    color: var(--shade0);
+    color: var(--foreground);
     text-decoration: none;
   }
 }

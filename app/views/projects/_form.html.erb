@@ -8,11 +8,11 @@
   <%= f.input :estimates_enabled, label: 'Enable estimates?' %>
   <%= f.input :status, as: :boolean, label: "Complete?", checked_value: "complete", unchecked_value: "incomplete" %>
 
-  <%= f.button :submit, 'Save', class: 'button button-wide accent5' %>
+  <%= f.button :submit, 'Save', class: 'button button-wide blue' %>
 <% end %>
 
 <hr>
 
 <% unless @project.new_record? %>
-  <%= button_to 'Delete Project', project_path(@project), class: 'button button-wide accent0', method: :delete, data: { confirm: 'Are you sure?' } %>
+  <%= button_to 'Delete Project', project_path(@project), class: 'button button-wide red', method: :delete, data: { confirm: 'Are you sure?' } %>
 <% end %>
