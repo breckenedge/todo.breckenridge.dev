@@ -24,8 +24,8 @@ class TodosControllerTest < ActionDispatch::IntegrationTest
           due_on: @todo.due_on,
           name: @todo.name,
           priority: @todo.priority,
-          status: @todo.status
-        }
+          status: @todo.status,
+        },
       }
     end
 
@@ -49,8 +49,8 @@ class TodosControllerTest < ActionDispatch::IntegrationTest
         due_on: @todo.due_on,
         name: @todo.name,
         priority: @todo.priority,
-        status: @todo.status
-      }
+        status: @todo.status,
+      },
     }
     assert_redirected_to todo_url(@todo)
   end

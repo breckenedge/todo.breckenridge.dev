@@ -1,30 +1,24 @@
-import React from 'react'
-import InputWithLabel from './InputWithLabel'
+import React from "react"
+import InputWithLabel from "components/InputWithLabel"
 
 const DateInput = ({
   id,
-  name,
-  required,
   label,
-  onChange,
-  value,
+  ...rest
 }) => {
   return (
     <InputWithLabel label={label} id={id}>
       <div style={{ display: "flex" }}>
         <input
-          type='date'
-          className='string'
-          name={name}
-          required={required}
+          type="date"
+          className="string"
           id={id}
-          onChange={onChange}
-          value={value || ''}
+          {...rest}
           style={{flexGrow: 1, marginRight: '0.5em'}} />
         <button
-          type='button'
-          className='button orange'
-          onClick={() => { onChange({ target: { value: '' } }) }}>Clear</button>
+          type="button"
+          className="button orange"
+          onClick={() => { rest.onChange({ target: { value: "" } }) }}>Clear</button>
       </div>
     </InputWithLabel>
   )

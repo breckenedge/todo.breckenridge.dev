@@ -21,7 +21,7 @@ Rails.application.configure do
 
     config.cache_store = :memory_store
     config.public_file_server.headers = {
-      "Cache-Control" => "public, max-age=#{2.days.to_i}"
+      "Cache-Control" => "public, max-age=#{2.days.to_i}",
     }
   else
     config.action_controller.perform_caching = false
@@ -71,7 +71,7 @@ Rails.application.configure do
     user_name: ENV.fetch("SMTP_USERNAME", ""),
     password: ENV.fetch("SMTP_PASSWORD", ""),
     authentication: ENV.fetch("SMTP_AUTHENTICATION", "plain"),
-    enable_starttls_auto: true
+    enable_starttls_auto: true,
   }
 
   config.hosts << "zion.local"

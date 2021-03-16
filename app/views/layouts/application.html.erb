@@ -4,7 +4,12 @@
     <title>Todo</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-    <%= content_for :js %>
+    <% if current_user %>
+      <script type="text/javascript">
+        window.currentUser = <%= current_user.as_json.slice("id", "email", "time_zone").to_json.html_safe %>;
+        window.projectOptions = <%= Project.select(:id, :name).to_json.html_safe %>;
+      </script>
+    <% end %>
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0, shrink-to-fit=no">
@@ -12,27 +17,6 @@
   </head>
 
   <body>
-    <header>
-      <nav>
-        <%= navigation %>
-      </nav>
-    </header>
-
-    <main>
-      <% if notice %>
-        <div class="alert alert-success">
-          <%= notice %>
-
-          <% if flash[:undo].present? %>
-            <%= link_to 'Undo', flash[:undo], method: :post %>
-          <% end %>
-        </div>
-      <% end %>
-
-      <%= yield %>
-    </main>
-
-    <footer>
-    </footer>
+    <div id="outlet"></div>
   </body>
 </html>

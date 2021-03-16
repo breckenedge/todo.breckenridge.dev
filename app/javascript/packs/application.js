@@ -17,41 +17,21 @@ require("channels")
 
 import React from 'react'
 import ReactDOM from 'react-dom'
-import { BrowserRouter, Switch, Route } from 'react-router-dom'
-import TodoEditor from 'components/TodoEditor'
-import AuthenticityTokenContext from 'components/AuthenticityTokenContext'
-import ProjectOptionsContext from 'components/ProjectOptionsContext'
-
-const urlParam = (name) => {
-  const urlParams = new URLSearchParams(window.location.search)
-  return urlParams.get(name)
-}
+import App from "components/App"
 
 document.addEventListener('DOMContentLoaded', function () {
   const authToken = document.querySelector('meta[name=csrf-token]').getAttribute('content')
+  const projectOptions = window.projectOptions || []
+  const currentUser = window.currentUser || null
   const outlet = document.querySelector('#outlet')
 
   if (outlet) {
     ReactDOM.render(
-      <AuthenticityTokenContext.Provider value={authToken}>
-        <ProjectOptionsContext.Provider value={window.projectOptions}>
-          <BrowserRouter>
-            <Switch>
-              <Route path="/todos/:id/edit">
-                <TodoEditor
-                  todo={window.todo}
-                />
-              </Route>
-              <Route path="/todos/new">
-                <TodoEditor
-                  todo={window.todo}
-                  returnTo={urlParam('project_id') ? `/projects/${urlParam('project_id')}` : "/todos"}
-                />
-              </Route>
-            </Switch>
-          </BrowserRouter>
-        </ProjectOptionsContext.Provider>
-      </AuthenticityTokenContext.Provider>
-    , outlet)
+      <App
+        authToken={authToken}
+        projectOptions={projectOptions}
+        currentUser={currentUser} />,
+      outlet
+    )
   }
 })

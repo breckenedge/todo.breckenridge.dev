@@ -22,8 +22,7 @@ Lint/StructNewOverride:
   Enabled: true
 
 Metrics/AbcSize:
-  Exclude:
-    - 'bin/bundle'
+  Enabled: false
 
 Metrics/BlockLength:
   Exclude:
@@ -77,3 +76,6 @@ Style/StringLiteralsInInterpolation:
 Style/NumericLiterals:
   Exclude:
     - 'db/schema.rb'
+
+Style/TrailingCommaInHashLiteral:
+  EnforcedStyleForMultiline: consistent_comma

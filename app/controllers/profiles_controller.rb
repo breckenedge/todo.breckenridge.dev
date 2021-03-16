@@ -3,9 +3,9 @@ class ProfilesController < ApplicationController
 
   def update
     if current_user.update(params.require(:user).permit(:email, :time_zone))
-      redirect_to profile_path, notice: "Profile updated"
+      render json: current_user.as_json.slice("id", "email", "time_zone"), status: :ok
     else
-      render :show
+      render json: { errors: current_user.errors }, status: :not_acceptable
     end
   end
 end

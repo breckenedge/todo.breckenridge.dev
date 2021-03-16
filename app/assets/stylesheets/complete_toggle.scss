@@ -15,8 +15,10 @@
 .complete-toggle:hover,
 .complete-toggle:visited,
 .complete-toggle:active {
-  text-decoration: none;
+  background-color: transparent;
+  border: none;
   color: var(--background);
+  text-decoration: none;
 }
 
 .complete-toggle.incomplete .icon {

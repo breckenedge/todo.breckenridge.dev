@@ -9,7 +9,8 @@
     "moduleResolution": "node",
     "sourceMap": true,
     "target": "es5",
-    "jsx": "react"
+    "jsx": "react",
+    "baseUrl": "app/javascript"
   },
   "exclude": [
     "**/*.spec.ts",

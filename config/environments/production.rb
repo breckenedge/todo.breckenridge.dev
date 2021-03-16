@@ -119,7 +119,7 @@ Rails.application.configure do
     user_name: ENV.fetch("SMTP_USERNAME", ""),
     password: ENV.fetch("SMTP_PASSWORD", ""),
     authentication: ENV.fetch("SMTP_AUTHENTICATION", "plain"),
-    enable_starttls_auto: true
+    enable_starttls_auto: true,
   }
 end
 # rubocop:enable Metrics/BlockLength

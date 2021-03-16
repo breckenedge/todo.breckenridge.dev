@@ -3,7 +3,7 @@ class ProjectsController < ApplicationController
 
   # GET /projects
   def index
-    @projects = Project.order(:status, :name)
+    @projects = Project.all
 
     respond_to do |format|
       format.html { render(:index) }
@@ -12,7 +12,22 @@ class ProjectsController < ApplicationController
   end
 
   # GET /projects/1
-  def show; end
+  def show
+    respond_to do |format|
+      format.html
+      format.json do
+        document = if params["include"] == "todos"
+                     {
+                       "project" => @project,
+                       "todos" => @project.todos,
+                     }.as_json
+                   else
+                     @project
+                   end
+        render json: document.as_json
+      end
+    end
+  end
 
   # GET /projects/new
   def new
@@ -29,8 +44,10 @@ class ProjectsController < ApplicationController
     respond_to do |format|
       if @project.save
         format.html { redirect_to @project, notice: "Project was successfully created." }
+        format.json { render json: @project, status: :created }
       else
         format.html { render :new }
+        format.json { render json: @project.errors, status: :not_acceptable }
       end
     end
   end
@@ -40,8 +57,10 @@ class ProjectsController < ApplicationController
     respond_to do |format|
       if @project.update(project_params)
         format.html { redirect_to @project, notice: "Project was successfully updated." }
+        format.json { render json: @project }
       else
         format.html { render :edit }
+        format.json { render json: @project.errors, status: :not_acceptable }
       end
     end
   end
@@ -51,6 +70,7 @@ class ProjectsController < ApplicationController
     @project.destroy
     respond_to do |format|
       format.html { redirect_to projects_url, notice: "Project was successfully destroyed." }
+      format.json { render json: @project }
     end
   end
 

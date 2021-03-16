@@ -1,25 +1,17 @@
-import React from 'react'
-import InputWithLabel from './InputWithLabel'
+import React from "react"
+import InputWithLabel from "components/InputWithLabel"
 
 const TextAreaInput = ({
   id,
-  name,
-  required,
   label,
-  onChange,
-  value,
-  rows,
+  ...rest
 }) => {
   return (
     <InputWithLabel label={label} id={id}>
       <textarea
-        className='text'
-        name={name}
-        required={required}
+        className="text"
         id={id}
-        onChange={onChange}
-        value={value || ''}
-        rows={rows} />
+        {...rest} />
     </InputWithLabel>
   )
 }

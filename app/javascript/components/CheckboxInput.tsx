@@ -1,39 +1,22 @@
-import React from 'react'
+import React from "react"
 
 const CheckboxInput = ({
-  id,
-  name,
   label,
-  onChange,
-  checked,
-  value,
-  falseValue,
+  ...rest
 }) => {
   return (
     <div
-      className='input boolean'>
-      <input
-        type='hidden'
-        name={name}
-        value={falseValue} />
+      className="input boolean">
       <label
-        className='boolean input'>
+        className="boolean input">
         <input
-          type='checkbox'
-          className='boolean'
-          name={name}
-          id={id}
-          onChange={onChange}
-          checked={checked}
-          value={value} />
+          type="checkbox"
+          className="boolean"
+          {...rest} />
         {label}
       </label>
     </div>
   )
-}
-
-CheckboxInput.defaultProps = {
-  falseValue: '',
 }
 
 export default CheckboxInput

@@ -6,13 +6,13 @@ Rails.application.routes.draw do
   resources :api_keys
   resources :estimates
   resources :projects do
-    post :complete, on: :member
-    post :incomplete, on: :member
+    patch :complete, on: :member
+    patch :incomplete, on: :member
   end
   resource :profile, only: [:show, :update]
   resources :todos do
-    match :complete, on: :member, via: [:get, :post]
-    post :incomplete, on: :member
+    match :complete, on: :member, via: [:get, :patch]
+    patch :incomplete, on: :member
   end
 
   get :log_in, to: "sessions#new", as: :log_in

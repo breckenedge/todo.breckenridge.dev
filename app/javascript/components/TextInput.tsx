@@ -1,23 +1,17 @@
-import React from 'react'
-import InputWithLabel from './InputWithLabel'
+import React from "react"
+import InputWithLabel from "components/InputWithLabel"
 
 const TextInput = ({
   id,
-  name,
-  required,
   label,
-  onChange,
-  value,
+  ...rest
 }) => {
   return (
     <InputWithLabel label={label} id={id}>
       <input
-        className='string'
-        name={name}
-        required={required}
+        className="string"
         id={id}
-        onChange={onChange}
-        value={value || ''} />
+        {...rest} />
     </InputWithLabel>
   )
 }
