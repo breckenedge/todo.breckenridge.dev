@@ -19,7 +19,7 @@ const AppLayout = () => {
   const history = useHistory()
 
   useEffect(() => {
-    if (!currentUser) {
+    if (!currentUser && history) {
       history.push("/log_in")
     }
   }, [])
