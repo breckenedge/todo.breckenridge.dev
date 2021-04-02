@@ -5,26 +5,21 @@ import { fetchProjects } from "repos/ProjectsRepo"
 import LoadingIndicator from "components/LoadingIndicator"
 
 const ProjectsPage = () => {
-  const [projects, setProjects] = useState([])
-  const [isLoading, setIsLoading] = useState(true)
+  const [projects, setProjects] = useState(null)
 
   useEffect(() => {
-    fetchProjects((data) => {
-      setProjects(data)
-      setIsLoading(false)
-    })
+    fetchProjects(setProjects)
   }, [])
 
-  return (<div>
-    <Link to="/projects/new" className="button button-wide teal">New Project</Link>
+  return (
+    <>
+      <Link to="/projects/new" className="button button-wide teal">New Project</Link>
 
-    <br />
+      <br />
 
-    {isLoading && <LoadingIndicator />}
-    {!isLoading &&
-      <ProjectsList projects={projects} />
-    }
-  </div>)
+      {projects ? <ProjectsList projects={projects} /> : <LoadingIndicator />}
+    </>
+  )
 }
 
 export default ProjectsPage
