@@ -11,15 +11,14 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
-
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          bundler-cache: true
+      - name: Install dependencies
+        run: bundle install
       - name: Run tests
-        run: |
-          if [ -f docker-compose.test.yml ]; then
-            docker-compose --file docker-compose.test.yml build
-            docker-compose --file docker-compose.test.yml run sut
-          else
-            docker build . --file Dockerfile
-          fi
+        run: bundle exec rake
 
   # Push image to GitHub Packages.
   # See also https://docs.docker.com/docker-hub/builds/
