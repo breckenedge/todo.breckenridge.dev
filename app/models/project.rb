@@ -1,5 +1,4 @@
 class Project < ApplicationRecord
-  has_many :estimates, dependent: :destroy
   has_many :todos, dependent: :destroy
 
   validates :name, presence: true

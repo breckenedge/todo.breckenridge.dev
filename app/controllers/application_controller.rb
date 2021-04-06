@@ -3,17 +3,9 @@ class ApplicationController < ActionController::Base
   before_action :set_time_zone
 
   def current_user
-    @current_user ||= if current_api_key
-                        current_api_key.user
-                      elsif session[:user_id]
+    @current_user ||= if session[:user_id]
                         User.find(session[:user_id])
                       end
-  end
-
-  def current_api_key
-    return unless params[:email] && params[:api_key]
-
-    APIKey.joins(:user).where(users: { email: params[:email] }).find_by(api_key: params[:api_key])
   end
 
   def require_user
