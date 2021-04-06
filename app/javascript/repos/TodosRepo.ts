@@ -1,5 +1,6 @@
 import { TodoI } from "interfaces/TodoI"
 import { del, get, post, put } from "./json-rest-helper"
+import { v4 } from "uuid"
 
 const fetchTodos = (onSuccess: (data: Array<TodoI>) => void) => {
   fetch("/todos", { headers: { Accept: "application/json" } })
@@ -9,7 +10,7 @@ const fetchTodos = (onSuccess: (data: Array<TodoI>) => void) => {
     })
 }
 
-const fetchTodo = (id: number, onSuccess: (data: TodoI) => void) => {
+const fetchTodo = (id: string, onSuccess: (data: TodoI) => void) => {
   get(`/todos/${id}`, onSuccess)
 }
 
@@ -22,6 +23,7 @@ const incompleteTodo = (todo: TodoI, authToken: string, onSuccess: (data: TodoI)
 }
 
 const createTodo = (todo: TodoI, authToken: string, onSuccess: (data: TodoI) => void) => {
+  todo.id = v4()
   post("/todos", todo, authToken, onSuccess)
 }
 

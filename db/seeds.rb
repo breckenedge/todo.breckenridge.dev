@@ -1,1 +1,1 @@
-User.create!(email: "admin@example.org", password: "changeme!")
+User.create!(id: SecureRandom.uuid, email: "admin@example.org", password: "changeme!")

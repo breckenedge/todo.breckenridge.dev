@@ -24,15 +24,14 @@ Lint/StructNewOverride:
 Metrics/AbcSize:
   Enabled: false
 
+Metrics/MethodLength:
+  Enabled: false
+
 Metrics/BlockLength:
   Exclude:
     - 'db/schema.rb'
 
 Metrics/CyclomaticComplexity:
-  Exclude:
-    - 'bin/bundle'
-
-Metrics/MethodLength:
   Exclude:
     - 'bin/bundle'
 

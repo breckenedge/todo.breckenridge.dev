@@ -5,9 +5,8 @@ import useQuery from "hooks/useQuery"
 
 const TodoNewPage = () => {
   const query = useQuery()
-  const projectId = query.get("project_id")
   const todo = {
-    project_id: projectId ? parseInt(projectId) : null
+    project_id: query.get("project_id")
   }
 
   return (

@@ -6,6 +6,8 @@ class ApplicationController < ActionController::Base
     @current_user ||= if session[:user_id]
                         User.find(session[:user_id])
                       end
+  rescue
+    reset_session
   end
 
   def require_user

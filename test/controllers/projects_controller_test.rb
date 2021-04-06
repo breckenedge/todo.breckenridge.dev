@@ -17,11 +17,19 @@ class ProjectsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should create project" do
+    id = SecureRandom.uuid
+
     assert_difference("Project.count") do
-      post projects_url, params: { project: { due_date: @project.due_date, name: @project.name } }
+      post projects_url, params: {
+        project: {
+          id: id,
+          due_date: @project.due_date,
+          name: @project.name,
+        },
+      }
     end
 
-    assert_redirected_to project_url(Project.last)
+    assert_redirected_to project_url(id)
   end
 
   test "should show project" do

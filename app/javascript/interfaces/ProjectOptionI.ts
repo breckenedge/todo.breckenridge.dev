@@ -1,4 +1,4 @@
 export interface ProjectOptionI {
-  id: number
+  id: string
   name: string
 }

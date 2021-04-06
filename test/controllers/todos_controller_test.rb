@@ -17,9 +17,12 @@ class TodosControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should create todo" do
+    id = SecureRandom.uuid
+
     assert_difference("Todo.count") do
       post todos_url, params: {
         todo: {
+          id: id,
           description: @todo.description,
           due_on: @todo.due_on,
           name: @todo.name,
@@ -29,7 +32,7 @@ class TodosControllerTest < ActionDispatch::IntegrationTest
       }
     end
 
-    assert_redirected_to todo_url(Todo.last)
+    assert_redirected_to todo_url(id)
   end
 
   test "should show todo" do

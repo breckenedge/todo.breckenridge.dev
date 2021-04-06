@@ -10,9 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_06_161805) do
+ActiveRecord::Schema.define(version: 2021_04_06_172649) do
 
-  create_table "projects", force: :cascade do |t|
+  create_table "projects", id: :string, force: :cascade do |t|
     t.string "name", null: false
     t.date "due_date"
     t.integer "status", default: 0, null: false
@@ -21,15 +21,15 @@ ActiveRecord::Schema.define(version: 2021_04_06_161805) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "todo_status_changes", force: :cascade do |t|
-    t.integer "todo_id", null: false
+  create_table "todo_status_changes", id: :string, force: :cascade do |t|
+    t.string "todo_id", null: false
     t.integer "status", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["todo_id"], name: "index_todo_status_changes_on_todo_id"
   end
 
-  create_table "todos", force: :cascade do |t|
+  create_table "todos", id: :string, force: :cascade do |t|
     t.string "name"
     t.text "description"
     t.date "due_on"
@@ -37,11 +37,11 @@ ActiveRecord::Schema.define(version: 2021_04_06_161805) do
     t.integer "status", default: 0, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "project_id"
+    t.string "project_id"
     t.index ["project_id"], name: "index_todos_on_project_id"
   end
 
-  create_table "users", force: :cascade do |t|
+  create_table "users", id: :string, force: :cascade do |t|
     t.string "email", null: false
     t.string "password_digest"
     t.datetime "created_at", precision: 6, null: false

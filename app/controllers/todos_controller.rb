@@ -73,7 +73,7 @@ class TodosController < ApplicationController
   end
 
   def complete
-    @todo.update(status: :complete) && @todo.todo_status_changes.create(status: :complete)
+    @todo.update(status: :complete) && @todo.todo_status_changes.create(status: :complete, id: SecureRandom.uuid)
 
     respond_to do |format|
       format.json { render json: @todo }
@@ -81,7 +81,7 @@ class TodosController < ApplicationController
   end
 
   def incomplete
-    @todo.update(status: :incomplete) && @todo.todo_status_changes.create(status: :incomplete)
+    @todo.update(status: :incomplete) && @todo.todo_status_changes.create(status: :incomplete, id: SecureRandom.uuid)
 
     respond_to do |format|
       format.json { render json: @todo }
@@ -97,6 +97,6 @@ class TodosController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def todo_params
-    params.require(:todo).permit(:project_id, :name, :description, :due_on, :priority, :status)
+    params.require(:todo).permit(:id, :project_id, :name, :description, :due_on, :priority, :status)
   end
 end

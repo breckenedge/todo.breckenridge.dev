@@ -3,6 +3,7 @@ class Todo < ApplicationRecord
   has_many :todo_status_changes, dependent: :delete_all
 
   validates :name, presence: true
+  validates :id, presence: true, uniqueness: true
 
   enum status: { incomplete: 0, complete: 1 }
 

@@ -1,13 +1,14 @@
 import { ProjectI, TodoI } from "interfaces"
 import { del, get, put } from "./json-rest-helper"
+import { v4 } from "uuid"
 
-const fetchProject = (id: number, onSuccess: (data: ProjectI) => void) => {
+const fetchProject = (id: string, onSuccess: (data: ProjectI) => void) => {
   get(`/projects/${id}`, (data: ProjectI) => {
     onSuccess(data)
   })
 }
 
-const fetchProjectWithTodos = (id: number, onSuccess: (data: { project: ProjectI, todos: Array<TodoI> }) => void) => {
+const fetchProjectWithTodos = (id: string, onSuccess: (data: { project: ProjectI, todos: Array<TodoI> }) => void) => {
   get(`/projects/${id}?include=todos`, onSuccess)
 }
 
@@ -20,6 +21,7 @@ const updateProject = (project: ProjectI, authToken: string, onSuccess: (data: P
 }
 
 const createProject = (project: ProjectI, authToken: string, onSuccess: (data: ProjectI) => void) => {
+  project.id = v4()
   fetch("/projects", { method: "post", headers: { Accept: "application/json", "Content-Type": "application/json", "X-CSRF-Token": authToken }, body: JSON.stringify(project) })
     .then((response) => response.json())
     .then((data) => onSuccess(data))
