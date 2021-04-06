@@ -49,14 +49,14 @@ jobs:
       - name: Login to registry
         uses: docker/login-action@v1
         with:
+          registry: docker.pkg.github.com
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Build and push image
         uses: docker/build-push-action@v2
         with:
-          registry: docker.pkg.github.com
-          repository: /todo:latest
+          repository: todo:latest
           tag_with_ref: true
           push: false
           tags: ${{ steps.prep.outputs.tagged_image }}
