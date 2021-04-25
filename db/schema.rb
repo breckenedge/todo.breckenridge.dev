@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_06_172649) do
+ActiveRecord::Schema.define(version: 2021_04_25_203629) do
 
   create_table "projects", id: :string, force: :cascade do |t|
     t.string "name", null: false
@@ -32,7 +32,7 @@ ActiveRecord::Schema.define(version: 2021_04_06_172649) do
   create_table "todos", id: :string, force: :cascade do |t|
     t.string "name"
     t.text "description"
-    t.date "due_on"
+    t.date "due_date"
     t.integer "priority"
     t.integer "status", default: 0, null: false
     t.datetime "created_at", precision: 6, null: false

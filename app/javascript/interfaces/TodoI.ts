@@ -3,7 +3,7 @@ export interface TodoI {
   project_id?: string;
   name?: string;
   description?: string;
-  due_on?: string;
+  due_date?: string;
   priority?: number;
   status?: 'complete' | 'incomplete';
   created_at?: string;

@@ -15,7 +15,7 @@ class TodosTest < ApplicationSystemTestCase
     click_on "New Todo"
 
     fill_in "Description", with: @todo.description
-    fill_in "Due on", with: @todo.due_on
+    fill_in "Due on", with: @todo.due_date
     fill_in "Name", with: @todo.name
     fill_in "Order", with: @todo.order
     fill_in "Status", with: @todo.status
@@ -30,7 +30,7 @@ class TodosTest < ApplicationSystemTestCase
     click_on "Edit", match: :first
 
     fill_in "Description", with: @todo.description
-    fill_in "Due on", with: @todo.due_on
+    fill_in "Due on", with: @todo.due_date
     fill_in "Name", with: @todo.name
     fill_in "Order", with: @todo.order
     fill_in "Status", with: @todo.status

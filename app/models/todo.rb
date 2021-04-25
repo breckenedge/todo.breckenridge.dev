@@ -8,9 +8,9 @@ class Todo < ApplicationRecord
   enum status: { incomplete: 0, complete: 1 }
 
   scope :completed_last_week, -> { complete.where(id: TodoStatusChange.completed_last_week.select(:todo_id)) }
-  scope :late, -> { incomplete.where("due_on NOT NULL and due_on < ?", Date.current) }
+  scope :late, -> { incomplete.where("due_date NOT NULL and due_date < ?", Date.current) }
 
   def late?
-    incomplete? && due_on && due_on < Date.current
+    incomplete? && due_date && due_date < Date.current
   end
 end

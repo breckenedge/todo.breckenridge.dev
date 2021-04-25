@@ -11,7 +11,7 @@ const TodoListItem = ({ todo }: { todo: TodoI }) => {
         {todo.name}
       </Link>
       <div className="due-on">
-        {todo.due_on && todo.due_on}
+        {todo.due_date && todo.due_date}
       </div>
     </div>
   )

@@ -15,8 +15,8 @@ const TodoList = ({ todos }: { todos: Array<TodoI> }) => {
   todos.sort(sortBy("name")).forEach((todo) => {
     if (todo.status === "complete") {
       completeTodos.push(todo)
-    } else if (todo.due_on) {
-      if (todo.due_on < today) {
+    } else if (todo.due_date) {
+      if (todo.due_date < today) {
         lateTodos.push(todo)
       } else {
         upcomingTodos.push(todo)
@@ -33,10 +33,10 @@ const TodoList = ({ todos }: { todos: Array<TodoI> }) => {
   return (
     <div className="todo-list">
       {lateTodos.length > 0 && <h3>Late</h3>}
-      {lateTodos.sort(sortBy('due_on')).map(toListItem)}
+      {lateTodos.sort(sortBy('due_date')).map(toListItem)}
 
       {upcomingTodos.length > 0 && <h3>Upcoming</h3>}
-      {upcomingTodos.sort(sortBy('due_on')).map(toListItem)}
+      {upcomingTodos.sort(sortBy('due_date')).map(toListItem)}
 
       {incompleteTodos.length > 0 && <h3>No Due Date</h3>}
       {incompleteTodos.map(toListItem)}
