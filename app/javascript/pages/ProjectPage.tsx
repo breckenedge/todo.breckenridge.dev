@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react"
 import { Link, useParams } from "react-router-dom"
-import TodosList from "components/TodosList"
+import TodoList from "components/TodoList"
 import { ProjectI, TodoI } from "interfaces"
 import { fetchProjectWithTodos } from "repos/ProjectsRepo"
 import LoadingIndicator from "components/LoadingIndicator"
@@ -56,7 +56,7 @@ const ProjectPage = () => {
             </Link>
           </div>
 
-          <TodosList todos={todos} />
+          <TodoList todos={todos} />
         </div>
       :
         <LoadingIndicator/>

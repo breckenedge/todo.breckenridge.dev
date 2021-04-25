@@ -1,8 +1,11 @@
 const sortBy = (key: string) => {
   return (objA, objB) => {
-    if (objA[key] < objB[key]) {
+    const valA = objA[key] || ""
+    const valB = objB[key] || ""
+
+    if (valA < valB) {
       return -1
-    } else if (objA[key] > objB[key]) {
+    } else if (valA > valB) {
       return 1
     } else {
       return 0
