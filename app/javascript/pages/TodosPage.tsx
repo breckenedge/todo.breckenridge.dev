@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react"
 import { fetchTodos } from "repos/TodosRepo"
 import { Link } from "react-router-dom"
-import TodosList from "components/TodosList"
+import TodoList from "components/TodoList"
 import LoadingIndicator from "components/LoadingIndicator"
 
 const TodosPage = () => {
@@ -17,7 +17,7 @@ const TodosPage = () => {
 
       <br />
 
-      {todos ? <TodosList todos={todos} /> : <LoadingIndicator />}
+      {todos ? <TodoList todos={todos} /> : <LoadingIndicator />}
     </>
   )
 }

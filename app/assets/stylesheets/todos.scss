@@ -1,6 +1,10 @@
 .todo-list {
   border-collapse: collapse;
 
+  h3 {
+    margin-top: 0.75em;
+  }
+
   > .todo {
     display: flex;
     border-top: 1px solid var(--inputBackground);
@@ -11,6 +15,10 @@
       flex-grow: 1;
       text-decoration: none;
       color: var(--foreground);
+    }
+
+    .due-on {
+      padding: 0.75em 1em;
     }
   }
 
