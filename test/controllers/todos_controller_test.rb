@@ -16,6 +16,18 @@ class TodosControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
+  test "should get complete" do
+    get complete_todo_url(id: @todo.id)
+    @todo.reload
+    assert @todo.complete?
+  end
+
+  test "should get incomplete" do
+    get incomplete_todo_url(id: @todo.id)
+    @todo.reload
+    assert @todo.incomplete?
+  end
+
   test "should create todo" do
     id = SecureRandom.uuid
 

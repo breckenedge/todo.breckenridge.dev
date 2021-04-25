@@ -76,6 +76,7 @@ class TodosController < ApplicationController
     @todo.update(status: :complete) && @todo.todo_status_changes.create(status: :complete, id: SecureRandom.uuid)
 
     respond_to do |format|
+      format.html { redirect_to todo_url(@todo), notice: "Todo completed" }
       format.json { render json: @todo }
     end
   end
@@ -84,6 +85,7 @@ class TodosController < ApplicationController
     @todo.update(status: :incomplete) && @todo.todo_status_changes.create(status: :incomplete, id: SecureRandom.uuid)
 
     respond_to do |format|
+      format.html { redirect_to todo_url(@todo), notice: "Todo incompleted" }
       format.json { render json: @todo }
     end
   end
