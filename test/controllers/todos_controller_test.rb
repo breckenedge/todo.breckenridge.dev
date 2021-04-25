@@ -36,7 +36,7 @@ class TodosControllerTest < ActionDispatch::IntegrationTest
         todo: {
           id: id,
           description: @todo.description,
-          due_on: @todo.due_on,
+          due_date: @todo.due_date,
           name: @todo.name,
           priority: @todo.priority,
           status: @todo.status,
@@ -61,7 +61,7 @@ class TodosControllerTest < ActionDispatch::IntegrationTest
     patch todo_url(@todo), params: {
       todo: {
         description: @todo.description,
-        due_on: @todo.due_on,
+        due_date: @todo.due_date,
         name: @todo.name,
         priority: @todo.priority,
         status: @todo.status,

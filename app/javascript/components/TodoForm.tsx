@@ -48,10 +48,10 @@ const TodoForm = ({ todo }: { todo: TodoI }) => {
           autoFocus={true} />
         <DateInput
           required={false}
-          id="todo_due_on"
+          id="todo_due_date"
           label="Due on"
-          value={model.due_on || ""}
-          onChange={(e) => handleChange("due_on", e)} />
+          value={model.due_date || ""}
+          onChange={(e) => handleChange("due_date", e)} />
         <ProjectSelect
           id="todo_project_id"
           label="Project"

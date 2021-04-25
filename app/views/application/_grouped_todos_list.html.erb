@@ -1,4 +1,4 @@
-<% todos.incomplete.order(Arel.sql("CASE WHEN due_on IS NULL THEN '9999-12-31' ELSE due_on END"), :name).group_by(&:due_on).each do |date, todis| %>
+<% todos.incomplete.order(Arel.sql("CASE WHEN due_date IS NULL THEN '9999-12-31' ELSE due_date END"), :name).group_by(&:due_date).each do |date, todis| %>
   <div class="todo-list-heading">
     <h3>
       <% if date %>

@@ -22,11 +22,11 @@ const TodoDetails = ({ todo }: { todo: TodoI }) => {
           </>
         }
 
-        { todo.due_on &&
+        { todo.due_date &&
           <>
             <dt>Due on</dt>
             <dd>
-              { todo.due_on }
+              { todo.due_date }
             </dd>
           </>
         }

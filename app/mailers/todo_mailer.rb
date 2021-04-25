@@ -1,7 +1,7 @@
 class TodoMailer < ApplicationMailer
   def daily_digest(user: User.first)
     @user = user
-    @todos = Todo.where(due_on: Date.current)
+    @todos = Todo.where(due_date: Date.current)
     @late_todos = Todo.late
 
     mail(to: @user.email, subject: "Todo: Daily Digest") unless @todos.none && @late_todos.none?
