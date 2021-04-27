@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react"
 import { Link } from "react-router-dom"
-import ProjectsList from "components/ProjectsList"
+import ProjectList from "components/ProjectList"
 import { fetchProjects } from "repos/ProjectsRepo"
 import LoadingIndicator from "components/LoadingIndicator"
 
@@ -17,7 +17,7 @@ const ProjectsPage = () => {
 
       <br />
 
-      {projects ? <ProjectsList projects={projects} /> : <LoadingIndicator />}
+      {projects ? <ProjectList projects={projects} /> : <LoadingIndicator />}
     </>
   )
 }
