@@ -9,7 +9,7 @@ const TodoList = ({ todos }: { todos: Array<TodoI> }) => {
   let upcomingTodos: TodoI[] = []
   let incompleteTodos: TodoI[] = []
   let lateTodos: TodoI[] = []
-  let today = todayISO8601()
+  const today = todayISO8601()
 
   // Group todos by status and due date
   todos.sort(sortBy("name")).forEach((todo) => {

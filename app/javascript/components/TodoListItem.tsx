@@ -2,6 +2,7 @@ import React from "react"
 import { Link } from "react-router-dom"
 import TodoCompleteToggle from "components/TodoCompleteToggle"
 import { TodoI } from "interfaces"
+import TodayDelta from "components/TodayDelta"
 
 const TodoListItem = ({ todo }: { todo: TodoI }) => {
   return (
@@ -11,7 +12,7 @@ const TodoListItem = ({ todo }: { todo: TodoI }) => {
         {todo.name}
       </Link>
       <div className="due-date">
-        {todo.due_date}
+        {todo.due_date && todo.status !== "complete" && <TodayDelta date={todo.due_date}/>}
       </div>
     </div>
   )
