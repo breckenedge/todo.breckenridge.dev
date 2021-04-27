@@ -6,6 +6,7 @@ import { todayISO8601 } from "utilities/date"
 
 const TodoList = ({ todos }: { todos: Array<TodoI> }) => {
   let completeTodos: TodoI[] = []
+  let todayTodos: TodoI[] = []
   let upcomingTodos: TodoI[] = []
   let incompleteTodos: TodoI[] = []
   let lateTodos: TodoI[] = []
@@ -18,6 +19,8 @@ const TodoList = ({ todos }: { todos: Array<TodoI> }) => {
     } else if (todo.due_date) {
       if (todo.due_date < today) {
         lateTodos.push(todo)
+      } else if (todo.due_date === today) {
+        todayTodos.push(todo)
       } else {
         upcomingTodos.push(todo)
       }
@@ -34,6 +37,9 @@ const TodoList = ({ todos }: { todos: Array<TodoI> }) => {
     <div className="todo-list">
       {lateTodos.length > 0 && <h3>Late</h3>}
       {lateTodos.sort(sortBy('due_date')).map(toListItem)}
+
+      {todayTodos.length > 0 && <h3>Today</h3>}
+      {todayTodos.sort(sortBy('due_date')).map(toListItem)}
 
       {upcomingTodos.length > 0 && <h3>Upcoming</h3>}
       {upcomingTodos.sort(sortBy('due_date')).map(toListItem)}
