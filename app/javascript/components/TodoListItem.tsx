@@ -10,7 +10,7 @@ const TodoListItem = ({ todo }: { todo: TodoI }) => {
       <Link to={`/todos/${todo.id}`} className="name">
         {todo.name}
       </Link>
-      <div className="due-on">
+      <div className="due-date">
         {todo.due_date}
       </div>
     </div>
