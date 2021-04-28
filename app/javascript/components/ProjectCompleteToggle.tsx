@@ -2,23 +2,18 @@ import React, { useContext, useState } from "react"
 import { ProjectI } from "interfaces"
 import { completeProject, incompleteProject } from "repos/ProjectsRepo"
 import AuthenticityTokenContext from "contexts/AuthenticityTokenContext"
+import CompleteToggle from "components/CompleteToggle"
 
 const ProjectCompleteToggle = ({ project }: { project: ProjectI }) => {
-  const [status, setStatus] = useState(project.status)
   const authToken = useContext(AuthenticityTokenContext)
-
-  const handleClick = (e) => {
-    e.preventDefault()
-    const method = status === "complete" ? incompleteProject : completeProject
-    method(project, authToken, () => {
-      setStatus(status === "complete" ? "incomplete" : "complete")
-    })
-  }
+  const [status, setStatus] = useState(project.status)
+  const method = status === "complete" ? incompleteProject : completeProject
 
   return (
-    <button type="button" className={`complete-toggle ${status}`} onClick={handleClick}>
-      <div className="icon">{status === "complete" ? "×" : "✓" }</div>
-    </button>
+    <CompleteToggle
+      status={status}
+      onClick={() => method(project, authToken, (data) => { setStatus(data.status) })}
+    />
   )
 }
 
