@@ -2,6 +2,8 @@ Rails.application.routes.draw do
   resources :projects do
     patch :complete, on: :member
     patch :incomplete, on: :member
+
+    resources :todos
   end
   resource :profile, only: [:show, :update]
   resources :todos do

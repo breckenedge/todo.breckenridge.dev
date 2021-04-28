@@ -5,10 +5,10 @@ import ProjectSelect from "components/ProjectSelect"
 import TextInput from "components/TextInput"
 import TextAreaInput from "components/TextAreaInput"
 import AuthenticityTokenContext from "contexts/AuthenticityTokenContext"
-import { TodoI } from "interfaces"
+import { ProjectI, TodoI } from "interfaces"
 import { createTodo, updateTodo, deleteTodo } from "repos/TodosRepo"
 
-const TodoForm = ({ todo }: { todo: TodoI }) => {
+const TodoForm = ({ todo, currentProject }: { todo: TodoI, currentProject?: ProjectI }) => {
   const authToken = useContext(AuthenticityTokenContext)
   const [model, setModel] = useState(todo)
   let history = useHistory()
@@ -19,7 +19,7 @@ const TodoForm = ({ todo }: { todo: TodoI }) => {
     e.preventDefault()
     const meth = todo.id ? updateTodo : createTodo
     meth(model, authToken, (data: TodoI) => {
-      model.project_id ? history.push(`/projects/${model.project_id}`) : history.push("/todos")
+      currentProject ? history.push(`/projects/${currentProject.id}`) : history.push("/todos")
     })
   }
 
@@ -43,7 +43,7 @@ const TodoForm = ({ todo }: { todo: TodoI }) => {
           required={true}
           id="todo_name"
           label="Name"
-          value={model.name}
+          value={model.name || ""}
           onChange={(e) => handleChange("name", e)}
           autoFocus={true} />
         <DateInput
@@ -62,7 +62,7 @@ const TodoForm = ({ todo }: { todo: TodoI }) => {
           required={false}
           id="todo_description"
           label="Description"
-          value={model.description}
+          value={model.description || ""}
           rows={3}
           onChange={(e) => handleChange('description', e)} />
         <button

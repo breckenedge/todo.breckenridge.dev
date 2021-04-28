@@ -34,6 +34,17 @@ const AppLayout = () => {
           <Route path="/log_in">
             <LogInPage />
           </Route>
+
+          <Route path="/projects/:projectId/todos/:id/edit">
+            <TodoEditPage />
+          </Route>
+          <Route path="/projects/:projectId/todos/new">
+            <TodoNewPage />
+          </Route>
+          <Route path="/projects/:projectId/todos/:id">
+            <TodoEditPage />
+          </Route>
+
           <Route path="/projects/:id/edit">
             <ProjectEditPage />
           </Route>
@@ -46,6 +57,7 @@ const AppLayout = () => {
           <Route path="/projects">
             <ProjectsPage />
           </Route>
+
           <Route path="/todos/:id/edit">
             <TodoEditPage />
           </Route>
@@ -58,9 +70,11 @@ const AppLayout = () => {
           <Route path="/todos">
             <TodosPage />
           </Route>
+
           <Route path="/profile">
             <ProfilePage />
           </Route>
+
           <Route path="/">
             <RootPage />
           </Route>

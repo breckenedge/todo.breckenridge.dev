@@ -51,12 +51,12 @@ const ProjectPage = () => {
 
           <div className="navigation-header">
             <h2>Todos</h2>
-            <Link className="button teal" to={`/todos/new?project_id=${project.id}`}>
+            <Link className="button teal" to={`/projects/${project.id}/todos/new`}>
               +
             </Link>
           </div>
 
-          <TodoList todos={todos} />
+          <TodoList todos={todos} currentProject={project} />
         </div>
       :
         <LoadingIndicator/>
