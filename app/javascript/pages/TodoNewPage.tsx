@@ -1,18 +1,24 @@
-import React from "react"
+import React, { useEffect, useState }  from "react"
 import TodoForm from "components/TodoForm"
 import TodoBreadcrumbs from "components/TodoBreadcrumbs"
-import useQuery from "hooks/useQuery"
+import { useParams } from "react-router-dom"
+import { fetchProject } from "repos/ProjectsRepo"
+import { TodoI } from "interfaces"
 
 const TodoNewPage = () => {
-  const query = useQuery()
-  const todo = {
-    project_id: query.get("project_id")
-  }
+  const projectId = useParams()["projectId"]
+  const defaultTodo: TodoI = { project_id: projectId }
+  const [todo, setTodo] = useState(defaultTodo)
+  const [currentProject, setCurrentProject] = useState(null)
+
+  useEffect(() => {
+    projectId ? fetchProject(projectId, setCurrentProject) : setCurrentProject(null)
+  }, [projectId])
 
   return (
     <>
-      <TodoBreadcrumbs todo={todo} />
-      <TodoForm todo={todo} />
+      <TodoBreadcrumbs todo={todo} currentProject={currentProject} />
+      <TodoForm todo={todo} currentProject={currentProject} />
     </>
   )
 }

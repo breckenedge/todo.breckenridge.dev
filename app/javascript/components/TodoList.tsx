@@ -1,10 +1,10 @@
 import React from "react"
-import { TodoI } from "interfaces"
+import { ProjectI, TodoI } from "interfaces"
 import sortBy, { sortByStatus } from "utilities/sortBy"
 import TodoListItem from "./TodoListItem"
 import { todayISO8601 } from "utilities/date"
 
-const TodoList = ({ todos }: { todos: Array<TodoI> }) => {
+const TodoList = ({ todos, currentProject }: { todos: Array<TodoI>, currentProject?: ProjectI }) => {
   let completeTodos: TodoI[] = []
   let todayTodos: TodoI[] = []
   let upcomingTodos: TodoI[] = []
@@ -30,7 +30,7 @@ const TodoList = ({ todos }: { todos: Array<TodoI> }) => {
   })
 
   const toListItem = (todo: TodoI, i: number) => {
-    return <TodoListItem key={i} todo={todo} />
+    return <TodoListItem key={i} todo={todo} currentProject={currentProject} />
   }
 
   return (

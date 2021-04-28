@@ -1,14 +1,14 @@
 import React from "react"
 import { Link } from "react-router-dom"
 import TodoCompleteToggle from "components/TodoCompleteToggle"
-import { TodoI } from "interfaces"
+import { TodoI, ProjectI } from "interfaces"
 import TodayDelta from "components/TodayDelta"
 
-const TodoListItem = ({ todo }: { todo: TodoI }) => {
+const TodoListItem = ({ todo, currentProject }: { todo: TodoI, currentProject?: ProjectI }) => {
   return (
     <div className={`todo ${todo.status}`}>
       <TodoCompleteToggle todo={todo} />
-      <Link to={`/todos/${todo.id}`} className="name">
+      <Link to={currentProject ? `/projects/${currentProject.id}/todos/${todo.id}` : `/todos/${todo.id}`} className="name">
         {todo.name}
       </Link>
       <div className="due-date">
