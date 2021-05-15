@@ -6,7 +6,7 @@ const RootPage = () => {
   const history = useHistory()
 
   useEffect(() => {
-    history.push("/todos")
+    history.push("/projects")
   }, [])
 
   return (<LoadingIndicator/>)
