@@ -11,7 +11,7 @@ gem "sass-rails", ">= 6"
 gem "simple_form"
 gem "sqlite3", "~> 1.4"
 gem "tzinfo-data", platforms: [:mingw, :mswin, :x64_mingw, :jruby]
-gem "webpacker", "~> 4.0"
+gem "webpacker", "~> 5.4"
 
 group :development, :test do
   gem "byebug", platforms: [:mri, :mingw, :x64_mingw]
