@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react"
 import { Link, useParams } from "react-router-dom"
-import TodoList from "components/TodoList"
+import TodoListController from "components/TodoListController"
 import { ProjectI, TodoI } from "interfaces"
 import { fetchProjectWithTodos } from "repos/ProjectsRepo"
 import LoadingIndicator from "components/LoadingIndicator"
@@ -49,14 +49,7 @@ const ProjectPage = () => {
             }
           </dl>
 
-          <div className="navigation-header">
-            <h2>Todos</h2>
-            <Link className="button teal" to={`/projects/${project.id}/todos/new`}>
-              +
-            </Link>
-          </div>
-
-          <TodoList todos={todos} currentProject={project} />
+          <TodoListController todos={todos} currentProject={project} setTodos={setTodos} />
         </div>
       :
         <LoadingIndicator/>
