@@ -23,15 +23,13 @@ const TodoListController = ({ todos, currentProject, setTodos }: { todos?: Array
     })
   }
 
+  const handleChangeNewTodoName = (e) => {
+    setNewTodo({ project_id: currentProject?.id, name: e.target.value })
+  }
+
   return (
     <>
-      <form onSubmit={handleSubmitNewTodo} style={{display: 'flex', flexDirection: "row"}}>
-        <label
-          htmlFor="new-todo-name"
-          style={{display: 'none'}}
-        >
-          New todo
-        </label>
+      <form onSubmit={handleSubmitNewTodo}>
         <input
           type="text"
           id="new-todo-name"
@@ -39,15 +37,8 @@ const TodoListController = ({ todos, currentProject, setTodos }: { todos?: Array
           placeholder={savingNewTodo ? "Saving..." : "Enter a todo..."}
           ref={newTodoNameInput}
           value={newTodo?.name || ""}
-          onChange={(e) => setNewTodo({project_id: currentProject?.id, name: e.target.value})}
+          onChange={handleChangeNewTodoName}
           required={true}
-          disabled={savingNewTodo}
-        />
-        <input
-          type="submit"
-          value="Create Todo"
-          className="button teal"
-          style={{display: 'none'}}
           disabled={savingNewTodo}
         />
       </form>
