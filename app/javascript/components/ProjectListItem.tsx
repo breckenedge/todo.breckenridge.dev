@@ -2,6 +2,7 @@ import React from "react"
 import { ProjectI } from "interfaces"
 import { Link } from "react-router-dom"
 import ProjectCompleteToggle from "components/ProjectCompleteToggle"
+import TodayDelta from "components/TodayDelta"
 
 const ProjectListItem = ({ project }: { project: ProjectI }) => (
   <div className="project list-item">
@@ -10,7 +11,7 @@ const ProjectListItem = ({ project }: { project: ProjectI }) => (
       {project.name}
     </Link>
     <div className="due-date">
-      {project.due_date}
+      {project.due_date && project.status !== "complete" && <TodayDelta date={project.due_date}/>}
     </div>
   </div>
 )
