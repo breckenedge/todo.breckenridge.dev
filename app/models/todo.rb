@@ -9,6 +9,7 @@ class Todo < ApplicationRecord
 
   scope :completed_last_week, -> { complete.where(id: TodoStatusChange.completed_last_week.select(:todo_id)) }
   scope :late, -> { incomplete.where("due_date NOT NULL and due_date < ?", Date.current) }
+  scope :not_deleted, -> { where(deleted_at: nil) }
 
   def late?
     incomplete? && due_date && due_date < Date.current

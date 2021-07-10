@@ -3,7 +3,7 @@ class ProjectsController < ApplicationController
 
   # GET /projects
   def index
-    @projects = Project.all
+    @projects = Project.not_deleted
 
     respond_to do |format|
       format.html { render(:index) }
@@ -19,7 +19,7 @@ class ProjectsController < ApplicationController
         document = if params["include"] == "todos"
                      {
                        "project" => @project,
-                       "todos" => @project.todos,
+                       "todos" => @project.todos.not_deleted,
                      }.as_json
                    else
                      @project
@@ -67,7 +67,7 @@ class ProjectsController < ApplicationController
 
   # DELETE /projects/1
   def destroy
-    @project.destroy
+    @project.update(deleted_at: Time.current)
     respond_to do |format|
       format.html { redirect_to projects_url, notice: "Project was successfully destroyed." }
       format.json { render json: @project }
@@ -95,6 +95,6 @@ class ProjectsController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def project_params
-    params.require(:project).permit(:id, :name, :due_date, :details, :status)
+    params.require(:project).permit(:id, :name, :due_date, :details, :status, :deleted_at)
   end
 end

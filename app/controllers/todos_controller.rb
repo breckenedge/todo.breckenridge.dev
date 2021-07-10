@@ -4,7 +4,7 @@ class TodosController < ApplicationController
   # GET /todos
   # GET /todos.json
   def index
-    @todos = Todo.all
+    @todos = Todo.not_deleted
 
     respond_to do |format|
       format.html
@@ -65,7 +65,8 @@ class TodosController < ApplicationController
   # DELETE /todos/1
   # DELETE /todos/1.json
   def destroy
-    @todo.destroy
+    @todo.update(deleted_at: Time.current)
+
     respond_to do |format|
       format.html { redirect_to todos_url, notice: "Todo was successfully destroyed." }
       format.json { render json: @todo.as_json }
@@ -99,6 +100,6 @@ class TodosController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def todo_params
-    params.require(:todo).permit(:id, :project_id, :name, :description, :due_date, :priority, :status)
+    params.require(:todo).permit(:id, :project_id, :name, :description, :due_date, :priority, :status, :deleted_at)
   end
 end
