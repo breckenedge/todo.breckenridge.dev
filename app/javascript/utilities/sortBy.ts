@@ -13,6 +13,22 @@ const sortBy = (key: string) => {
   }
 }
 
+export const reverseSortBy = (key: string) => {
+  return (objA, objB) => {
+    const valA = objA[key] || ""
+    const valB = objB[key] || ""
+
+    if (valA < valB) {
+      return 1
+    } else if (valA > valB) {
+      return -1
+    } else {
+      return 0
+    }
+  }
+}
+
+
 // Sort incomplete projects before complete projects
 export const sortByStatus = (objA, objB): (-1 | 0 | 1) => {
   if (objA.status === objB.status) {

@@ -49,4 +49,3 @@ const TodoListController = ({ todos, currentProject, setTodos }: { todos?: Array
 }
 
 export default TodoListController
-
