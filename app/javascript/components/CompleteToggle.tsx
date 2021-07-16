@@ -5,16 +5,13 @@ interface CompleteToggleI {
   onClick: () => void
 }
 
-const CompleteToggle = ({ status, onClick }: CompleteToggleI): React.ReactElement => {
-  return (
-    <button
-      className={`complete-toggle ${status}`}
-      type="button"
-      onClick={onClick}
-    >
-      { status === "complete" ? "✅" : "🔲" }
-    </button>
-  )
-}
+const CompleteToggle = ({ status, onClick }: CompleteToggleI): React.ReactElement => (
+  <input
+    type="checkbox"
+    checked={status === "complete"}
+    onClick={onClick}
+    style={{margin: "1em"}}
+  />
+)
 
 export default CompleteToggle
