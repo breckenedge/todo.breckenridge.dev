@@ -14,4 +14,8 @@ class Todo < ApplicationRecord
   def late?
     incomplete? && due_date && due_date < Date.current
   end
+
+  def just_completed?
+    previous_changes.key?("status") && previous_changes.dig("status", 0) != "complete" && complete?
+  end
 end

@@ -9,7 +9,6 @@ Rails.application.routes.draw do
   resources :todos do
     # GET verb allowed here so that the task can be completed/incompleted from an emailed link.
     match :complete, on: :member, via: [:get, :patch]
-    match :incomplete, on: :member, via: [:get, :patch]
   end
 
   get :log_in, to: "sessions#new", as: :log_in

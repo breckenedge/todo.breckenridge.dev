@@ -1,5 +1,5 @@
 class TodosController < ApplicationController
-  before_action :set_todo, only: [:show, :edit, :update, :destroy, :complete, :incomplete]
+  before_action :set_todo, only: [:show, :edit, :update, :destroy, :complete]
 
   # GET /todos
   # GET /todos.json
@@ -53,6 +53,10 @@ class TodosController < ApplicationController
   def update
     respond_to do |format|
       if @todo.update(todo_params)
+        if @todo.just_completed?
+          @todo.todo_status_changes.create(status: :complete, id: SecureRandom.uuid)
+        end
+
         format.html { redirect_to todo_path(@todo), notice: "Todo was successfully updated." }
         format.json { render json: @todo.as_json }
       else
@@ -78,15 +82,6 @@ class TodosController < ApplicationController
 
     respond_to do |format|
       format.html { redirect_to todo_url(@todo), notice: "Todo completed" }
-      format.json { render json: @todo }
-    end
-  end
-
-  def incomplete
-    @todo.update(status: :incomplete) && @todo.todo_status_changes.create(status: :incomplete, id: SecureRandom.uuid)
-
-    respond_to do |format|
-      format.html { redirect_to todo_url(@todo), notice: "Todo incompleted" }
       format.json { render json: @todo }
     end
   end

@@ -22,10 +22,11 @@ class TodosControllerTest < ActionDispatch::IntegrationTest
     assert @todo.complete?
   end
 
-  test "should get incomplete" do
-    get incomplete_todo_url(id: @todo.id)
-    @todo.reload
-    assert @todo.incomplete?
+  test "should add a completion status record on completion" do
+    @todo.update(status: "incomplete")
+    assert_difference -> { @todo.reload.todo_status_changes.count } do
+      get complete_todo_url(id: @todo.id)
+    end
   end
 
   test "should create todo" do
@@ -68,6 +69,39 @@ class TodosControllerTest < ActionDispatch::IntegrationTest
       },
     }
     assert_redirected_to todo_url(@todo)
+  end
+
+  test "should add a completion entry when completed" do
+    @todo.update(status: "incomplete")
+    assert_difference -> { @todo.reload.todo_status_changes.count } do
+      patch todo_url(@todo), params: {
+        todo: {
+          status: "complete",
+        },
+      }
+    end
+  end
+
+  test "should not add a completion entry when already completed" do
+    @todo.update(status: "complete")
+    assert_no_difference -> { @todo.reload.todo_status_changes.count } do
+      patch todo_url(@todo), params: {
+        todo: {
+          status: "complete",
+        },
+      }
+    end
+  end
+
+  test "should not add a completion entry when incompleted" do
+    @todo.update(status: "complete")
+    assert_no_difference -> { @todo.reload.todo_status_changes.count } do
+      patch todo_url(@todo), params: {
+        todo: {
+          status: "incomplete",
+        },
+      }
+    end
   end
 
   test "should destroy todo" do
