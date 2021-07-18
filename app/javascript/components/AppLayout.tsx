@@ -58,19 +58,6 @@ const AppLayout = () => {
             <ProjectsPage />
           </Route>
 
-          <Route path="/todos/:id/edit">
-            <TodoEditPage />
-          </Route>
-          <Route path="/todos/new">
-            <TodoNewPage />
-          </Route>
-          <Route path="/todos/:id">
-            <TodoEditPage />
-          </Route>
-          <Route path="/todos">
-            <TodosPage />
-          </Route>
-
           <Route path="/profile">
             <ProfilePage />
           </Route>

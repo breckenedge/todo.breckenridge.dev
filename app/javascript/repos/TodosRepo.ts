@@ -2,16 +2,8 @@ import { TodoI } from "interfaces/TodoI"
 import { del, get, post, put } from "./json-rest-helper"
 import { v4 } from "uuid"
 
-const fetchTodos = (onSuccess: (data: Array<TodoI>) => void) => {
-  fetch("/todos", { headers: { Accept: "application/json" } })
-    .then(response => response.json())
-    .then(data => {
-      onSuccess(data)
-    })
-}
-
-const fetchTodo = (id: string, onSuccess: (data: TodoI) => void) => {
-  get(`/todos/${id}`, onSuccess)
+const fetchTodo = (project_id: String, id: string, onSuccess: (data: TodoI) => void) => {
+  get(`/projects/${project_id}/todos/${id}`, onSuccess)
 }
 
 const completeTodo = (todo: TodoI, authToken: string, onSuccess: (data: TodoI) => void) => {
@@ -24,15 +16,15 @@ const incompleteTodo = (todo: TodoI, authToken: string, onSuccess: (data: TodoI)
 
 const createTodo = (todo: TodoI, authToken: string, onSuccess: (data: TodoI) => void) => {
   todo.id = v4()
-  post("/todos", todo, authToken, onSuccess)
+  post(`/projects/${todo.project_id}/todos`, todo, authToken, onSuccess)
 }
 
 const updateTodo = (todo: TodoI, authToken: string, onSuccess: (data: TodoI) => void) => {
-  put(`/todos/${todo.id}`, todo, authToken, onSuccess)
+  put(`/projects/${todo.project_id}/todos/${todo.id}`, todo, authToken, onSuccess)
 }
 
 const deleteTodo = (todo: TodoI, authToken: string, onSuccess: () => void) => {
-  del(`/todos/${todo.id}`, authToken, onSuccess)
+  del(`/projects/${todo.project_id}/todos/${todo.id}`, authToken, onSuccess)
 }
 
-export { fetchTodos, fetchTodo, createTodo, updateTodo, deleteTodo, completeTodo, incompleteTodo }
+export { fetchTodo, createTodo, updateTodo, deleteTodo, completeTodo, incompleteTodo }

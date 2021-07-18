@@ -1,5 +1,5 @@
 import React, { useContext, useRef, useState } from "react"
-import { fetchTodos, createTodo } from "repos/TodosRepo"
+import { createTodo } from "repos/TodosRepo"
 import { fetchProjectWithTodos } from "repos/ProjectsRepo"
 import AuthenticityTokenContext from "contexts/AuthenticityTokenContext"
 import { Link } from "react-router-dom"
@@ -17,7 +17,7 @@ const TodoListController = ({ todos, currentProject, setTodos }: { todos?: Array
     e.preventDefault()
     setSavingNewTodo(true)
     createTodo(newTodo, authToken, (data) => {
-      currentProject ? fetchProjectWithTodos(currentProject.id, (data) => setTodos(data.todos)) : fetchTodos(setTodos)
+      fetchProjectWithTodos(currentProject.id, (data) => setTodos(data.todos))
       setSavingNewTodo(false)
       setNewTodo(null)
     })

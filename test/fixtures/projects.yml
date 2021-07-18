@@ -1,9 +1,11 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
+  id: e0614619-2f7f-4fc7-b5f4-e3a001eb13d8
   name: MyString
   due_date: 2020-05-06
 
 two:
+  id: bf25a360-eedd-477e-aae5-92a7aebb769a
   name: MyString
   due_date: 2020-05-06

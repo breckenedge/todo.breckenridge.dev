@@ -3,10 +3,10 @@
     <li style="list-style-type: none; margin: 0.5em 0;">
       <div style="display: flex; align-items: center;">
         <div style="flex-grow: 1">
-          <%= link_to todo.name, todo_url(todo) %>
+          <%= link_to todo.name, project_todo_url(todo.project, todo) %>
         </div>
         <div>
-          <%= link_to "✓", complete_todo_url(todo), style: "display: block; padding: 0.25em 0.75em; background-color: #76A377; color: white; text-decoration: none; border-radius: 0.25em;" %>
+          <%= link_to "✓", complete_project_todo_url(todo.project, todo), style: "display: block; padding: 0.25em 0.75em; background-color: #76A377; color: white; text-decoration: none; border-radius: 0.25em;" %>
         </div>
       </div>
     </li>

@@ -38,7 +38,7 @@ class TodosController < ApplicationController
     respond_to do |format|
       if @todo.save
         format.html do
-          redirect_to params.fetch("return_to", todo_path(@todo)), notice: "Todo was successfully created."
+          redirect_to params.fetch("return_to", project_todo_path(@todo.project, @todo)), notice: "Todo was successfully created."
         end
         format.json { render json: @todo.as_json, status: :created }
       else
@@ -57,7 +57,7 @@ class TodosController < ApplicationController
           @todo.todo_status_changes.create(status: :complete, id: SecureRandom.uuid)
         end
 
-        format.html { redirect_to todo_path(@todo), notice: "Todo was successfully updated." }
+        format.html { redirect_to project_todo_path(@todo.project, @todo), notice: "Todo was successfully updated." }
         format.json { render json: @todo.as_json }
       else
         format.html { render :edit }
@@ -72,7 +72,7 @@ class TodosController < ApplicationController
     @todo.update(deleted_at: Time.current)
 
     respond_to do |format|
-      format.html { redirect_to todos_url, notice: "Todo was successfully destroyed." }
+      format.html { redirect_to project_todos_url(@todo.project), notice: "Todo was successfully destroyed." }
       format.json { render json: @todo.as_json }
     end
   end
@@ -81,7 +81,7 @@ class TodosController < ApplicationController
     @todo.update(status: :complete) && @todo.todo_status_changes.create(status: :complete, id: SecureRandom.uuid)
 
     respond_to do |format|
-      format.html { redirect_to todo_url(@todo), notice: "Todo completed" }
+      format.html { redirect_to project_todo_url(@todo.project, @todo), notice: "Todo completed" }
       format.json { render json: @todo }
     end
   end

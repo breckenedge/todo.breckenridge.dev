@@ -9,7 +9,7 @@ const CompleteToggle = ({ status, onClick }: CompleteToggleI): React.ReactElemen
   <input
     type="checkbox"
     checked={status === "complete"}
-    onClick={onClick}
+    onChange={onClick}
     style={{margin: "1em"}}
   />
 )

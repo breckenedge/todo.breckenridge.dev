@@ -5,9 +5,7 @@ AllCops:
     NewCops: enable
 
 Layout/LineLength:
-  Max: 120
-  Exclude:
-    - 'bin/bundle'
+  Enabled: false
 
 Layout/EmptyLinesAroundAttributeAccessor:
   Enabled: true

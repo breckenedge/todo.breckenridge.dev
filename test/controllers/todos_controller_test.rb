@@ -7,17 +7,17 @@ class TodosControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should get index" do
-    get todos_url
+    get project_todos_url(project_id: @todo.project_id)
     assert_response :success
   end
 
   test "should get new" do
-    get new_todo_url
+    get new_project_todo_url(project_id: @todo.project_id)
     assert_response :success
   end
 
   test "should get complete" do
-    get complete_todo_url(id: @todo.id)
+    get complete_project_todo_url(project_id: @todo.project_id, id: @todo.id)
     @todo.reload
     assert @todo.complete?
   end
@@ -25,7 +25,7 @@ class TodosControllerTest < ActionDispatch::IntegrationTest
   test "should add a completion status record on completion" do
     @todo.update(status: "incomplete")
     assert_difference -> { @todo.reload.todo_status_changes.count } do
-      get complete_todo_url(id: @todo.id)
+      get complete_project_todo_url(project_id: @todo.project_id, id: @todo.id)
     end
   end
 
@@ -33,8 +33,9 @@ class TodosControllerTest < ActionDispatch::IntegrationTest
     id = SecureRandom.uuid
 
     assert_difference("Todo.count") do
-      post todos_url, params: {
+      post project_todos_url(@todo.project), params: {
         todo: {
+          project_id: @todo.project_id,
           id: id,
           description: @todo.description,
           due_date: @todo.due_date,
@@ -45,21 +46,21 @@ class TodosControllerTest < ActionDispatch::IntegrationTest
       }
     end
 
-    assert_redirected_to todo_url(id)
+    assert_redirected_to project_todo_url(@todo.project, id)
   end
 
   test "should show todo" do
-    get todo_url(@todo)
+    get project_todo_url(@todo.project, @todo)
     assert_response :success
   end
 
   test "should get edit" do
-    get edit_todo_url(@todo)
+    get edit_project_todo_url(@todo.project, @todo)
     assert_response :success
   end
 
   test "should update todo" do
-    patch todo_url(@todo), params: {
+    patch project_todo_url(@todo.project, @todo), params: {
       todo: {
         description: @todo.description,
         due_date: @todo.due_date,
@@ -68,13 +69,13 @@ class TodosControllerTest < ActionDispatch::IntegrationTest
         status: @todo.status,
       },
     }
-    assert_redirected_to todo_url(@todo)
+    assert_redirected_to project_todo_url(@todo.project, @todo)
   end
 
   test "should add a completion entry when completed" do
     @todo.update(status: "incomplete")
     assert_difference -> { @todo.reload.todo_status_changes.count } do
-      patch todo_url(@todo), params: {
+      patch project_todo_url(@todo.project, @todo), params: {
         todo: {
           status: "complete",
         },
@@ -85,7 +86,7 @@ class TodosControllerTest < ActionDispatch::IntegrationTest
   test "should not add a completion entry when already completed" do
     @todo.update(status: "complete")
     assert_no_difference -> { @todo.reload.todo_status_changes.count } do
-      patch todo_url(@todo), params: {
+      patch project_todo_url(@todo.project, @todo), params: {
         todo: {
           status: "complete",
         },
@@ -96,7 +97,7 @@ class TodosControllerTest < ActionDispatch::IntegrationTest
   test "should not add a completion entry when incompleted" do
     @todo.update(status: "complete")
     assert_no_difference -> { @todo.reload.todo_status_changes.count } do
-      patch todo_url(@todo), params: {
+      patch project_todo_url(@todo.project, @todo), params: {
         todo: {
           status: "incomplete",
         },
@@ -106,9 +107,9 @@ class TodosControllerTest < ActionDispatch::IntegrationTest
 
   test "should destroy todo" do
     assert_difference("Todo.not_deleted.count", -1) do
-      delete todo_url(@todo)
+      delete project_todo_url(@todo.project, @todo)
     end
 
-    assert_redirected_to todos_url
+    assert_redirected_to project_todos_url(@todo.project)
   end
 end

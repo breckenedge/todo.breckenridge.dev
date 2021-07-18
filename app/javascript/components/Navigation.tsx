@@ -10,10 +10,6 @@ const Navigation = () => {
       {currentUser ?
         <>
           <NavLink to="/projects" id="projects-link">Projects</NavLink>
-          <NavLink to="/todos" id="todos-link">Todos</NavLink>
-          {
-          /* <NavLink to="/search" id="search-link">🔍</NavLink> */
-          }
           <div style={{flexGrow: 1}}></div>
           <NavLink to="/profile" id="profile-link">⚙</NavLink>
         </>

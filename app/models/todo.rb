@@ -1,5 +1,5 @@
 class Todo < ApplicationRecord
-  belongs_to :project, optional: true
+  belongs_to :project, optional: false
   has_many :todo_status_changes, dependent: :delete_all
 
   validates :name, presence: true
@@ -9,11 +9,8 @@ class Todo < ApplicationRecord
 
   scope :completed_last_week, -> { complete.where(id: TodoStatusChange.completed_last_week.select(:todo_id)) }
   scope :late, -> { incomplete.where("due_date NOT NULL and due_date < ?", Date.current) }
-  scope :not_deleted, -> { where(deleted_at: nil) }
-
-  def late?
-    incomplete? && due_date && due_date < Date.current
-  end
+  scope :deleted, -> { joins(:project).where.not(deleted_at: nil).or(where.not(projects: { deleted_at: nil })) }
+  scope :not_deleted, -> { where.not(id: deleted.select(:id)) }
 
   def just_completed?
     previous_changes.key?("status") && previous_changes.dig("status", 0) != "complete" && complete?

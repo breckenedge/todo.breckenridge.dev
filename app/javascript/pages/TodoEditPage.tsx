@@ -13,11 +13,11 @@ const TodoEditPage = () => {
   const [currentProject, setCurrentProject] = useState(null)
 
   useEffect(() => {
-    fetchTodo(id, setTodo)
+    fetchTodo(projectId, id, setTodo)
   }, [id])
 
   useEffect(() => {
-    projectId ? fetchProject(projectId, setCurrentProject) : setCurrentProject(null)
+    fetchProject(projectId, setCurrentProject)
   }, [projectId])
 
   return (

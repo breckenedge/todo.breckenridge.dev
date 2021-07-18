@@ -2,7 +2,7 @@
 Tasks due today:
 
 <% @todos.each do |todo| %>
-* <%= todo.name %> [<%= todo_url(todo) %>]
+* <%= todo.name %> [<%= project_todo_url(todo.project, todo) %>]
 <% end %>
 <% else %>
 You have nothing due today.
@@ -12,7 +12,7 @@ You have nothing due today.
 Overdue tasks:
 
 <% @late_todos.each do |todo| %>
-* <%= todo.name %> [<%= todo_url(todo) %>]
+* <%= todo.name %> [<%= project_todo_url(todo.project, todo) %>]
 <% end %>
 <% end %>
 

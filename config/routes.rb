@@ -3,13 +3,12 @@ Rails.application.routes.draw do
     patch :complete, on: :member
     patch :incomplete, on: :member
 
-    resources :todos
+    resources :todos do
+      # GET verb allowed here so that the task can be completed/incompleted from an emailed link.
+      match :complete, on: :member, via: [:get, :patch]
+    end
   end
   resource :profile, only: [:show, :update]
-  resources :todos do
-    # GET verb allowed here so that the task can be completed/incompleted from an emailed link.
-    match :complete, on: :member, via: [:get, :patch]
-  end
 
   get :log_in, to: "sessions#new", as: :log_in
   post :log_in, to: "sessions#create"

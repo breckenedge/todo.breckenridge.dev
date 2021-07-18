@@ -8,7 +8,6 @@ gem "bootsnap", ">= 1.4.2", require: false
 gem "puma", "~> 4.3"
 gem "rails"
 gem "sass-rails", ">= 6"
-gem "simple_form"
 gem "sqlite3", "~> 1.4"
 gem "tzinfo-data", platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem "webpacker", "~> 5.4"
