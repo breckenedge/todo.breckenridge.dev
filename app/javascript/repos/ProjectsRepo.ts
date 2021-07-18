@@ -27,16 +27,8 @@ const createProject = (project: ProjectI, authToken: string, onSuccess: (data: P
     .then((data) => onSuccess(data))
 }
 
-const completeProject = (project: ProjectI, authToken: string, onSuccess: (data: ProjectI) => void) => {
-  put(`/projects/${project.id}`, { status: "complete" }, authToken, onSuccess)
-}
-
-const incompleteProject = (project: ProjectI, authToken: string, onSuccess: (data: ProjectI) => void) => {
-  put(`/projects/${project.id}`, { status: "incomplete" }, authToken, onSuccess)
-}
-
 const deleteProject = (project: ProjectI, authToken: string, onSuccess: () => void) => {
   del(`/projects/${project.id}`, authToken, onSuccess)
 }
 
-export { fetchProject, fetchProjectWithTodos, fetchProjects, updateProject, createProject, completeProject, incompleteProject, deleteProject }
+export { fetchProject, fetchProjectWithTodos, fetchProjects, updateProject, createProject, deleteProject }

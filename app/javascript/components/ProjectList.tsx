@@ -3,10 +3,10 @@ import { ProjectI } from "interfaces"
 import ProjectListItem from "components/ProjectListItem"
 import sortBy, { sortByStatus } from "utilities/sortBy"
 
-const ProjectList = ({ projects }) => {
+const ProjectList = ({ projects }: { projects: Array<ProjectI> }) => {
   return (
     <div className="project-list">
-      {projects.sort(sortBy('name')).sort(sortByStatus).map((project: ProjectI, i: number) => <ProjectListItem project={project} key={i} />)}
+      {projects.sort(sortBy('name')).map((project: ProjectI) => <ProjectListItem project={project} key={project.id} />)}
     </div>
   )
 }
