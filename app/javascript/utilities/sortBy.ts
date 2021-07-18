@@ -29,7 +29,7 @@ export const reverseSortBy = (key: string) => {
 }
 
 
-// Sort incomplete projects before complete projects
+// Sort incomplete items before complete items
 export const sortByStatus = (objA, objB): (-1 | 0 | 1) => {
   if (objA.status === objB.status) {
   } else if (objA.status === "complete" && objB.status !== "complete") {
