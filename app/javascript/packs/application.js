@@ -21,7 +21,6 @@ import App from "components/App"
 
 document.addEventListener('DOMContentLoaded', function () {
   const authToken = document.querySelector('meta[name=csrf-token]').getAttribute('content')
-  const projectOptions = window.projectOptions || []
   const currentUser = window.currentUser || null
   const outlet = document.querySelector('#outlet')
 

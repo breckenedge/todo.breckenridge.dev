@@ -7,7 +7,6 @@
     <% if current_user %>
       <script type="text/javascript">
         window.currentUser = <%= current_user.as_json.slice("id", "email", "time_zone").to_json.html_safe %>;
-        window.projectOptions = <%= Project.select(:id, :name).to_json.html_safe %>;
       </script>
     <% end %>
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
