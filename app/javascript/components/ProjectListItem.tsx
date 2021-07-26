@@ -4,14 +4,14 @@ import { Link } from "react-router-dom"
 import TodayDelta from "components/TodayDelta"
 
 const ProjectListItem = ({ project }: { project: ProjectI }) => (
-  <div className="project list-item">
-    <Link to={`/projects/${project.id}`} className="name">
+  <Link to={`/projects/${project.id}`} className="project">
+    <div className="name">
       {project.name}
-    </Link>
+    </div>
     <div className="due-date">
       {project.due_date && <TodayDelta date={project.due_date}/>}
     </div>
-  </div>
+  </Link>
 )
 
 export default ProjectListItem

@@ -1,21 +1,19 @@
 .project-list {
   margin: 0 -1em;
 
-  > .project {
-    display: flex;
+  > a.project {
+    align-items: center;
     border-top: 1px solid var(--inputBackground);
+    color: var(--foreground);
+    display: flex;
+    text-decoration: none;
+    padding: 0.75em 1em;
 
-    a.name {
+    .name {
       flex-grow: 1;
-      display: block;
-      padding: 0.75em 1em;
-      text-decoration: none;
-      color: var(--foreground);
-      display: flex;
     }
 
     .due-date {
-      padding: 0.75em 1em;
       white-space: nowrap;
     }
   }
