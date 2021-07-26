@@ -23,8 +23,6 @@ const TodoList = ({ todos, currentProject }: { todos: Array<TodoI>, currentProje
   return (
     <div className="todo-list">
       {incompleteTodos.map(toListItem)}
-
-      {completeTodos.length > 0 && <h3>Completed</h3>}
       {completeTodos.map(toListItem)}
     </div>
   )
