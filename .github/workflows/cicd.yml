@@ -1,7 +1,6 @@
-name: CICD
+name: Tests
 
-on:
-  push:
+on: [pull_request]
 
 jobs:
   # Run tests.
@@ -21,37 +20,3 @@ jobs:
         run: yarn install
       - name: Run tests
         run: bundle exec rake
-
-  # Push image to GitHub Packages.
-  # See also https://docs.docker.com/docker-hub/builds/
-  build:
-    # Ensure test job passes before pushing image.
-    needs: test
-
-    runs-on: ubuntu-latest
-    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
-
-    steps:
-      - uses: actions/checkout@v2
-
-      - name: Build image
-        run: docker build . --file Dockerfile --tag docker.pkg.github.com/breckenedge/todo.breckenridge.dev/todo:latest
-
-      - name: Log into registry
-        run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login docker.pkg.github.com -u ${{ github.actor }} --password-stdin
-
-      - name: Push image
-        run: docker push docker.pkg.github.com/breckenedge/todo.breckenridge.dev/todo:latest
-
-  deploy:
-    needs: build
-    runs-on: ubuntu-latest
-    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
-    steps:
-      - uses: actions/checkout@v2
-      - name: Deploy
-        run: |
-          echo "${{secrets.HOST_SSH_KEY}}" > ssh_key
-          chmod 700 ssh_key
-          ssh -o StrictHostKeyChecking=no -i ssh_key ${{ secrets.HOST_USERNAME }}@${{ secrets.HOST_HOSTNAME }} "sh -s" < deploy.sh
-          rm ssh_key
