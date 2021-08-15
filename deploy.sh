@@ -15,7 +15,7 @@ echo 'Pulling latest'
 docker pull docker.pkg.github.com/breckenedge/todo.breckenridge.dev/todo:latest
 
 echo 'Running migrations'
-docker run --rm --env-file=.env -v "/var/lib/docker/volumes/todo_db/_data/production.sqlite3:/code/db/production.sqlite3" docker.pkg.github.com/breckenedge/todo.breckenridge.dev/todo:latest rails db:migrate
+docker run --rm --env-file=.env -v "/var/lib/docker/volumes/todo_db/_data/production.sqlite3:/code/db/production.sqlite3" docker.pkg.github.com/breckenedge/todo.breckenridge.dev/todo:latest bin/rails db:migrate
 
 echo 'Stopping the container'
 docker container stop todo || true
@@ -25,4 +25,4 @@ until [ "`docker ps --filter 'name=todo' --format '{{.ID}}'`" == "" ]; do
 done;
 
 echo 'Starting the container'
-docker run --rm --name todo -d -p 3000:3000 --env-file=.env -v "/var/lib/docker/volumes/todo_db/_data/production.sqlite3:/code/db/production.sqlite3" docker.pkg.github.com/breckenedge/todo.breckenridge.dev/todo:latest rails s
+docker run --rm --name todo -d -p 3000:3000 --env-file=.env -v "/var/lib/docker/volumes/todo_db/_data/production.sqlite3:/code/db/production.sqlite3" docker.pkg.github.com/breckenedge/todo.breckenridge.dev/todo:latest bin/rails s
