@@ -11,9 +11,11 @@ const TodoListItem = ({ todo, currentProject }: { todo: TodoI, currentProject?: 
       <Link to={currentProject ? `/projects/${currentProject.id}/todos/${todo.id}` : `/todos/${todo.id}`} className="name">
         {todo.name}
       </Link>
-      <div className="due-date">
-        {todo.due_date && todo.status !== "complete" && <TodayDelta date={todo.due_date}/>}
-      </div>
+      {todo.due_date && todo.status !== "complete" &&
+        <div className="due-date">
+          {<TodayDelta date={todo.due_date}/>}
+        </div>
+      }
     </div>
   )
 }
