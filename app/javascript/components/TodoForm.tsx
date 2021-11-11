@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { useHistory } from "react-router-dom"
 import DateInput from "components/DateInput"
+import CheckboxInput from './CheckboxInput'
 import ProjectSelect from "components/ProjectSelect"
 import TextInput from "components/TextInput"
 import TextAreaInput from "components/TextAreaInput"
@@ -41,6 +42,11 @@ const TodoForm = ({ todo, currentProject }: { todo: TodoI, currentProject?: Proj
   return (
     <>
       <form onSubmit={handleSubmit}>
+        <CheckboxInput
+          label="Complete"
+          checked={model.status === 'complete'}
+          onChange={(e) => { e.target.checked ? setModel({...model, status: 'complete'}) : setModel({...model, status: 'incomplete'}) }}
+        />
         <TextInput
           required={true}
           id="todo_name"

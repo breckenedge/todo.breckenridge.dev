@@ -13,6 +13,7 @@ const CheckboxInput = ({
           type="checkbox"
           className="boolean"
           {...rest} />
+        {' '}
         {label}
       </label>
     </div>
