@@ -5,10 +5,12 @@ import { TodoI, ProjectI } from "interfaces"
 import TodayDelta from "components/TodayDelta"
 
 const TodoListItem = ({ todo, currentProject }: { todo: TodoI, currentProject?: ProjectI }) => {
+  const projectId = currentProject?.id || todo.project_id
+
   return (
     <div className={`todo ${todo.status}`}>
       <TodoCompleteToggle todo={todo} />
-      <Link to={currentProject ? `/projects/${currentProject.id}/todos/${todo.id}` : `/todos/${todo.id}`} className="name">
+      <Link to={projectId ? `/projects/${projectId}/todos/${todo.id}` : `/todos/${todo.id}`} className="name">
         {todo.name}
       </Link>
       {todo.due_date && todo.status !== "complete" &&

@@ -11,6 +11,22 @@ class TodosControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
+  test "should get today's todos" do
+    @todo.update(due_date: Date.current)
+    get todos_path(due_date: "today", format: :json)
+    assert_response :success
+    doc = JSON.parse(response.body)
+    assert_not_nil(doc.find { |todo| todo["id"] == @todo.id })
+  end
+
+  test "should get incomplete late todos" do
+    @todo.update(due_date: Date.current - 1, status: :incomplete)
+    get todos_path(late: "1", format: :json)
+    assert_response :success
+    doc = JSON.parse(response.body)
+    assert_not_nil(doc.find { |todo| todo["id"] == @todo.id })
+  end
+
   test "should get new" do
     get new_project_todo_url(project_id: @todo.project_id)
     assert_response :success

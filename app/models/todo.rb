@@ -11,6 +11,7 @@ class Todo < ApplicationRecord
   scope :late, -> { incomplete.where("due_date NOT NULL and due_date < ?", Date.current) }
   scope :deleted, -> { joins(:project).where.not(deleted_at: nil).or(where.not(projects: { deleted_at: nil })) }
   scope :not_deleted, -> { where.not(id: deleted.select(:id)) }
+  scope :today, -> { where(due_date: Date.current) }
 
   def just_completed?
     previous_changes.key?("status") && previous_changes.dig("status", 0) != "complete" && complete?

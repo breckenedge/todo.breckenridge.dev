@@ -6,6 +6,14 @@ class TodosController < ApplicationController
   def index
     @todos = Todo.not_deleted
 
+    if params[:due_date] == "today"
+      @todos = @todos.today
+    end
+
+    if params[:late] == "1"
+      @todos = @todos.late
+    end
+
     respond_to do |format|
       format.html
       format.json { render json: @todos.as_json }

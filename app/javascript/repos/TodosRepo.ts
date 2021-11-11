@@ -27,4 +27,12 @@ const deleteTodo = (todo: TodoI, authToken: string, onSuccess: () => void) => {
   del(`/projects/${todo.project_id}/todos/${todo.id}`, authToken, onSuccess)
 }
 
-export { fetchTodo, createTodo, updateTodo, deleteTodo, completeTodo, incompleteTodo }
+const fetchToday = (onSuccess: (data: [TodoI]) => void) => {
+  get(`/todos?due_date=today`, onSuccess)
+}
+
+const fetchLate = (onSuccess: (data: [TodoI]) => void) => {
+  get(`/todos?late=1`, onSuccess)
+}
+
+export { fetchTodo, createTodo, updateTodo, deleteTodo, completeTodo, incompleteTodo, fetchToday, fetchLate }

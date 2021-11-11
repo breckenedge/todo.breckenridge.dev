@@ -10,7 +10,7 @@ import ProjectEditPage from "pages/ProjectEditPage"
 import RootPage from "pages/RootPage"
 import TodoEditPage from "pages/TodoEditPage"
 import TodoNewPage from "pages/TodoNewPage"
-import TodosPage from "pages/TodosPage"
+import TodayPage from "pages/TodayPage"
 import Navigation from "components/Navigation"
 import CurrentUserContext from "contexts/CurrentUserContext"
 
@@ -56,6 +56,10 @@ const AppLayout = () => {
           </Route>
           <Route path="/projects">
             <ProjectsPage />
+          </Route>
+
+          <Route path="/today">
+            <TodayPage />
           </Route>
 
           <Route path="/profile">
