@@ -22,6 +22,20 @@ const get = (url: string, onSuccess: (data: any) => void) => {
     .then(onSuccess)
 }
 
+const getPromise = (url: string) => {
+  return fetch(url, {
+    method: "get",
+    headers: {
+      Accept: "application/json",
+    }
+  }).then((response) => {
+    if (!response.ok) { throw new Error(`Error fetching ${url}`) }
+    return response.json()
+  }).then((data) => {
+    return data
+  })
+}
+
 const patch = (url: string, data: any, authToken: string, onSuccess: (data: any) => void) => {
   const fetchArgs = {
     method: "patch",
@@ -73,4 +87,4 @@ const put = (url: string, data: any, authToken: string, onSuccess: (data: any) =
     .then(onSuccess)
 }
 
-export { del, get, patch, post, put }
+export { del, get, getPromise, patch, post, put }

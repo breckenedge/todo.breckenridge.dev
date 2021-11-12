@@ -1,5 +1,5 @@
 import { TodoI } from "interfaces/TodoI"
-import { del, get, post, put } from "./json-rest-helper"
+import { del, get, getPromise, post, put } from "./json-rest-helper"
 import { v4 } from "uuid"
 
 const fetchTodo = (project_id: String, id: string, onSuccess: (data: TodoI) => void) => {
@@ -27,12 +27,12 @@ const deleteTodo = (todo: TodoI, authToken: string, onSuccess: () => void) => {
   del(`/projects/${todo.project_id}/todos/${todo.id}`, authToken, onSuccess)
 }
 
-const fetchToday = (onSuccess: (data: [TodoI]) => void) => {
-  get(`/todos?due_date=today`, onSuccess)
+const fetchToday = (): Promise<any> => {
+  return getPromise('/todos?due_date=today')
 }
 
-const fetchLate = (onSuccess: (data: [TodoI]) => void) => {
-  get(`/todos?late=1`, onSuccess)
+const fetchLate = (): Promise<any> => {
+  return getPromise('/todos?late=1')
 }
 
 export { fetchTodo, createTodo, updateTodo, deleteTodo, completeTodo, incompleteTodo, fetchToday, fetchLate }

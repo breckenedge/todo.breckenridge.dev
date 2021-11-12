@@ -7,12 +7,12 @@ const TodayPage = () => {
   const [lateTodos, setLateTodos] = useState([])
   
   useEffect(() => {
-    // TODO: Convert into Promise.all
-    fetchToday((data) => {
-      setTodaysTodos(data)
-    })
-    fetchLate((data) => {
-      setLateTodos(data)
+    Promise.all([
+      fetchToday,
+      fetchLate,
+    ]).then((responses) => {
+      responses[0]().then(setTodaysTodos)
+      responses[1]().then(setLateTodos)
     })
   }, [])
 
