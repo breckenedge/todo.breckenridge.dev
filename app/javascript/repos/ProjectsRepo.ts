@@ -27,8 +27,8 @@ const createProject = (project: ProjectI, authToken: string, onSuccess: (data: P
     .then((data) => onSuccess(data))
 }
 
-const deleteProject = (project: ProjectI, authToken: string, onSuccess: () => void) => {
-  del(`/projects/${project.id}`, authToken, onSuccess)
+const deleteProject = (project: ProjectI, authToken: string): Promise<any> => {
+  return del(`/projects/${project.id}`, authToken)
 }
 
 export { fetchProject, fetchProjectWithTodos, fetchProjects, updateProject, createProject, deleteProject }

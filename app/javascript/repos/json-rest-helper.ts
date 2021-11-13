@@ -1,5 +1,5 @@
-const del = (url: string, authToken: string, onSuccess: () => void) => {
-  fetch(url, {
+const del = (url: string, authToken: string): Promise<any> => {
+  return fetch(url, {
     method: "delete",
     headers: {
       Accept: "application/json",
@@ -8,7 +8,6 @@ const del = (url: string, authToken: string, onSuccess: () => void) => {
     },
   })
     .then((response) => response.json())
-    .then(onSuccess)
 }
 
 const get = (url: string, onSuccess: (data: any) => void) => {

@@ -23,8 +23,8 @@ const updateTodo = (todo: TodoI, authToken: string, onSuccess: (data: TodoI) => 
   put(`/projects/${todo.project_id}/todos/${todo.id}`, todo, authToken, onSuccess)
 }
 
-const deleteTodo = (todo: TodoI, authToken: string, onSuccess: () => void) => {
-  del(`/projects/${todo.project_id}/todos/${todo.id}`, authToken, onSuccess)
+const deleteTodo = (todo: TodoI, authToken: string): Promise<any> => {
+  return del(`/projects/${todo.project_id}/todos/${todo.id}`, authToken)
 }
 
 const fetchToday = (): Promise<any> => {

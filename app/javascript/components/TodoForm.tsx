@@ -33,9 +33,10 @@ const TodoForm = ({ todo, currentProject }: { todo: TodoI, currentProject?: Proj
 
   const handleDelete = () => {
     if (window.confirm("Are you sure that you want to delete this todo?")) {
-      deleteTodo(model, authToken, () => {
-        history.push(currentProject ? `/projects/${currentProject.id}/todos` : '/todos')
-      })
+      deleteTodo(model, authToken)
+        .then(() => {
+          history.push(currentProject ? `/projects/${currentProject.id}/todos` : '/todos')
+        })
     }
   }
 
