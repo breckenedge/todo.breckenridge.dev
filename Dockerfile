@@ -1,4 +1,4 @@
-FROM ruby:3.0.1-alpine AS todo_base
+FROM ruby:3.0.3-alpine AS todo_base
 
 ENV RUBYOPT -W:no-deprecated
 ENV RAILS_LOG_TO_STDOUT true
