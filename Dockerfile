@@ -20,6 +20,6 @@ FROM todo_base AS todo_production
 
 ENV RAILS_ENV production
 ENV RAILS_SERVE_STATIC_FILES 1
-RUN SECRET_KEY_BASE=`bin/rails secret` bin/rails assets:precompile
+RUN SECRET_KEY_BASE=`/gems/rails secret` /gems/rails assets:precompile
 EXPOSE 3000
-CMD ["bin/rails", "server", "--binding 0.0.0.0"]
+CMD ["/gems/rails", "server", "--binding 0.0.0.0"]

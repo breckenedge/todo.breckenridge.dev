@@ -14,7 +14,7 @@ services:
       - ${PWD}/db/development.sqlite3:/code/db/development.sqlite3
       - ${PWD}/db/test.sqlite3:/code/db/test.sqlite3
     tmpfs: /code/tmp/pids
-    command: "bin/rails s -p 3000 -b 0.0.0.0"
+    command: "/gems/rails s -p 3000 -b 0.0.0.0"
 
 volumes:
   gems_cache:
