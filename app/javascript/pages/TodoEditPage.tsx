@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
 import TodoForm from "components/TodoForm"
-import TodoBreadcrumbs from "components/TodoBreadcrumbs"
 import { fetchTodo } from "repos/TodosRepo"
 import { fetchProject } from "repos/ProjectsRepo"
 import LoadingIndicator from "components/LoadingIndicator"
@@ -23,7 +22,6 @@ const TodoEditPage = () => {
   return (
     todo ?
     <>
-      <TodoBreadcrumbs todo={todo} currentProject={currentProject} />
       <TodoForm todo={todo} currentProject={currentProject} />
     </>
     :

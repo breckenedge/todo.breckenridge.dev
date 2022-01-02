@@ -21,16 +21,10 @@ const ProjectPage = () => {
     <>
       {project ?
         <div>
-          <div className="two-column">
-            <div>
-              <h1>{project.name}</h1>
-            </div>
-
-            <div className="no-wrap">
-              <Link to={`/projects/${id}/edit`} className="button blue">
-                Edit
-              </Link>
-            </div>
+          <div className="no-wrap">
+            <Link to={`/projects/${id}/edit`} className="button blue">
+              Edit Project
+            </Link>
           </div>
 
           <dl>
