@@ -18,5 +18,7 @@ module TodoApp
 
     app_url = ENV.fetch("APP_URL", "localhost:3000")
     config.action_mailer.default_url_options = { host: app_url }
+
+    config.active_record.legacy_connection_handling = false
   end
 end
