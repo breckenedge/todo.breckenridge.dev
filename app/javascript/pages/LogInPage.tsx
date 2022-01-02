@@ -32,7 +32,7 @@ const LogInPage = () => {
       return response.json()
     }).then((data) => {
       setCurrentUser(data.currentUser)
-      history.push("/today")
+      history.push("/")
     }).catch((_) => {
       setError("Invalid credentials")
     })

@@ -3,11 +3,9 @@ import { useHistory } from "react-router-dom"
 import { BrowserRouter, Switch, Route } from 'react-router-dom'
 import LogInPage from "pages/LogInPage"
 import ProfilePage from "pages/ProfilePage"
-import ProjectsPage from "pages/ProjectsPage"
 import ProjectPage from "pages/ProjectPage"
 import ProjectNewPage from "pages/ProjectNewPage"
 import ProjectEditPage from "pages/ProjectEditPage"
-import RootPage from "pages/RootPage"
 import TodoEditPage from "pages/TodoEditPage"
 import TodoNewPage from "pages/TodoNewPage"
 import TodayPage from "pages/TodayPage"
@@ -54,20 +52,13 @@ const AppLayout = () => {
           <Route path="/projects/:id">
             <ProjectPage />
           </Route>
-          <Route path="/projects">
-            <ProjectsPage />
-          </Route>
-
-          <Route path="/today">
-            <TodayPage />
-          </Route>
 
           <Route path="/profile">
             <ProfilePage />
           </Route>
 
           <Route path="/">
-            <RootPage />
+            <TodayPage />
           </Route>
         </Switch>
       </main>

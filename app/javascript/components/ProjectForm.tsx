@@ -20,7 +20,7 @@ const ProjectForm = ({ project }: { project: ProjectI }) => {
 
   const handleDelete = () => {
     if (window.confirm("Are you sure that you want to delete this project?")) {
-      deleteProject(model, authToken).then(() => { history.push('/projects') })
+      deleteProject(model, authToken).then(() => { history.push('/') })
     }
   }
 

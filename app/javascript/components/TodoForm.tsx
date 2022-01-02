@@ -20,7 +20,7 @@ const TodoForm = ({ todo, currentProject }: { todo: TodoI, currentProject?: Proj
     e.preventDefault()
     const meth = todo.id ? updateTodo : createTodo
     meth(model, authToken, (data: TodoI) => {
-      currentProject ? history.push(`/projects/${currentProject.id}`) : history.push("/todos")
+      currentProject ? history.push(`/projects/${currentProject.id}`) : history.push("/")
     })
   }
 
@@ -35,7 +35,7 @@ const TodoForm = ({ todo, currentProject }: { todo: TodoI, currentProject?: Proj
     if (window.confirm("Are you sure that you want to delete this todo?")) {
       deleteTodo(model, authToken)
         .then(() => {
-          history.push(currentProject ? `/projects/${currentProject.id}/todos` : '/todos')
+          history.push(currentProject ? `/projects/${currentProject.id}/todos` : '/')
         })
     }
   }

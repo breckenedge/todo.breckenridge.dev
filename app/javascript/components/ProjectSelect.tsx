@@ -7,7 +7,7 @@ const ProjectSelect = ({ id, label, ...rest }) => {
   const [projectOptions, setProjectOptions] = useState([])
 
   useEffect(() => {
-    fetchProjects(setProjectOptions)
+    fetchProjects().then(setProjectOptions)
   }, [])
 
   const options = projectOptions.sort(sortBy('name')).map((p) => ({ value: p.id, label: p.name }))

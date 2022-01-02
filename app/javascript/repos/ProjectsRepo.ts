@@ -1,5 +1,5 @@
 import { ProjectI, TodoI } from "interfaces"
-import { del, get, put } from "./json-rest-helper"
+import { del, get, getPromise, put } from "./json-rest-helper"
 import { v4 } from "uuid"
 
 const fetchProject = (id: string, onSuccess: (data: ProjectI) => void) => {
@@ -12,8 +12,8 @@ const fetchProjectWithTodos = (id: string, onSuccess: (data: { project: ProjectI
   get(`/projects/${id}?include=todos`, onSuccess)
 }
 
-const fetchProjects = (onSuccess: (data: Array<ProjectI>) => void) => {
-  get("/projects", onSuccess)
+const fetchProjects = (): Promise<any> => {
+  return getPromise("/projects")
 }
 
 const updateProject = (project: ProjectI, authToken: string, onSuccess: (data: ProjectI) => void) => {
