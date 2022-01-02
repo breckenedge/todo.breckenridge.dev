@@ -53,7 +53,7 @@ const TodoListController = ({ todos, currentProject, setTodos }: { todos?: Array
 
   return (
     <>
-      <div style={{display: "flex", flexDirection: "row", alignItems: "center", marginBottom: "0.75em"}}>
+      <div style={{display: "flex", flexDirection: "row", alignItems: "center", marginBottom: "0.75em", fontSize: "85%"}}>
         <label style={{flexGrow: 1}}>
           Show completed <input type="checkbox" onChange={handleChangeShowCompleted} checked={showCompleted === "t"}/>
         </label>
