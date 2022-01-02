@@ -1,29 +1,18 @@
-import React from "react"
+import React, { useCallback } from "react"
 import { ProjectI, TodoI } from "interfaces"
-import sortBy, { reverseSortBy } from "utilities/sortBy"
+import sortBy, { reverseSortBy, SortDir, SortKey } from "utilities/sortBy"
 import TodoListItem from "./TodoListItem"
 
-const TodoList = ({ todos, currentProject }: { todos: Array<TodoI>, currentProject?: ProjectI }) => {
-  let completeTodos: TodoI[] = []
-  let incompleteTodos: TodoI[] = []
-
-  // Group todos by status and due date
-  todos.sort(reverseSortBy("created_at")).forEach((todo) => {
-    if (todo.status === "complete") {
-      completeTodos.push(todo)
-    } else {
-      incompleteTodos.push(todo)
-    }
-  })
+const TodoList = ({ todos, currentProject, sortDir, sortKey, showCompleted }: { todos: Array<TodoI>, currentProject?: ProjectI, sortDir: SortDir, sortKey: SortKey, showCompleted: "t" | "f" }) => {
+  let sortFunction = sortDir === "desc" ? reverseSortBy : sortBy
 
   const toListItem = (todo: TodoI, i: number) => {
-    return <TodoListItem key={i} todo={todo} currentProject={currentProject} />
+    return <TodoListItem key={i} todo={todo} showCompleted={showCompleted} currentProject={currentProject} />
   }
 
   return (
     <div className="todo-list">
-      {incompleteTodos.map(toListItem)}
-      {completeTodos.map(toListItem)}
+      {todos.sort(sortFunction(sortKey)).map(toListItem)}
     </div>
   )
 }

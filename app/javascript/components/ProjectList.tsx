@@ -1,7 +1,7 @@
 import React from "react"
 import { ProjectI } from "interfaces"
 import ProjectListItem from "components/ProjectListItem"
-import sortBy, { sortByStatus } from "utilities/sortBy"
+import sortBy from "utilities/sortBy"
 
 const ProjectList = ({ projects }: { projects: Array<ProjectI> }) => {
   return (
