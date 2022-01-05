@@ -46,6 +46,12 @@
   background-color: var(--brown);
 }
 
+// Syntax, Gray
+.button.gray {
+  color: var(--background);
+  background-color: var(--gray);
+}
+
 button.button,
 input.button[type="submit"],
 a.button {

@@ -6,6 +6,7 @@ import TextInput from "components/TextInput"
 import TextAreaInput from "components/TextAreaInput"
 import { ProjectI } from "interfaces"
 import { updateProject, createProject, deleteProject } from "repos/ProjectsRepo"
+import ConfirmButton from "./ConfirmButton"
 
 const ProjectForm = ({ project }: { project: ProjectI }) => {
   const authToken = useContext(AuthenticityTokenContext)
@@ -19,9 +20,7 @@ const ProjectForm = ({ project }: { project: ProjectI }) => {
   }
 
   const handleDelete = () => {
-    if (window.confirm("Are you sure that you want to delete this project?")) {
-      deleteProject(model, authToken).then(() => { history.push('/') })
-    }
+    deleteProject(model, authToken).then(() => { history.push('/') })
   }
 
   useEffect(() => setModel(project), [project])
@@ -58,7 +57,7 @@ const ProjectForm = ({ project }: { project: ProjectI }) => {
           className="button button-wide blue">Save</button>
       </form>
       <hr />
-      {project.id && <button onClick={handleDelete} className="button button-wide red">Delete Project</button>}
+      {project.id && <ConfirmButton onSubmit={handleDelete} className="button button-wide red">Delete Project</ConfirmButton>}
     </>
   )
 }

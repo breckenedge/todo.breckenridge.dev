@@ -6,6 +6,7 @@ import ProjectSelect from "components/ProjectSelect"
 import TextInput from "components/TextInput"
 import TextAreaInput from "components/TextAreaInput"
 import AuthenticityTokenContext from "contexts/AuthenticityTokenContext"
+import ConfirmButton from './ConfirmButton'
 import { ProjectI, TodoI } from "interfaces"
 import { createTodo, updateTodo, deleteTodo } from "repos/TodosRepo"
 
@@ -32,12 +33,10 @@ const TodoForm = ({ todo, currentProject }: { todo: TodoI, currentProject?: Proj
   }
 
   const handleDelete = () => {
-    if (window.confirm("Are you sure that you want to delete this todo?")) {
-      deleteTodo(model, authToken)
-        .then(() => {
-          history.push(currentProject ? `/projects/${currentProject.id}/todos` : '/')
-        })
-    }
+    deleteTodo(model, authToken)
+      .then(() => {
+        history.push(currentProject ? `/projects/${currentProject.id}/todos` : '/')
+      })
   }
 
   return (
@@ -81,7 +80,7 @@ const TodoForm = ({ todo, currentProject }: { todo: TodoI, currentProject?: Proj
         </button>
       </form>
       <hr />
-      {todo.id && <button onClick={handleDelete} className="button button-wide red">Delete Todo</button>}
+      {todo.id && <ConfirmButton className="button button-wide red" onSubmit={handleDelete}>Delete Todo</ConfirmButton>}
     </>
   )
 }
