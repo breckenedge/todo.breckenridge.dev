@@ -25,4 +25,4 @@ until [ "`docker ps --filter 'name=todo' --format '{{.ID}}'`" == "" ]; do
 done;
 
 echo 'Starting the container'
-docker run --rm --name todo -d -p 3000:3000 --env-file=.env -v "/var/lib/docker/volumes/todo_db/_data/production.sqlite3:/code/db/production.sqlite3" docker.pkg.github.com/breckenedge/todo.breckenridge.dev/todo:latest /gems/rails server -p 3000
+docker run --rm --name todo -d -p 127.0.0.1:3000:3000 --env-file=.env -v "/var/lib/docker/volumes/todo_db/_data/production.sqlite3:/code/db/production.sqlite3" docker.pkg.github.com/breckenedge/todo.breckenridge.dev/todo:latest /gems/rails server -p 3000
