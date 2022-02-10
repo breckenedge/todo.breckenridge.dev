@@ -1,8 +1,9 @@
-import React, { useState } from "react"
+import React, { useCallback, useEffect, useState } from "react"
 import AuthenticityTokenContext from "contexts/AuthenticityTokenContext"
 import CurrentUserContext from "contexts/CurrentUserContext"
 import AppLayout from "components/AppLayout"
 import { ProjectI, UserI } from "interfaces"
+import AppCache from "components/AppCache"
 
 interface Props {
   authToken: string
@@ -16,7 +17,9 @@ const App = (props: Props) => {
   return (
     <CurrentUserContext.Provider value={{ currentUser, setCurrentUser }}>
       <AuthenticityTokenContext.Provider value={props.authToken}>
-        <AppLayout />
+        <AppCache.Provider>
+          <AppLayout />
+        </AppCache.Provider>
       </AuthenticityTokenContext.Provider>
     </CurrentUserContext.Provider>
   )

@@ -1,4 +1,4 @@
-const del = (url: string, authToken: string): Promise<any> => {
+const del = (url: string, authToken: string, onSuccess: (data: any) => void) => {
   return fetch(url, {
     method: "delete",
     headers: {
@@ -8,6 +8,7 @@ const del = (url: string, authToken: string): Promise<any> => {
     },
   })
     .then((response) => response.json())
+    .then(onSuccess)
 }
 
 const get = (url: string, onSuccess: (data: any) => void) => {
@@ -66,7 +67,7 @@ const post = (url: string, data: any, authToken: string, onSuccess: (data: any) 
   })
     .then((response) => {
       if (!response.ok) { throw(response) }
-      response.json()
+      return response.json()
     })
     .then(onSuccess)
     .catch(onFailure)

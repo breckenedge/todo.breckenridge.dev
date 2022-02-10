@@ -1,18 +1,32 @@
-import React, { useCallback } from "react"
+import React, { useMemo } from "react"
 import { ProjectI, TodoI } from "interfaces"
 import sortBy, { reverseSortBy, SortDir, SortKey } from "utilities/sortBy"
 import TodoListItem from "./TodoListItem"
+import AppCache from "./AppCache"
 
-const TodoList = ({ todos, currentProject, sortDir, sortKey, showCompleted }: { todos: Array<TodoI>, currentProject?: ProjectI, sortDir?: SortDir, sortKey?: SortKey, showCompleted?: "t" | "f" }) => {
+const TodoList = ({ currentProject, sortDir, sortKey, showCompleted }: { currentProject?: ProjectI, sortDir?: SortDir, sortKey?: SortKey, showCompleted?: "t" | "f" }) => {
+  const { todos } = AppCache.useContainer()
   let sortFunction = sortDir === "desc" ? reverseSortBy : sortBy
 
-  const toListItem = (todo: TodoI, i: number) => {
-    return <TodoListItem key={i} todo={todo} showCompleted={showCompleted} currentProject={currentProject} />
-  }
+  const currentTodos = useMemo(() => (
+    todos
+      .filter((t) => !t.deleted_at)
+      .filter((t) => t.project_id === currentProject?.id)
+      .sort(sortFunction(sortKey))
+  ), [currentProject, todos, sortFunction, sortDir, sortKey, showCompleted])
+
+  const toListItem = (todo: TodoI, i: number) => (
+    <TodoListItem
+      key={i}
+      todo={todo}
+      showCompleted={showCompleted}
+      currentProject={currentProject}
+    />
+  )
 
   return (
     <div className="todo-list">
-      {todos.sort(sortFunction(sortKey)).map(toListItem)}
+      {currentTodos.map(toListItem)}
     </div>
   )
 }

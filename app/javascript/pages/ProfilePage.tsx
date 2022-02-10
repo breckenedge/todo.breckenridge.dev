@@ -4,7 +4,7 @@ import { useHistory } from "react-router-dom"
 import AuthenticityTokenContext from "contexts/AuthenticityTokenContext"
 import TextInput from "components/TextInput"
 import SelectInput from "components/SelectInput"
-import { put } from "repos/json-rest-helper"
+import { put } from "utilities/json-rest-helper"
 
 const ProfileEditPage = () => {
   const { currentUser, setCurrentUser } = useContext(CurrentUserContext)

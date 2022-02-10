@@ -1,32 +1,23 @@
-import React, { useContext, useRef, useState } from "react"
-import { createTodo } from "repos/TodosRepo"
-import { fetchProjectWithTodos } from "repos/ProjectsRepo"
-import AuthenticityTokenContext from "contexts/AuthenticityTokenContext"
+import React, { useRef, useState } from "react"
 import { ProjectI, TodoI } from "interfaces"
 import TodoList from "components/TodoList"
-import LoadingIndicator from "components/LoadingIndicator"
 import { SortKey, SortDir } from "utilities/sortBy"
+import AppCache from "./AppCache"
 
-const TodoListController = ({ todos, currentProject, setTodos }: { todos?: Array<TodoI>, currentProject?: ProjectI, setTodos?: (todos: Array<TodoI>) => void }) => {
-  const authToken = useContext(AuthenticityTokenContext)
+const TodoListController = ({ currentProject }: { currentProject?: ProjectI }) => {
   const newTodoNameInput = useRef(null)
   const skSortKey = currentProject ? `project:${currentProject.id}:sortKey` : "sortKey"
   const skSortDir = currentProject ? `project:${currentProject.id}:sortDir` : "sortDir"
   const skShowCompleted = currentProject ? `project:${currentProject.id}:showCompleted` : "showCompleted"
   const [newTodo, setNewTodo] = useState(null)
-  const [savingNewTodo, setSavingNewTodo] = useState(false)
   const [sortKey, setSortKey] = useState((localStorage.getItem(skSortKey) || "name") as SortKey)
   const [sortDir, setSortDir] = useState((localStorage.getItem(skSortDir) || "desc") as SortDir)
   const [showCompleted, setShowCompleted] = useState((localStorage.getItem(skShowCompleted) || "t"))
+  const { createTodo } = AppCache.useContainer()
 
   const handleSubmitNewTodo = (e) => {
     e.preventDefault()
-    setSavingNewTodo(true)
-    createTodo(newTodo, authToken, (data) => {
-      fetchProjectWithTodos(currentProject.id, (data) => setTodos(data.todos))
-      setSavingNewTodo(false)
-      setNewTodo(null)
-    })
+    createTodo(newTodo, () => setNewTodo(null))
   }
 
   const handleChangeNewTodoName = (e) => {
@@ -39,13 +30,13 @@ const TodoListController = ({ todos, currentProject, setTodos }: { todos?: Array
     setSortKey(newSortKey)
   }
 
-  const handleChangeSortDir = (e) => {
+  const handleChangeSortDir = () => {
     const newSortDir = (sortDir === "desc" ? "asc" : "desc") as SortDir
     localStorage.setItem(skSortDir, newSortDir)
     setSortDir(newSortDir)
   }
 
-  const handleChangeShowCompleted = (e) => {
+  const handleChangeShowCompleted = () => {
     const newShowCompleted = showCompleted === "t" ? "f" : "t"
     localStorage.setItem(skShowCompleted, newShowCompleted)
     setShowCompleted(newShowCompleted)
@@ -73,16 +64,20 @@ const TodoListController = ({ todos, currentProject, setTodos }: { todos?: Array
           type="text"
           id="new-todo-name"
           className="string"
-          placeholder={savingNewTodo ? "Saving..." : "Enter a todo..."}
+          placeholder={"Enter a todo..."}
           ref={newTodoNameInput}
           value={newTodo?.name || ""}
           onChange={handleChangeNewTodoName}
           required={true}
-          disabled={savingNewTodo}
         />
       </form>
 
-      {todos ? <TodoList todos={todos} sortDir={sortDir} sortKey={sortKey} showCompleted={showCompleted} currentProject={currentProject} /> : <LoadingIndicator />}
+      <TodoList
+        sortDir={sortDir}
+        sortKey={sortKey}
+        showCompleted={showCompleted}
+        currentProject={currentProject}
+      />
     </>
   )
 }

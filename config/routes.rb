@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
-  resources :todos, only: :index
+  resources :todos
+
   resources :projects do
     patch :complete, on: :member
     patch :incomplete, on: :member

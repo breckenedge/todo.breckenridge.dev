@@ -1,26 +1,28 @@
-import React, { useContext, useEffect, useState } from "react"
+import React, { useEffect, useState } from "react"
 import { useHistory } from "react-router-dom"
-import AuthenticityTokenContext from "contexts/AuthenticityTokenContext"
 import DateInput from "components/DateInput"
 import TextInput from "components/TextInput"
 import TextAreaInput from "components/TextAreaInput"
 import { ProjectI } from "interfaces"
-import { updateProject, createProject, deleteProject } from "repos/ProjectsRepo"
 import ConfirmButton from "./ConfirmButton"
+import AppCache from "./AppCache"
 
 const ProjectForm = ({ project }: { project: ProjectI }) => {
-  const authToken = useContext(AuthenticityTokenContext)
   const [model, setModel] = useState(project)
   let history = useHistory()
+
+  const { createProject, updateProject, deleteProject } = AppCache.useContainer()
 
   const handleSubmit = (e) => {
     e.preventDefault()
     const meth = project.id ? updateProject : createProject
-    meth(model, authToken, (data: ProjectI) => { history.push(`/projects/${data.id}`) })
+    meth(model, (data: ProjectI) => {
+      history.push(`/projects/${data.id}`)
+    })
   }
 
   const handleDelete = () => {
-    deleteProject(model, authToken).then(() => { history.push('/') })
+    deleteProject(model, () => history.push('/'))
   }
 
   useEffect(() => setModel(project), [project])

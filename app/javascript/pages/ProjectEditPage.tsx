@@ -1,16 +1,17 @@
 import React, { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
 import ProjectForm from "components/ProjectForm"
-import { fetchProject } from "repos/ProjectsRepo"
 import LoadingIndicator from "components/LoadingIndicator"
+import AppCache from "components/AppCache"
 
 const ProjectEditPage = () => {
   const id = useParams()["id"]
   const [project, setProject] = useState(null)
+  const { projects } = AppCache.useContainer()
 
   useEffect(() => {
-    fetchProject(id, setProject)
-  }, [id])
+    setProject(projects.find((p) => p.id === id))
+  }, [id, projects])
 
   return (
     project ? <ProjectForm project={project} /> : <LoadingIndicator/>

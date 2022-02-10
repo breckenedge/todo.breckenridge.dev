@@ -11,15 +11,22 @@ import TodoNewPage from "pages/TodoNewPage"
 import TodayPage from "pages/TodayPage"
 import Navigation from "components/Navigation"
 import CurrentUserContext from "contexts/CurrentUserContext"
+import AppCache from "components/AppCache"
 
 const AppLayout = () => {
   const { currentUser } = useContext(CurrentUserContext)
   const history = useHistory()
+  const { fetchProjects, fetchTodos } = AppCache.useContainer()
 
   useEffect(() => {
     if (!currentUser && history) {
       history.push("/log_in")
     }
+  }, [])
+
+  useEffect(() => {
+    fetchProjects()
+    fetchTodos()
   }, [])
 
   return (

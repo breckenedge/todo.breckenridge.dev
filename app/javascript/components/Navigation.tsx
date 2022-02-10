@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from "react"
 import { useLocation } from "react-router"
 import { matchPath, NavLink } from "react-router-dom"
 import CurrentUserContext from "contexts/CurrentUserContext"
-import { fetchProject } from "repos/ProjectsRepo"
+import AppCache from "./AppCache"
 
 const Navigation = () => {
   const { currentUser } = useContext(CurrentUserContext)
@@ -10,14 +10,15 @@ const Navigation = () => {
   const params = matchPath(pathname, { path: "/projects/:projectId" })
   const projectId = params ? params["params"]["projectId"] : null
   const [project, setProject] = useState(undefined)
+  const { projects } = AppCache.useContainer()
 
   useEffect(() => {
     if (projectId && projectId !== "new") {
-      fetchProject(projectId, setProject)
+      setProject(projects.find((p) => p.id === projectId))
     } else {
       setProject(undefined)
     }
-  }, [projectId])
+  }, [projectId, projects])
 
   return (
     <>

@@ -2,26 +2,21 @@ import React, { useEffect, useState } from "react"
 import { Link } from "react-router-dom"
 import TodoList from "components/TodoList"
 import ProjectList from "components/ProjectList"
-import { fetchToday, fetchLate } from "repos/TodosRepo"
-import { fetchProjects } from "repos/ProjectsRepo"
 import { ProjectI, TodoI } from "interfaces"
+import AppCache from "components/AppCache"
+import { todayISO8601 } from "utilities/date"
 
 const TodayPage = () => {
   const [todaysTodos, setTodaysTodos] = useState([] as TodoI[])
   const [lateTodos, setLateTodos] = useState([] as TodoI[])
-  const [projects, setProjects] = useState([] as ProjectI[])
-  
+  let { projects, todos } = AppCache.useContainer()
+
   useEffect(() => {
-    Promise.all([
-      fetchToday,
-      fetchLate,
-      fetchProjects,
-    ]).then((responses) => {
-      responses[0]().then(setTodaysTodos)
-      responses[1]().then(setLateTodos)
-      responses[2]().then(setProjects)
-    })
-  }, [])
+    const today = todayISO8601()
+    const todosWithDates = todos.filter((todo) => todo.due_date)
+    setTodaysTodos(todosWithDates.filter((todo) => todo.due_date === today))
+    setLateTodos(todosWithDates.filter((todo) => todo.status === 'incomplete' && todo.due_date < today))
+  }, [todos])
 
   return (
     <>

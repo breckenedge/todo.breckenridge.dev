@@ -5,14 +5,13 @@ import CheckboxInput from './CheckboxInput'
 import ProjectSelect from "components/ProjectSelect"
 import TextInput from "components/TextInput"
 import TextAreaInput from "components/TextAreaInput"
-import AuthenticityTokenContext from "contexts/AuthenticityTokenContext"
 import ConfirmButton from './ConfirmButton'
 import { ProjectI, TodoI } from "interfaces"
-import { createTodo, updateTodo, deleteTodo } from "repos/TodosRepo"
+import AppCache from './AppCache'
 
 const TodoForm = ({ todo, currentProject }: { todo: TodoI, currentProject?: ProjectI }) => {
-  const authToken = useContext(AuthenticityTokenContext)
   const [model, setModel] = useState(todo)
+  const { createTodo, updateTodo, deleteTodo } = AppCache.useContainer()
   let history = useHistory()
 
   useEffect(() => setModel(todo), [todo])
@@ -20,7 +19,7 @@ const TodoForm = ({ todo, currentProject }: { todo: TodoI, currentProject?: Proj
   const handleSubmit = (e) => {
     e.preventDefault()
     const meth = todo.id ? updateTodo : createTodo
-    meth(model, authToken, (data: TodoI) => {
+    meth(model, (data: TodoI) => {
       currentProject ? history.push(`/projects/${currentProject.id}`) : history.push("/")
     })
   }
@@ -33,10 +32,7 @@ const TodoForm = ({ todo, currentProject }: { todo: TodoI, currentProject?: Proj
   }
 
   const handleDelete = () => {
-    deleteTodo(model, authToken)
-      .then(() => {
-        history.push(currentProject ? `/projects/${currentProject.id}/todos` : '/')
-      })
+    deleteTodo(model, () => history.push(currentProject ? `/projects/${currentProject.id}/todos` : '/'))
   }
 
   return (

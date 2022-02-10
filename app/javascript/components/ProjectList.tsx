@@ -6,7 +6,7 @@ import sortBy from "utilities/sortBy"
 const ProjectList = ({ projects }: { projects: Array<ProjectI> }) => {
   return (
     <div className="project-list">
-      {projects.sort(sortBy('name')).map((project: ProjectI) => <ProjectListItem project={project} key={project.id} />)}
+      {projects.filter((p) => !p.deleted_at).sort(sortBy('name')).map((project: ProjectI) => <ProjectListItem project={project} key={project.id} />)}
     </div>
   )
 }

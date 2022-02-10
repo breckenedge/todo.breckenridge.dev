@@ -1,20 +1,18 @@
-import React, { useContext, useEffect, useState } from "react"
-import AuthenticityTokenContext from "contexts/AuthenticityTokenContext"
-import { completeTodo, incompleteTodo } from "repos/TodosRepo"
+import React, { useEffect, useState } from "react"
+import AppCache from "./AppCache"
 import { TodoI } from "interfaces"
 import CompleteToggle from "components/CompleteToggle"
 
 const TodoCompleteToggle = ({ todo }: { todo: TodoI }) => {
-  const authToken = useContext(AuthenticityTokenContext)
   const [status, setStatus] = useState(todo.status)
-  const method = status === "complete" ? incompleteTodo : completeTodo
+  const { updateTodo } = AppCache.useContainer()
 
   useEffect(() => { setStatus(todo.status) }, [todo])
 
   return (
     <CompleteToggle
       status={status}
-      onClick={() => method(todo, authToken, (data) => { setStatus(data.status) })}
+      onClick={() => updateTodo({ ...todo, status: todo.status === 'complete' ? 'incomplete' : 'complete' }, () => {})}
     />
   )
 }

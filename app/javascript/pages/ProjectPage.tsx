@@ -1,21 +1,17 @@
 import React, { useEffect, useState } from "react"
 import { Link, useParams } from "react-router-dom"
 import TodoListController from "components/TodoListController"
-import { ProjectI, TodoI } from "interfaces"
-import { fetchProjectWithTodos } from "repos/ProjectsRepo"
 import LoadingIndicator from "components/LoadingIndicator"
+import AppCache from "components/AppCache"
 
 const ProjectPage = () => {
   const id = useParams()["id"]
   const [project, setProject] = useState(null)
-  const [todos, setTodos] = useState([])
+  const { projects, todos } = AppCache.useContainer()
 
   useEffect(() => {
-    fetchProjectWithTodos(id, (data) => {
-      setProject(data.project)
-      setTodos(data.todos)
-    })
-  }, [id])
+    setProject(projects.find((p) => p.id === id))
+  }, [id, projects, todos])
 
   return (
     <>
@@ -43,7 +39,7 @@ const ProjectPage = () => {
             }
           </dl>
 
-          <TodoListController todos={todos} currentProject={project} setTodos={setTodos} />
+          <TodoListController currentProject={project} />
         </div>
       :
         <LoadingIndicator/>
