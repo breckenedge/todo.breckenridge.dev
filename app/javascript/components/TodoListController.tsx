@@ -1,8 +1,8 @@
-import React, { useRef, useState } from "react"
-import { ProjectI, TodoI } from "interfaces"
+import React, { useMemo, useRef, useState } from "react"
+import { ProjectI } from "interfaces"
 import TodoList from "components/TodoList"
-import { SortKey, SortDir } from "utilities/sortBy"
 import AppCache from "./AppCache"
+import sortBy, { reverseSortBy, SortDir, SortKey } from "utilities/sortBy"
 
 const TodoListController = ({ currentProject }: { currentProject?: ProjectI }) => {
   const newTodoNameInput = useRef(null)
@@ -13,7 +13,15 @@ const TodoListController = ({ currentProject }: { currentProject?: ProjectI }) =
   const [sortKey, setSortKey] = useState((localStorage.getItem(skSortKey) || "name") as SortKey)
   const [sortDir, setSortDir] = useState((localStorage.getItem(skSortDir) || "desc") as SortDir)
   const [showCompleted, setShowCompleted] = useState((localStorage.getItem(skShowCompleted) || "t"))
-  const { createTodo } = AppCache.useContainer()
+  const { createTodo, todos } = AppCache.useContainer()
+  let sortFunction = sortDir === "desc" ? reverseSortBy : sortBy
+
+  const currentTodos = useMemo(() => (
+    todos
+      .filter((t) => !t.deleted_at)
+      .filter((t) => t.project_id === currentProject?.id)
+      .sort(sortFunction(sortKey))
+  ), [currentProject, todos, sortFunction, sortDir, sortKey, showCompleted])
 
   const handleSubmitNewTodo = (e) => {
     e.preventDefault()
@@ -75,6 +83,7 @@ const TodoListController = ({ currentProject }: { currentProject?: ProjectI }) =
       <TodoList
         sortDir={sortDir}
         sortKey={sortKey}
+        todos={currentTodos}
         showCompleted={showCompleted}
         currentProject={currentProject}
       />

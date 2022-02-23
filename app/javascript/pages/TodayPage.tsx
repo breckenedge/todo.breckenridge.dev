@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react"
 import { Link } from "react-router-dom"
 import TodoList from "components/TodoList"
 import ProjectList from "components/ProjectList"
-import { ProjectI, TodoI } from "interfaces"
+import { TodoI } from "interfaces"
 import AppCache from "components/AppCache"
 import { todayISO8601 } from "utilities/date"
 
