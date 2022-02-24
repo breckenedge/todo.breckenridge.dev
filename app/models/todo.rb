@@ -8,7 +8,7 @@ class Todo < ApplicationRecord
   enum status: { incomplete: 0, complete: 1 }
 
   scope :completed_last_week, -> { complete.where(id: TodoStatusChange.completed_last_week.select(:todo_id)) }
-  scope :late, -> { incomplete.where("due_date NOT NULL and due_date < ?", Date.current) }
+  scope :late, -> { incomplete.where.not(due_date: nil).where("due_date < ?", Date.current) }
   scope :deleted, -> { joins(:project).where.not(deleted_at: nil).or(where.not(projects: { deleted_at: nil })) }
   scope :not_deleted, -> { where.not(id: deleted.select(:id)) }
   scope :today, -> { where(due_date: Date.current) }
