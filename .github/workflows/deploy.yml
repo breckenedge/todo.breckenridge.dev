@@ -34,5 +34,6 @@ jobs:
         run: |
           echo "${{secrets.HOST_SSH_KEY}}" > ssh_key
           chmod 700 ssh_key
-          ssh -o StrictHostKeyChecking=no -i ssh_key ${{ secrets.HOST_USERNAME }}@${{ secrets.HOST_HOSTNAME }} "sh -s" < deploy.sh
+          scp -o StrictHostKeyChecking=no -i ssh_key docker-compose.prod.yml ${{secrets.HOST_USERNAME}}@${{secrets.HOST_HOSTNAME}}:/${{secrets.DEPLOY_PATH}}
+          ssh -o StrictHostKeyChecking=no -i ssh_key ${{ secrets.HOST_USERNAME }}@${{ secrets.HOST_HOSTNAME }} "DEPLOY_PATH=${{secrets.DEPLOY_PATH}} sh -s" < deploy.sh
           rm ssh_key
