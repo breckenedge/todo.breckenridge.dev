@@ -8,7 +8,7 @@ services:
       - RAILS_MASTER_KEY
       - RAILS_ENV
     ports:
-      - 127.0.0.1:${HOST_PORT}:9292
+      - 127.0.0.1:${HOST_PORT}:3000
     links:
       - postgresql
     command: bin/rails s --host "0.0.0.0"
