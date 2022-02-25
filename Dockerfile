@@ -2,7 +2,7 @@ FROM ruby:3.0.1-alpine AS todo_base
 
 ENV RUBYOPT -W:no-deprecated
 ENV RAILS_LOG_TO_STDOUT true
-ENV BUILD_PACKAGES yarn nodejs npm build-base sqlite-dev tzdata
+ENV BUILD_PACKAGES yarn nodejs npm build-base sqlite-dev postgresql-dev tzdata
 RUN apk add $BUILD_PACKAGES --no-cache --quiet
 RUN mkdir /code
 WORKDIR /code
