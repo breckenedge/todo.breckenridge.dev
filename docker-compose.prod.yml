@@ -5,6 +5,7 @@ services:
     image: docker.pkg.github.com/breckenedge/todo.breckenridge.dev/todo:latest
     environment:
       - POSTGRES_PASSWORD
+      - POSTGRES_HOST
       - RAILS_MASTER_KEY
       - RAILS_ENV
     ports:
