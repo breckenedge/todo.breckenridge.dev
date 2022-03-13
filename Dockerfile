@@ -1,4 +1,4 @@
-FROM ruby:3.0.1-alpine AS todo_base
+FROM ruby:3.1.1-alpine AS todo_base
 
 ENV RUBYOPT -W:no-deprecated
 ENV RAILS_LOG_TO_STDOUT true
@@ -22,4 +22,4 @@ ENV RAILS_ENV production
 ENV RAILS_SERVE_STATIC_FILES 1
 RUN SECRET_KEY_BASE=`/gems/rails secret` /gems/rails assets:precompile
 EXPOSE 3000
-CMD ["/gems/rails", "server", "--binding 0.0.0.0"]
+CMD ["/gems/rails", "server", "-b 0.0.0.0"]
