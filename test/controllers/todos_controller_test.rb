@@ -52,7 +52,7 @@ class TodosControllerTest < ActionDispatch::IntegrationTest
       post project_todos_url(@todo.project), params: {
         todo: {
           project_id: @todo.project_id,
-          id: id,
+          id:,
           description: @todo.description,
           due_date: @todo.due_date,
           name: @todo.name,

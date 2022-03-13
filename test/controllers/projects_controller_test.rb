@@ -22,7 +22,7 @@ class ProjectsControllerTest < ActionDispatch::IntegrationTest
     assert_difference("Project.count") do
       post projects_url, params: {
         project: {
-          id: id,
+          id:,
           due_date: @project.due_date,
           name: @project.name,
         },
