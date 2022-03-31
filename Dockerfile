@@ -19,7 +19,8 @@ COPY . /code/
 FROM todo_base AS todo_production
 
 ENV RAILS_ENV production
+ENV RACK_ENV production
 ENV RAILS_SERVE_STATIC_FILES 1
 RUN SECRET_KEY_BASE=`/gems/rails secret` /gems/rails assets:precompile
 EXPOSE 3000
-CMD ["/gems/rails", "server", "-b 0.0.0.0"]
+CMD ["bundle", "exec", "puma", "-C", "config/puma.rb"]
