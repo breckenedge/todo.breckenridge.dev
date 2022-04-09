@@ -13,7 +13,7 @@
     "@types/react-router-dom": "^5.1.7",
     "babel-plugin-transform-react-remove-prop-types": "^0.4.24",
     "dayjs": "^1.10.4",
-    "moment": "^2.27.0",
+    "moment": "^2.29.2",
     "pikaday": "^1.8.0",
     "prop-types": "^15.7.2",
     "proposal-temporal": "^0.7.0",
