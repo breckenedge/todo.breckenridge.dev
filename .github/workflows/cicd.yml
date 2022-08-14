@@ -8,20 +8,6 @@ jobs:
   test:
     runs-on: ubuntu-latest
 
-    services:
-      postgres:
-        image: postgres
-        ports:
-          - 5432:5432
-        env:
-          POSTGRES_USER: postgres
-          POSTGRES_PASSWORD: postgres
-        options: >-
-          --health-cmd pg_isready
-          --health-interval 10s
-          --health-timeout 5s
-          --health-retries 5
-
     steps:
       - uses: actions/checkout@v2
       - name: Set up Ruby
@@ -32,13 +18,5 @@ jobs:
         run: bundle install
       - name: Install javascript dependencies
         run: yarn install
-      - name: Create the database
-        run: bundle exec rails db:create
-        env:
-          RAILS_ENV: test
       - name: Run tests
-        run: bundle exec rails test
-        env:
-          POSTGRES_HOST: localhost
-          POSTGRES_PORT: ${{ job.services.postgres.ports[5432] }}
-          POSTGRES_PASSWORD: postgres
+        run: bundle exec rake
