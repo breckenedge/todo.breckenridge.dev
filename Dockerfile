@@ -1,9 +1,10 @@
-FROM ruby:3.1.1-alpine AS todo_base
+FROM ruby:3.1.2 AS todo_base
 
-ENV RUBYOPT -W:no-deprecated
 ENV RAILS_LOG_TO_STDOUT true
-ENV BUILD_PACKAGES yarn nodejs npm build-base sqlite-dev postgresql-dev tzdata
-RUN apk add $BUILD_PACKAGES --no-cache --quiet
+RUN curl -sL https://deb.nodesource.com/setup_16.x | bash -
+ENV BUILD_PACKAGES nodejs build-essential libsqlite3-dev tzdata -y
+RUN apt-get install $BUILD_PACKAGES
+RUN npm install --global yarn
 RUN mkdir /code
 WORKDIR /code
 COPY .ruby-version Gemfile Gemfile.lock ./
