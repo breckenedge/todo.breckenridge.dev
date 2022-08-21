@@ -18,8 +18,8 @@ jobs:
         with:
           bundler-cache: true
       - name: Install ruby dependencies
-        run: BUNDLER_GEMFILE=Gemfile.rails_main bundle install
+        run: BUNDLE_GEMFILE=Gemfile.rails_main bundle install
       - name: Install javascript dependencies
         run: yarn install
       - name: Run tests
-        run: BUNDLER_GEMFILE=Gemfile.rails_main bundle exec rails test
+        run: BUNDLE_GEMFILE=Gemfile.rails_main bundle exec rails test
