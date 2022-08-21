@@ -1,0 +1,25 @@
+name: Test on rails main
+
+on: 
+  workflow_dispatch:
+  schedule:
+    - cron: 0 0 * * 0
+
+jobs:
+  # Run tests.
+  # See also https://docs.docker.com/docker-hub/builds/automated-testing/
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          bundler-cache: true
+      - name: Install ruby dependencies
+        run: BUNDLER_GEMFILE=Gemfile.rails_main bundle install
+      - name: Install javascript dependencies
+        run: yarn install
+      - name: Run tests
+        run: BUNDLER_GEMFILE=Gemfile.rails_main bundle exec rails test
